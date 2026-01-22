@@ -30,15 +30,22 @@ export const SignInForm = () => {
 
   const { title } = useRefineOptions();
 
-  const { mutate: login } = useLogin();
+  const { mutateAsync: login, } = useLogin();
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    login({
+    const res = await login({
       email,
       password,
+      rememberMe,
     });
+
+    // optional: if you want custom error handling here
+    if (!res?.success) {
+      // show toast or set form error
+      return;
+    }
   };
 
   const handleSignInWithGoogle = () => {
