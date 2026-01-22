@@ -3,6 +3,7 @@ import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { Navigate } from "react-router-dom";
 import { authProvider } from "./providers/auth";
+import { fetchWithAuth } from "./providers/fetcher";
 
 
 import routerProvider, {

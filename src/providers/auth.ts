@@ -7,7 +7,7 @@ type Role = "student" | "supervisor" | "management" | "donor";
 function roleHome(role?: Role) {
     switch (role) {
         case "management":
-            return "/admin";
+            return "/";
         case "supervisor":
             return "/supervisor";
         case "donor":
@@ -60,11 +60,31 @@ export const authProvider: AuthProvider = {
     },
 
     getIdentity: async () => {
-        const res = await fetch(`${AUTH_BASE}/session`, { credentials: "include" });
+        const res = await fetch("http://localhost:8000/api/me", {
+            credentials: "include",
+        });
         if (!res.ok) return null;
-        const session = await res.json();
-        return session.user ?? null;
+
+        const { user, profile } = await res.json();
+
+        // Return a consistent identity object for the UI
+        return {
+            id: user.id,
+            email: user.email,
+            role: user.role,
+            name: profile?.fullName ?? user.name ?? "",
+            fullName: profile?.fullName ?? user.name ?? "",
+            avatarUrl: profile?.avatarUrl ?? user.image ?? undefined,
+
+            // optional extras (handy later)
+            phone: profile?.phone ?? undefined,
+            city: profile?.city ?? undefined,
+            bio: profile?.bio ?? undefined,
+            notes: profile?.notes ?? undefined,
+            allowedEdit: profile?.allowedEdit ?? undefined,
+        };
     },
+
 
     getPermissions: async () => {
         const res = await fetch(`${AUTH_BASE}/session`, { credentials: "include" });

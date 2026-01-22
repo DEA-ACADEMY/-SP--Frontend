@@ -1,22 +1,82 @@
+import { useEffect, useMemo, useState } from "react";
 import { ShowView } from "@/components/refine-ui/views/show-view";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-export default function Profile() {
-    // later you can replace this with data from /me (users table)
-    const user = {
-        fullName: "—",
-        email: "—",
-        role: "—",
-        branch: "—",
-        program: "—",
-        lastLogin: "—",
-        status: "Active",
+type MeResponse = {
+    user: {
+        id: string;
+        name: string;
+        email: string;
+        role: string;
+        image?: string | null;
     };
+    profile:
+        | {
+        userId: string;
+        fullName?: string | null;
+        phone?: string | null;
+        city?: string | null;
+        bio?: string | null;
+        notes?: string | null;
+        allowedEdit?: boolean | null;
+        avatarUrl?: string | null;
+    }
+        | null;
+};
+
+export default function Profile() {
+    const [data, setData] = useState<MeResponse | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        let mounted = true;
+
+        (async () => {
+            try {
+                setLoading(true);
+                const res = await fetch("http://localhost:8000/api/me", {
+                    credentials: "include",
+                });
+
+                if (!res.ok) {
+                    if (mounted) setData(null);
+                    return;
+                }
+
+                const json = (await res.json()) as MeResponse;
+                if (mounted) setData(json);
+            } finally {
+                if (mounted) setLoading(false);
+            }
+        })();
+
+        return () => {
+            mounted = false;
+        };
+    }, []);
+
+    const user = useMemo(() => {
+        const u = data?.user;
+        const p = data?.profile;
+
+        return {
+            fullName: loading ? "…" : (p?.fullName ?? u?.name ?? "—"),
+            email: loading ? "…" : (u?.email ?? "—"),
+            role: loading ? "…" : (u?.role ?? "—"),
+
+            // you can add these later to profile table if you want
+            branch: "—",
+            program: "—",
+            lastLogin: "—",
+
+            status: "Active",
+        };
+    }, [data, loading]);
 
     return (
-        <ShowView >
+        <ShowView>
             <div className="grid gap-6 lg:grid-cols-3">
                 {/* Left card */}
                 <Card className="lg:col-span-1">
@@ -74,8 +134,8 @@ export default function Profile() {
                         <Separator />
 
                         <div className="text-muted-foreground">
-                            Later we’ll load this from <span className="font-medium">/api/me</span>{" "}
-                            (users table) and show role-based fields (student/supervisor/admin/donor).
+                            Loaded from <span className="font-medium">/api/me</span>. Next we’ll add edit form +
+                            role-based fields.
                         </div>
                     </CardContent>
                 </Card>

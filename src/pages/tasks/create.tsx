@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 
 type Task = {
     id: string;
-    createdBy: string;
+
     title: string;
     description?: string | null;
     dueDate: string; // "YYYY-MM-DD"
@@ -51,7 +51,6 @@ export default function TaskCreate() {
             dueDate: "",
             status: "new",
             priority: "medium",
-            createdBy: "00000000-0000-0000-0000-000000000001",
              // ✅ replace with real user id later
         },
     });
@@ -180,7 +179,7 @@ export default function TaskCreate() {
                         </div>
 
                         {/* keep createdBy hidden but still sent */}
-                        <input type="hidden" {...register("createdBy")} />
+
                     </CardContent>
                 </Card>
 
