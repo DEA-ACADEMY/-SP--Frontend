@@ -17,7 +17,7 @@ type Task = {
     title: string;
     description?: string | null;
     dueDate?: string | null;
-    status?: "new" | "in_progress" | "submitted" | "reviewed" | "completed";
+    status?: "new" | "in_progress" | "submitted" | "needs_resubmission" | "completed";
     priority?: "low" | "medium" | "high";
 };
 

@@ -18,9 +18,16 @@ import {
 import { Label } from "@/components/ui/label";
 
 import { useForm } from "@refinedev/react-hook-form";
+import { useList } from "@refinedev/core";
 import type { HttpError } from "@refinedev/core";
 import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
+
+type Student = {
+    id: string;
+    name: string | null;
+    email: string;
+};
 
 type Task = {
     id: string;
@@ -28,8 +35,9 @@ type Task = {
     title: string;
     description?: string | null;
     dueDate: string; // "YYYY-MM-DD"
-    status?: "new" | "in_progress" | "submitted" | "reviewed" | "completed";
-    priority?: "low" | "medium" | "high";
+
+    assignAll?: boolean;
+    assigneeIds?: string[];
 };
 
 export default function TaskCreate() {
@@ -43,20 +51,28 @@ export default function TaskCreate() {
     } = useForm<Task, HttpError>({
         refineCoreProps: {
             resource: "tasks",
-            redirect: "show", // after create -> /tasks/show/:id
+            redirect: "show",
         },
         defaultValues: {
             title: "",
             description: "",
             dueDate: "",
-            status: "new",
-            priority: "medium",
-             // ✅ replace with real user id later
+            assignAll: false,
+            assigneeIds: [],
         },
     });
 
-    const status = watch("status");
-    const priority = watch("priority");
+    const assignAll = (watch("assignAll") ?? false) as boolean;
+    const selectedStudentId = ((watch("assigneeIds") ?? [])[0] ?? "") as string;
+
+    // ✅ in your refine version: useList returns "query", not "isLoading"
+    const { query: studentsQuery, result: studentsRes } = useList<Student, HttpError>({
+        resource: "students",
+        pagination: { mode: "off" },
+    });
+
+    const studentsLoading = studentsQuery?.isLoading ?? false;
+    const students: Student[] = studentsRes?.data ?? [];
 
     return (
         <CreateView>
@@ -142,44 +158,49 @@ export default function TaskCreate() {
                             ) : null}
                         </div>
 
-                        <div className="space-y-2">
-                            <Label>Status</Label>
-                            <Select
-                                value={status ?? "new"}
-                                onValueChange={(v) => setValue("status", v as Task["status"])}
-                            >
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select status" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="new">new</SelectItem>
-                                    <SelectItem value="in_progress">in_progress</SelectItem>
-                                    <SelectItem value="submitted">submitted</SelectItem>
-                                    <SelectItem value="reviewed">reviewed</SelectItem>
-                                    <SelectItem value="completed">completed</SelectItem>
-                                </SelectContent>
-                            </Select>
+                        {/* Assign all */}
+                        <div className="flex items-center gap-2">
+                            <input
+                                type="checkbox"
+                                checked={assignAll}
+                                onChange={(e) => {
+                                    const checked = e.target.checked;
+                                    setValue("assignAll", checked);
+                                    if (checked) setValue("assigneeIds", []);
+                                }}
+                            />
+                            <Label>Assign to all students</Label>
                         </div>
 
+                        {/* Assign to one student */}
                         <div className="space-y-2">
-                            <Label>Priority</Label>
+                            <Label>Assign to student</Label>
                             <Select
-                                value={priority ?? "medium"}
-                                onValueChange={(v) => setValue("priority", v as Task["priority"])}
+                                value={selectedStudentId}
+                                onValueChange={(id) => setValue("assigneeIds", id ? [id] : [])}
+                                disabled={assignAll || studentsLoading}
                             >
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select priority" />
+                                    <SelectValue placeholder={studentsLoading ? "Loading..." : "Select student"} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="low">low</SelectItem>
-                                    <SelectItem value="medium">medium</SelectItem>
-                                    <SelectItem value="high">high</SelectItem>
+                                    {students.map((s) => (
+                                        <SelectItem key={s.id} value={s.id}>
+                                            {s.name ?? s.email}
+                                        </SelectItem>
+                                    ))}
                                 </SelectContent>
                             </Select>
+
+                            {!assignAll && !selectedStudentId ? (
+                                <p className="text-xs text-muted-foreground">
+                                    Choose a student or enable “Assign to all”.
+                                </p>
+                            ) : null}
                         </div>
 
-                        {/* keep createdBy hidden but still sent */}
-
+                        {/* keep registered */}
+                        <input type="hidden" {...register("assignAll")} />
                     </CardContent>
                 </Card>
 

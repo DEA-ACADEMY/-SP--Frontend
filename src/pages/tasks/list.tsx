@@ -6,19 +6,25 @@ import type { HttpError } from "@refinedev/core";
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { CreateButton } from "@/components/refine-ui/buttons/create";
 import { ShowButton } from "@/components/refine-ui/buttons/show";
 import { EditButton } from "@/components/refine-ui/buttons/edit";
 import { DeleteButton } from "@/components/refine-ui/buttons/delete";
-
 
 type Task = {
     id: string;
     title: string;
     dueDate: string;
-    status: "new" | "in_progress" | "submitted" | "reviewed" | "completed";
-    priority: "low" | "medium" | "high";
+
+    // student response
+    status?: "new" | "in_progress" | "submitted" | "needs_resubmission" | "completed";
+
+    // staff response
+    assignees?: {
+        studentId: string;
+        name: string | null;
+        email: string;
+        status: "new" | "in_progress" | "submitted" | "needs_resubmission" | "completed";
+    }[];
 };
 
 export default function TasksList() {
@@ -33,23 +39,38 @@ export default function TasksList() {
                 header: "Due Date",
             },
             {
-                accessorKey: "priority",
-                header: "Priority",
-                cell: ({ getValue }) => {
-                    const v = getValue<string>();
-                    return (
-                        <Badge variant={v === "high" ? "destructive" : "secondary"}>
-                            {v}
-                        </Badge>
-                    );
+                id: "assignedTo",
+                header: "Assigned To",
+                cell: ({ row }) => {
+                    const assignees = row.original.assignees ?? [];
+                    if (assignees.length === 0) {
+                        return <span className="text-muted-foreground">—</span>;
+                    }
+
+                    const names = assignees.map((a) => a.name ?? a.email);
+                    const first = names.slice(0, 2).join(", ");
+                    const more = names.length > 2 ? ` +${names.length - 2}` : "";
+
+                    return <span>{first}{more}</span>;
                 },
             },
             {
                 accessorKey: "status",
                 header: "Status",
-                cell: ({ getValue }) => (
-                    <Badge variant="outline">{getValue<string>()}</Badge>
-                ),
+                cell: ({ row, getValue }) => {
+                    // student: status exists directly
+                    const v = getValue<string>();
+                    if (v) return <Badge variant="outline">{v}</Badge>;
+
+                    // staff: show summary from assignees
+                    const assignees = row.original.assignees ?? [];
+                    if (assignees.length === 0) {
+                        return <span className="text-muted-foreground">—</span>;
+                    }
+
+                    const done = assignees.filter((a) => a.status === "completed").length;
+                    return <Badge variant="outline">{done}/{assignees.length} completed</Badge>;
+                },
             },
             {
                 id: "actions",

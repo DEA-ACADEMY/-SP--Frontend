@@ -36,9 +36,7 @@ function TagBadge({ tag }: { tag: ActivityItem["tag"] }) {
 }
 
 export default function Dashboard() {
-    // later:
-    // - cards come from aggregated endpoints (tasks/submissions/advice/notifications)
-    // - activity comes from an "activity" table or derived events
+
     const stats = {
         openTasks: "—",
         overdue: "—",
