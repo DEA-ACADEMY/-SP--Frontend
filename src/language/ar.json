@@ -1,0 +1,1121 @@
+﻿{
+  "common": {
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "loggingOut": "جارٍ تسجيل الخروج...",
+    "myAccount": "حسابي",
+    "user": "مستخدم",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+    "lightMode": "الوضع الفاتح",
+    "darkMode": "الوضع الداكن",
+    "systemMode": "وضع النظام",
+    "language": "اللغة",
+    "appearance": "المظهر",
+    "notifications": "الإشعارات",
+    "account": "الحساب",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "leftToRight": "من اليسار إلى اليمين",
+    "rightToLeft": "من اليمين إلى اليسار",
+    "loading": "جارٍ التحميل...",
+    "saving": "جارٍ الحفظ...",
+    "submitting": "جارٍ الإرسال...",
+    "creating": "جارٍ الإنشاء...",
+    "back": "رجوع",
+    "open": "فتح",
+    "id": "المعرّف",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "fullName": "الاسم الكامل",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "phone": "الهاتف",
+    "city": "المدينة",
+    "bio": "نبذة",
+    "role": "الدور",
+    "branch": "الفرع",
+    "program": "البرنامج",
+    "cohort": "الدفعة",
+    "status": "الحالة",
+    "details": "التفاصيل",
+    "meta": "بيانات إضافية",
+    "title": "العنوان",
+    "description": "الوصف",
+    "createdAt": "تاريخ الإنشاء",
+    "notAvailable": "—",
+    "untitled": "(بدون عنوان)"
+  },
+  "buttons": {
+    "create": "إضافة",
+    "edit": "تعديل",
+    "show": "عرض",
+    "list": "العودة إلى القائمة",
+    "delete": "حذف",
+    "refresh": "تحديث",
+    "confirm": "هل أنت متأكد؟",
+    "cancel": "إلغاء",
+    "apply": "تطبيق",
+    "clear": "مسح",
+    "undo": "تراجع",
+    "saveChanges": "حفظ التغييرات"
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "welcomeBack": "مرحبًا بعودتك",
+    "rememberMe": "تذكرني",
+    "forgotPassword": "نسيت كلمة المرور",
+    "or": "أو",
+    "signInUsing": "تسجيل الدخول باستخدام",
+    "noAccount": "ليس لديك حساب؟",
+    "signUp": "إنشاء حساب",
+    "logoAlt": "شعار التطبيق",
+    "forgotPasswordTitle": "نسيت كلمة المرور",
+    "forgotPasswordDescription": "أدخل بريدك الإلكتروني لتغيير كلمة المرور.",
+    "send": "إرسال",
+    "signUpDescription": "أنشئ حسابك على المنصة.",
+    "passwordsDontMatch": "كلمتا المرور غير متطابقتين",
+    "passwordsDontMatchDescription": "يرجى التأكد من أن حقلي كلمة المرور يحتويان على نفس القيمة.",
+    "haveAccount": "لديك حساب؟"
+  },
+  "upload": {
+    "profileAlt": "الملف الشخصي",
+    "noImage": "لا توجد صورة",
+    "uploadImage": "رفع صورة",
+    "uploadDocument": "رفع مستند",
+    "uploading": "جارٍ الرفع...",
+    "remove": "إزالة",
+    "noDocument": "لم يتم رفع مستند",
+    "documentReady": "تم رفع المستند",
+    "documentHint": "PDF أو Word أو صورة أو ملف آخر للمهمة.",
+    "errors": {
+      "imageOnly": "يرجى اختيار ملف صورة فقط.",
+      "tooLarge": "يجب أن يكون حجم الصورة أقل من {{size}} ميجابايت.",
+      "missingCloudinary": "متغيرات بيئة Cloudinary غير موجودة.",
+      "uploadFailed": "فشل الرفع",
+      "failed": "فشل رفع الصورة."
+    }
+  },
+  "table": {
+    "empty": {
+      "title": "لا توجد بيانات للعرض",
+      "description": "هذا الجدول فارغ حاليًا."
+    },
+    "pagination": {
+      "rowsPerPage": "الصفوف في الصفحة",
+      "rows": "{{count}} صف",
+      "pageOf": "الصفحة {{page}} من {{pageCount}}",
+      "firstPage": "الانتقال إلى الصفحة الأولى",
+      "previousPage": "الانتقال إلى الصفحة السابقة",
+      "nextPage": "الانتقال إلى الصفحة التالية",
+      "lastPage": "الانتقال إلى الصفحة الأخيرة"
+    },
+    "filter": {
+      "text": { "placeholder": "تصفية حسب..." },
+      "numeric": { "placeholder": "تصفية حسب..." },
+      "combobox": {
+        "placeholder": "اختر...",
+        "search": "بحث...",
+        "noResults": "لا توجد نتائج."
+      },
+      "operator": {
+        "placeholder": "ابحث عن عامل التصفية...",
+        "noResults": "لا توجد عوامل تصفية.",
+        "eq": "يساوي",
+        "ne": "لا يساوي",
+        "lt": "أقل من",
+        "gt": "أكبر من",
+        "lte": "أقل من أو يساوي",
+        "gte": "أكبر من أو يساوي",
+        "in": "ضمن",
+        "nin": "ليس ضمن",
+        "ina": "ضمن المصفوفة",
+        "nina": "ليس ضمن المصفوفة",
+        "contains": "يحتوي على",
+        "ncontains": "لا يحتوي على",
+        "containss": "يحتوي على مع مطابقة حالة الأحرف",
+        "ncontainss": "لا يحتوي على مع مطابقة حالة الأحرف",
+        "between": "بين",
+        "nbetween": "ليس بين",
+        "null": "فارغ",
+        "nnull": "غير فارغ",
+        "startswith": "يبدأ بـ",
+        "nstartswith": "لا يبدأ بـ",
+        "startswiths": "يبدأ بـ مع مطابقة حالة الأحرف",
+        "nstartswiths": "لا يبدأ بـ مع مطابقة حالة الأحرف",
+        "endswith": "ينتهي بـ",
+        "nendswith": "لا ينتهي بـ",
+        "endswiths": "ينتهي بـ مع مطابقة حالة الأحرف",
+        "nendswiths": "لا ينتهي بـ مع مطابقة حالة الأحرف",
+        "eqs": "يساوي مع مطابقة حالة الأحرف",
+        "nes": "لا يساوي مع مطابقة حالة الأحرف"
+      }
+    }
+  },
+  "actions": {
+    "create": "إضافة",
+    "edit": "تعديل",
+    "show": "عرض",
+    "list": "القائمة",
+    "delete": "حذف"
+  },
+  "header": {
+    "switchToArabic": "التبديل إلى العربية",
+    "switchToEnglish": "التبديل إلى الإنجليزية",
+    "toggleTheme": "تبديل السمة",
+    "switchToLight": "التبديل إلى الوضع الفاتح",
+    "switchToDark": "التبديل إلى الوضع الداكن",
+    "switchToSystem": "التبديل إلى وضع النظام"
+  },
+  "settingsPage": {
+    "title": "الإعدادات",
+    "description": "تحكم بمظهر التطبيق واللغة من مكان واحد.",
+    "appearanceTitle": "المظهر",
+    "appearanceDescription": "إدارة السمة واللغة للتطبيق بالكامل.",
+    "darkModeTitle": "الوضع الداكن",
+    "darkModeDescription": "التبديل بين السمة الفاتحة والداكنة للتطبيق.",
+    "languageTitle": "اللغة العربية",
+    "languageDescription": "تبديل لغة التطبيق واتجاه الصفحة.",
+    "currentTheme": "السمة الحالية",
+    "currentLanguage": "اللغة الحالية",
+    "currentDirection": "الاتجاه",
+    "notificationsTitle": "الإشعارات",
+    "notificationsDescription": "مكان مخصص لاحقًا لربط إعدادات الإشعارات.",
+    "enableNotifications": "تفعيل الإشعارات",
+    "emailNotifications": "إشعارات البريد الإلكتروني",
+    "accountTitle": "الحساب",
+    "accountDescription": "إجراءات أساسية خاصة بالحساب.",
+    "updateProfileSettings": "تحديث إعدادات الملف الشخصي"
+  },
+  "notificationsPage": {
+    "inbox": "صندوق الإشعارات",
+    "unread": "غير المقروءة",
+    "markAllAsRead": "تحديد الكل كمقروء",
+    "marking": "جارٍ التحديث...",
+    "loading": "جارٍ تحميل الإشعارات...",
+    "empty": "لا توجد إشعارات حاليًا.",
+    "new": "جديد",
+    "noDetails": "لا توجد تفاصيل.",
+    "markAsRead": "تحديد كمقروء",
+    "markAsUnread": "تحديد كغير مقروء",
+    "saving": "جارٍ الحفظ...",
+    "typeTask": "مهمة",
+    "typeReview": "مراجعة",
+    "typeAdvice": "استشارة",
+    "typeSystem": "نظام",
+    "failedToLoad": "فشل تحميل الإشعارات",
+    "failedToMarkRead": "فشل تحديث الإشعار كمقروء",
+    "failedToMarkUnread": "فشل تحديث الإشعار كغير مقروء",
+    "failedToMarkAllRead": "فشل تحديث جميع الإشعارات كمقروءة",
+    "templates": {
+      "studentApprovalRequested": "طلب اعتماد طالب",
+      "requestedApprovalToAdd": "{{requester}} طلب اعتماد إضافة الطالب {{student}}",
+      "taskSubmittedForReview": "تم تسليم مهمة للمراجعة",
+      "submittedForReview": "{{student}} سلّم {{task}} للمراجعة"
+    }
+  },
+  "profilePage": {
+    "accountInfo": "معلومات الحساب",
+    "personalDetails": "التفاصيل الشخصية",
+    "staffNotes": "ملاحظات الفريق",
+    "managementNotes": "ملاحظات الإدارة",
+    "staffEdit": "تعديل الفريق",
+    "managementEdit": "تعديل الإدارة",
+    "studentProfile": "ملف الطالب",
+    "supervisorProfile": "ملف المشرف",
+    "avatarUrl": "رابط الصورة",
+    "loading": "جارٍ تحميل الملف الشخصي...",
+    "loadingStudent": "جارٍ تحميل ملف الطالب...",
+    "loadingSupervisor": "جارٍ تحميل ملف المشرف...",
+    "updated": "تم تحديث الملف الشخصي",
+    "editingDisabled": "تعديل الملف الشخصي معطل حاليًا من قبل الفريق.",
+    "noStaffNotes": "لا توجد ملاحظات من الفريق بعد.",
+    "studentCanEdit": "يمكن للطالب تعديل ملفه الشخصي",
+    "supervisorCanEdit": "يمكن للمشرف تعديل ملفه الشخصي",
+    "saveStaffChanges": "حفظ تعديلات الفريق",
+    "saveManagementChanges": "حفظ تعديلات الإدارة",
+    "studentUpdated": "تم تحديث ملف الطالب",
+    "supervisorUpdated": "تم تحديث ملف المشرف",
+    "messages": {
+      "failedToLoad": "فشل تحميل الملف الشخصي",
+      "failedToSave": "فشل حفظ الملف الشخصي",
+      "failedToLoadStudent": "فشل تحميل ملف الطالب",
+      "failedToUpdateStudent": "فشل تحديث ملف الطالب",
+      "failedToLoadSupervisor": "فشل تحميل ملف المشرف",
+      "failedToUpdateSupervisor": "فشل تحديث ملف المشرف"
+    }
+  },
+  "brand": {
+    "name": "سنوبول",
+    "subtitle": "منصة الطالب",
+    "fullName": "مؤسسة سنوبول"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "notifications": "الإشعارات",
+    "students": "الطلاب",
+    "supervisors": "المشرفون",
+    "tasks": "المهام",
+    "consultations": "الاستشارات",
+    "consulattions": "الاستشارات",
+    "branches": "الفروع",
+    "programs": "البرامج",
+    "cohorts": "الدفعات",
+    "enrollments": "التسجيلات",
+    "miniGames": "الألعاب المصغرة"
+  },
+  "students": {
+    "titles": {
+      "list": "الطلاب",
+      "create": "إضافة طالب",
+      "edit": "تعديل الطالب",
+      "show": "تفاصيل الطالب"
+    },
+    "actions": {
+      "addStudent": "إضافة طالب",
+      "submitForApproval": "إرسال للاعتماد"
+    },
+      "fields": {
+        "uploadPicture": "رفع صورة",
+        "supervisor": "المشرف"
+      },
+    "placeholders": {
+      "fullName": "الاسم الكامل للطالب",
+      "firstName": "الاسم الأول للطالب",
+      "lastName": "اسم العائلة للطالب",
+      "email": "student@example.com",
+      "password": "أدخل كلمة المرور الأولية",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "selectBranch": "اختر الفرع",
+      "selectProgram": "اختر البرنامج",
+        "selectCohort": "اختر الدفعة",
+        "selectSupervisor": "اختر المشرف"
+      },
+    "table": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "supervisor": "المشرف",
+      "actions": "الإجراءات",
+      "assigned": "تم التعيين",
+      "unassigned": "غير معيّن",
+      "assignSupervisor": "تعيين مشرف",
+      "unassignedOption": "غير معيّن",
+      "openProfile": "فتح الملف"
+    },
+    "requests": {
+      "pendingTitle": "طلبات الطلاب المعلقة",
+      "loading": "جارٍ تحميل الطلبات...",
+      "empty": "لا توجد طلبات معلقة.",
+      "supervisor": "المشرف",
+      "approve": "اعتماد",
+      "reject": "رفض",
+      "working": "جارٍ التنفيذ..."
+    },
+    "messages": {
+      "failedToLoadPage": "فشل تحميل بيانات صفحة الطلاب",
+      "failedToRefreshRequests": "فشل تحديث الطلبات",
+      "failedToApproveRequest": "فشل اعتماد الطلب",
+      "failedToRejectRequest": "فشل رفض الطلب",
+      "failedToUpdateSupervisor": "فشل تحديث ربط المشرف",
+      "unauthorized": "غير مصرح. يلزم تسجيل الدخول",
+      "forbidden": "غير مسموح. متاح للإدارة فقط",
+      "saving": "جارٍ الحفظ...",
+      "fieldRequired": "هذا الحقل مطلوب.",
+      "temporaryPassword": "كلمة المرور المؤقتة للطالب المعتمد:",
+      "failedToLoadForm": "فشل تحميل خيارات النموذج",
+      "allFieldsRequired": "جميع الحقول مطلوبة",
+      "classificationRequired": "يرجى إكمال الحقول المطلوبة",
+      "passwordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+      "passwordMismatch": "كلمة المرور وتأكيدها غير متطابقين",
+      "failedToSubmitRequest": "فشل إرسال طلب الطالب",
+      "loadingForm": "جارٍ تحميل النموذج...",
+      "pendingRequestNotice": "سيؤدي هذا إلى إنشاء طلب معلق. لن تتم إضافة الطالب إلا بعد اعتماد الإدارة.",
+      "directCreateNotice": "يمكن للإدارة إنشاء هذا الطالب مباشرة.",
+      "noCohortsForProgram": "لا توجد دفعات متاحة لهذا البرنامج بعد."
+    }
+    ,
+    "intake": {
+      "select": "اختر...",
+      "fields": {
+        "birthDate": "تاريخ الميلاد",
+        "nationality": "الجنسية",
+        "residenceCountry": "بلد الإقامة",
+        "gender": "الجنس",
+        "studentStage": "الحالة",
+        "iqTestScore": "درجة اختبار الذكاء",
+        "maritalStatus": "الحالة الاجتماعية",
+        "familyMembersCount": "كم عدد أفراد الأسرة",
+        "parentsMaritalStatus": "الحالة الاجتماعية للأبوين",
+        "familyObligations": "هل لديك التزامات تجاه الأسرة؟",
+        "familyObligationsDetails": "في حال كانت الإجابة نعم ماهي؟",
+        "volunteeringExperience": "هل سبق أن شاركت في أعمال تطوعية؟",
+        "volunteeringDetails": "في حال كانت الإجابة نعم ماهي؟",
+        "paidWorkExperience": "هل سبق أن عملت في عمل بأجر؟",
+        "paidWorkDetails": "في حال كانت الإجابة نعم ماهي؟",
+        "universityPhase": "المرحلة الجامعية",
+        "major": "التخصص",
+        "university": "الجامعة",
+        "academicNumber": "الرقم الأكاديمي",
+        "latestGpa": "آخر معدل أكاديمي",
+        "annualTuitionFees": "الرسوم الدراسية أو البحث في السنة",
+        "lowIncomeFamily": "هل الأسرة ذات مستوى محدود؟",
+        "ataTrainingCost": "تكلفة التدريب في وقف عطاء",
+        "housingCost": "تكاليف سكن",
+        "transportationCost": "تكاليف مواصلات",
+        "medicalCost": "تكاليف علاج",
+        "otherCosts": "تكاليف أخرى"
+      },
+      "options": {
+        "gender": ["ذكر", "أنثى"],
+        "studentStage": ["طالب دكتوراة", "طالب ماستر", "خريج جامعي", "جامعي", "مستجد"],
+        "maritalStatus": ["متزوج", "غير متزوج"],
+        "parentsMaritalStatus": ["الوالدان متزوجان", "منفصلان", "الوالد متوفي", "الأم متوفية"],
+        "yesNo": ["نعم", "لا"],
+        "universityPhase": ["التحضير", "يتم التحديث بشكل سنوي"]
+      }
+    }
+  },
+  "supervisors": {
+    "titles": {
+      "list": "المشرفون",
+      "create": "إضافة مشرف",
+      "edit": "تعديل المشرف",
+      "show": "تفاصيل المشرف"
+    },
+    "actions": {
+      "create": "إنشاء مشرف"
+    },
+    "fields": {
+      "temporaryPassword": "كلمة المرور المؤقتة"
+    },
+    "placeholders": {
+      "fullName": "الاسم الكامل للمشرف",
+      "email": "supervisor@example.com",
+      "password": "8 أحرف على الأقل"
+    },
+    "messages": {
+      "allFieldsRequired": "جميع الحقول مطلوبة",
+      "passwordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+      "failedToCreate": "فشل إنشاء المشرف"
+    }
+  },
+  "tasks": {
+    "titles": {
+      "list": "المهام",
+      "create": "إضافة مهمة",
+      "edit": "تعديل المهمة",
+      "show": "تفاصيل المهمة"
+    },
+    "fields": {
+      "title": "العنوان",
+      "description": "الوصف",
+      "dueDate": "تاريخ الاستحقاق",
+      "assignedBy": "أُسندت بواسطة",
+      "assignedTo": "مُسندة إلى",
+      "assignees": "المكلفون",
+      "assigned": "مُسندة",
+      "submissionText": "نص التسليم",
+      "link": "الرابط",
+      "linkUrl": "رابط URL",
+      "fileUrl": "رابط الملف",
+      "taskDocument": "مستند المهمة",
+      "submissionDocument": "مستند التسليم",
+      "openDocument": "فتح المستند",
+      "downloadDocument": "تنزيل",
+      "submittedAt": "وقت التسليم",
+      "reviewStatus": "حالة المراجعة",
+      "reviewedAt": "وقت المراجعة",
+      "supervisorFeedback": "ملاحظات المشرف",
+      "existingFeedback": "الملاحظات الحالية",
+      "feedback": "الملاحظات"
+    },
+    "assign": {
+      "allStudents": "إسناد إلى جميع الطلاب",
+      "student": "إسناد إلى طالب",
+      "selectStudent": "اختر طالبًا",
+      "chooseStudentOrAll": "اختر طالبًا أو فعّل خيار \"إسناد إلى الجميع\"."
+    },
+    "sections": {
+      "overview": "نظرة عامة",
+      "submitWork": "تسليم العمل",
+      "latestSubmission": "آخر تسليم"
+    },
+    "actions": {
+      "submitWork": "تسليم العمل",
+      "approve": "اعتماد",
+      "needsResubmission": "يحتاج إلى إعادة تسليم",
+      "showLess": "عرض أقل",
+      "showMore": "عرض المزيد"
+    },
+    "placeholders": {
+      "title": "عنوان المهمة",
+      "titleCreate": "عنوان المهمة...",
+      "description": "وصف المهمة",
+      "optional": "اختياري...",
+      "answer": "اكتب إجابتك أو ملاحظاتك أو ملخصك...",
+      "feedback": "أضف ملاحظات للطالب...",
+      "url": "https://..."
+    },
+    "summary": {
+      "totalTasks": "إجمالي المهام",
+      "totalTasksHint": "المهام الظاهرة ضمن نطاقك الحالي",
+      "overdue": "متأخرة",
+      "overdueHint": "تجاوزت موعدها وما زالت نشطة",
+      "pendingReview": "بانتظار المراجعة",
+      "pendingReviewHint": "تم تسليمها وتنتظر المراجعة",
+      "needsResubmission": "تحتاج إلى إعادة تسليم",
+      "needsResubmissionHint": "أُعيدت إلى الطلاب",
+      "completedCount": "{{count}} مكتملة",
+      "submittedCount": "{{count}} مُسلّمة",
+      "needsResubmissionCount": "{{count}} تحتاج إلى إعادة تسليم",
+      "assignedCount": "{{count}} مُسندة"
+    },
+    "status": {
+      "new": "جديدة",
+      "in_progress": "قيد التنفيذ",
+      "submitted": "مُسلّمة",
+      "needs_resubmission": "تحتاج إلى إعادة تسليم",
+      "completed": "مكتملة"
+    },
+    "decision": {
+      "pending": "معلقة",
+      "accepted": "مقبولة",
+      "rejected": "مرفوضة",
+      "needs_resubmission": "تحتاج إلى إعادة تسليم"
+    },
+    "messages": {
+      "failedToLoadSummary": "فشل تحميل ملخص المهام",
+      "failedToLoad": "فشل تحميل المهمة",
+      "failedToLoadThis": "فشل تحميل هذه المهمة.",
+      "notFound": "لم يتم العثور على المهمة.",
+      "titleRequired": "العنوان مطلوب",
+      "dueDateRequired": "تاريخ الاستحقاق مطلوب",
+      "failedToUpdate": "فشل تحديث المهمة",
+      "failedToLoadSubmission": "فشل تحميل التسليم",
+      "submittedSuccessfully": "تم تسليم العمل بنجاح",
+      "failedToSubmit": "فشل تسليم العمل",
+      "failedToReview": "فشل مراجعة التسليم",
+      "loadingTask": "جارٍ تحميل المهمة...",
+      "loadingSubmission": "جارٍ تحميل التسليم...",
+      "noAssignees": "لا يوجد مكلفون",
+      "noSubmissionYet": "لا يوجد تسليم بعد.",
+      "cannotSubmit": "لا يمكنك تسليم العمل في الحالة الحالية."
+    }
+  },
+  "branches": {
+    "titles": {
+      "list": "الفروع",
+      "create": "إضافة فرع",
+      "edit": "تعديل الفرع",
+      "show": "تفاصيل الفرع"
+    },
+    "fields": {
+      "name": "اسم الفرع"
+    },
+    "actions": {
+      "new": "فرع جديد"
+    },
+    "placeholders": {
+      "name": "أضف فرعًا",
+      "program": "أضف برنامجًا جديدًا"
+    },
+    "messages": {
+      "nameRequired": "اسم الفرع مطلوب",
+      "failedToCreate": "فشل إنشاء الفرع",
+      "failedToLoad": "فشل تحميل الفرع",
+      "failedToUpdate": "فشل تحديث الفرع",
+      "failedToLoadList": "فشل تحميل الفروع",
+      "empty": "لا توجد فروع بعد.",
+      "notFound": "لم يتم العثور على الفرع.",
+      "manageDescription": "أدر هذا الفرع وبرامجه من مكان واحد.",
+      "programsDescription": "هذه البرامج تابعة لهذا الفرع.",
+      "programNameRequired": "اسم البرنامج مطلوب",
+      "failedToCreateProgram": "فشل إنشاء البرنامج",
+      "failedToUpdateProgram": "فشل تحديث البرنامج",
+      "noProgramsInBranch": "لم تتم إضافة برامج إلى هذا الفرع بعد.",
+      "cohortCount": "{{count}} دفعة",
+      "cohortCount_plural": "{{count}} دفعات",
+      "backToBranches": "العودة إلى الفروع",
+      "addProgram": "إضافة برنامج"
+    },
+    "students": {
+      "title": "الطلاب في هذا الفرع",
+      "description": "تُعرض تفاصيل الطلاب حسب الفرع والبرنامج والدفعة المحددة.",
+      "empty": "لا يوجد طلاب مرتبطون بهذا الفرع بعد."
+    }
+  },
+  "programs": {
+    "titles": {
+      "list": "البرامج",
+      "create": "إضافة برنامج",
+      "edit": "تعديل البرنامج",
+      "show": "تفاصيل البرنامج"
+    },
+    "fields": {
+      "name": "اسم البرنامج",
+      "branch": "الفرع"
+    },
+    "placeholders": {
+      "name": "برنامج القيادة",
+      "selectBranch": "اختر الفرع",
+      "untitledBranch": "(فرع بدون عنوان)"
+    },
+    "messages": {
+      "nameAndBranchRequired": "الاسم والفرع مطلوبان",
+      "failedToCreate": "فشل إنشاء البرنامج",
+      "failedToLoad": "فشل تحميل البرنامج",
+      "failedToLoadBranches": "فشل تحميل الفروع",
+      "failedToUpdate": "فشل تحديث البرنامج",
+      "empty": "لا توجد برامج بعد.",
+      "failedToLoadList": "فشل تحميل البرامج"
+    }
+  },
+  "cohorts": {
+    "titles": {
+      "list": "الدفعات",
+      "create": "إضافة دفعة",
+      "edit": "تعديل الدفعة",
+      "show": "تفاصيل الدفعة"
+    },
+    "actions": {
+      "seed": "إنشاء الدفعات 1-15"
+    },
+    "messages": {
+        "description": "الدفعات مجموعات عامة للطلاب، ويمكن أن تضم الدفعة الواحدة طلابًا من فروع مختلفة.",
+        "empty": "لا توجد دفعات لهذا البرنامج بعد.",
+        "noCohorts": "لا توجد دفعات متاحة بعد.",
+        "noPrograms": "لا توجد برامج متاحة بعد.",
+        "failedToLoad": "فشل تحميل الدفعات",
+      "failedToSeed": "فشل إنشاء الدفعات",
+      "studentCount": "{{count}} طالب",
+      "studentCount_plural": "{{count}} طلاب",
+      "noStudents": "لا يوجد طلاب مرتبطون بهذه الدفعة بعد."
+    }
+  },
+  "enrollments": {
+    "titles": {
+      "list": "التسجيلات",
+      "create": "إضافة تسجيل",
+      "edit": "تعديل التسجيل",
+      "show": "تفاصيل التسجيل"
+    },
+      "sections": {
+        "addStudent": "إضافة طالب",
+        "assignProgram": "تعيين برنامج"
+      },
+      "actions": {
+        "addStudent": "إضافة طالب",
+        "addProgram": "إضافة برنامج",
+        "manageBranches": "إدارة الفروع",
+        "reviewCohorts": "عرض الدفعات",
+        "assignProgram": "تعيين برنامج لطالب",
+        "assignSelected": "تعيين البرنامج",
+        "assignCohort": "تعيين دفعة لطالب",
+        "assignCohortSelected": "تعيين الدفعة"
+      },
+      "fields": {
+        "student": "الطالب",
+        "program": "البرنامج",
+        "availablePrograms": "البرامج المتاحة",
+        "assignedPrograms": "البرامج المعينة",
+        "cohort": "الدفعة",
+        "currentCohort": "الدفعة الحالية"
+      },
+      "placeholders": {
+        "selectStudent": "اختر الطالب",
+        "selectProgram": "اختر البرنامج",
+        "selectCohort": "اختر الدفعة"
+      },
+      "messages": {
+        "description": "أدوات التسجيل لإضافة الطلاب وتنظيم الفرع والبرنامج والدفعة.",
+        "addStudentDescription": "الإدارة تضيف الطالب مباشرة، والمشرف يرسل طلب طالب للاعتماد.",
+        "addProgramDescription": "أنشئ برنامجًا جديدًا تحت فرع موجود.",
+        "manageBranchesDescription": "افتح الفروع لمراجعة أسماء الفروع وإضافة برامجها.",
+        "reviewCohortsDescription": "اعرض كل دفعة والطلاب المرتبطين بها.",
+        "assignProgramDescription": "عيّن الطالب إلى برنامج واحد أو أكثر من برامج فرعه.",
+        "assignCohortDescription": "ضع الطالب في دفعة. الدفعات عامة ويمكن أن تضم طلابًا من فروع مختلفة.",
+        "failedToLoad": "فشل تحميل التسجيلات",
+        "assignmentRequired": "اختر الطالب والبرنامج أولًا.",
+        "failedToAssignProgram": "فشل تعيين البرنامج",
+        "programAssigned": "تم تعيين البرنامج للطالب.",
+        "programAlreadyAssigned": "هذا البرنامج معين لهذا الطالب بالفعل.",
+        "noAssignedPrograms": "لا توجد برامج معينة بعد.",
+        "selectStudentHint": "اختر طالبًا لعرض فرعه وبرامجه المعينة.",
+        "cohortAssignmentRequired": "اختر الطالب والدفعة أولًا.",
+        "failedToAssignCohort": "فشل تعيين الدفعة",
+        "cohortAssigned": "تم تعيين الدفعة للطالب.",
+        "cohortAlreadyAssigned": "هذا الطالب موجود بالفعل في هذه الدفعة.",
+        "selectStudentForCohortHint": "اختر طالبًا لعرض دفعته الحالية."
+      }
+    },
+  "notifications": {
+    "titles": {
+      "list": "الإشعارات",
+      "show": "تفاصيل الإشعار"
+    }
+  },
+  "dashboardResource": {
+    "titles": {
+      "list": "لوحة التحكم",
+      "show": "لوحة التحكم"
+    }
+  },
+  "gamesPage": {
+    "title": "الألعاب المصغرة",
+    "description": "تبويب تفاعل منفصل لأغراض العرض حتى تبقى لوحة التحكم مركزة.",
+    "badge": "تجربة الطالب"
+  },
+  "advice-threads": {
+    "titles": {
+      "list": "الاستشارات",
+      "create": "إضافة استشارة",
+      "edit": "تعديل الاستشارة",
+      "show": "تفاصيل الاستشارة"
+    },
+    "fields": {
+      "message": "الرسالة",
+      "notes": "ملاحظات",
+      "reply": "الرد",
+      "created": "تاريخ الإنشاء",
+      "createdBy": "أنشئت بواسطة",
+      "createdAt": "أنشئت في"
+    },
+    "placeholders": {
+      "title": "عنوان الاستشارة...",
+      "message": "صف سؤالك أو طلبك...",
+      "reply": "اكتب ردك...",
+      "closed": "هذه الاستشارة مغلقة.",
+      "selectStatus": "اختر الحالة"
+    },
+    "notes": {
+      "use": "استخدم الاستشارات عندما تحتاج إلى نصيحة أو توجيه من الفريق.",
+      "visibility": "يمكنك أنت ومجموعة مشرفك أو الإدارة فقط رؤية هذا النقاش.",
+      "notification": "سيصلك إشعار عندما يرد الفريق.",
+      "staffFlow": "يمكن للفريق نقل الاستشارات من مفتوحة إلى قيد التنفيذ ثم مجابة ثم مغلقة.",
+      "studentFlow": "ستظهر ردود الفريق هنا وستصلك أيضًا في الإشعارات."
+    },
+    "status": {
+      "open": "مفتوحة",
+      "in_progress": "قيد التنفيذ",
+      "answered": "تمت الإجابة",
+      "closed": "مغلقة"
+    },
+    "messages": {
+      "titleRequired": "العنوان مطلوب",
+      "messageRequired": "الرسالة مطلوبة",
+      "replyRequired": "الرد مطلوب",
+      "failedToCreate": "فشل إنشاء الاستشارة",
+      "failedToLoad": "فشل تحميل الاستشارة",
+      "failedToSendReply": "فشل إرسال الرد",
+      "failedToUpdateStatus": "فشل تحديث الحالة",
+      "noMessages": "لا توجد رسائل بعد.",
+      "unknownUser": "مستخدم غير معروف",
+      "staff": "الفريق",
+      "sending": "جارٍ الإرسال...",
+      "sendReply": "إرسال الرد"
+    }
+  },
+  "dashboard": {
+    "subtitle": "نظرة عامة على لوحة التحكم بناءً على الدور الوظيفي.",
+    "errors": {
+      "currentUser": "تعذر تحميل بيانات المستخدم الحالي.",
+      "loadDashboard": "فشل تحميل لوحة التحكم.",
+      "loadLiveData": "فشل تحميل بيانات لوحة التحكم المباشرة.",
+      "unavailable": "لوحة التحكم غير متاحة الآن."
+    },
+    "hero": {
+      "welcomeBack": "مرحبًا بعودتك، {{name}}!",
+      "streakActive": "سلسلة نشاط نشطة منذ {{count}} يومًا",
+      "habitBuilding": "بناء العادات",
+      "consistentActivity": "{{count}} يومًا من النشاط المتواصل"
+    },
+    "live": {
+      "heroLabel": {
+        "management": "لوحة تحكم الإدارة"
+      },
+      "heroDescription": {
+        "management": "ضمن النطاق الحالي، توجد {{pending}} مراجعات معلقة و{{overdue}} مهام متأخرة و{{consultations}} استشارات نشطة."
+      },
+      "metrics": {
+        "activeConsultations": "الاستشارات النشطة",
+        "pendingReviews": "المراجعات المعلقة",
+        "activeStudents": "الطلاب النشطون",
+        "overdueTasks": "المهام المتأخرة",
+        "unreadNotifications": "الإشعارات غير المقروءة",
+        "openTasks": "المهام المفتوحة",
+        "taskCompletion": "إكمال المهام"
+      }
+    },
+    "badges": {
+      "sectionTitle": "الشارات",
+      "sectionDescription": "إنجازات يتم الحصول عليها عبر الاستمرارية والمتابعة.",
+      "streak": {
+        "title": "سلسلة 7 أيام",
+        "hint": "تُكتسب من خلال الاستمرار دون انقطاع."
+      },
+      "fastStarter": {
+        "title": "انطلاقة سريعة",
+        "hint": "تُفتح بعد بداية قوية."
+      },
+      "focusPeak": {
+        "title": "ذروة التركيز",
+        "hint": "تُمنح عند إظهار تركيز قوي في تنفيذ المهام."
+      },
+        "consultationStar": {
+          "title": "نجمة الاستشارات",
+          "hint": "تُفتح بعد تفاعل نشط في التوجيه والمتابعة."
+        },
+        "unlocked": "مفتوحة",
+        "locked": "مقفلة",
+        "progress": "التقدم",
+        "categories": {
+          "profile": "الملف الشخصي",
+          "tasks": "المهام",
+          "consultations": "الاستشارات",
+          "review": "المراجعة والتحسين",
+          "consistency": "الاستمرارية"
+        },
+        "items": {
+          "profile_complete": { "title": "اكتمال الملف", "hint": "أكمل بيانات الملف الأساسية." },
+          "ready_to_start": { "title": "جاهز للبدء", "hint": "امتلك فرعًا ودفعة وأول مهمة." },
+          "fully_updated": { "title": "محدث بالكامل", "hint": "حافظ على تحديث بيانات ملف الطالب كاملة." },
+          "fast_starter": { "title": "انطلاقة سريعة", "hint": "ابدأ أول مهمة." },
+          "first_submission": { "title": "أول تسليم", "hint": "سلّم عملك للمرة الأولى." },
+          "task_achiever": { "title": "منجز المهام", "hint": "أكمل 5 مهام." },
+          "on_time_performer": { "title": "ملتزم بالمواعيد", "hint": "سلّم عدة مهام قبل الموعد النهائي." },
+          "review_ready": { "title": "جاهز للمراجعة", "hint": "احصل على قبول 3 تسليمات دون تعديل." },
+          "bounce_back": { "title": "عودة قوية", "hint": "أكمل مهمة بعد إعادة التسليم." },
+          "focused_finisher": { "title": "منجز بتركيز", "hint": "أكمل كل المهام المفتوحة الحالية." },
+          "first_consultation": { "title": "أول استشارة", "hint": "افتح أول استشارة." },
+          "consultation_star": { "title": "نجمة الاستشارات", "hint": "احصل على إجابة أو إغلاق 3 استشارات." },
+          "active_communicator": { "title": "متواصل نشط", "hint": "أرسل 10 رسائل في الاستشارات." },
+          "follow_up_keeper": { "title": "حافظ المتابعة", "hint": "حافظ على استشارة تحتوي على عدة تبادلات للرسائل." },
+          "resolution_seeker": { "title": "باحث عن الحل", "hint": "أغلق استشارة بنجاح." },
+          "feedback_listener": { "title": "مستمع للملاحظات", "hint": "استقبل ملاحظة تتطلب إعادة تسليم." },
+          "revision_complete": { "title": "إكمال التعديل", "hint": "أكمل عملًا بعد تلقي ملاحظات." },
+          "quality_submitter": { "title": "تسليم عالي الجودة", "hint": "احصل على قبول 3 تسليمات دون تعديل." },
+          "approved_work": { "title": "عمل معتمد", "hint": "أكمل مهمة واحدة على الأقل." },
+          "growth_mindset": { "title": "عقلية نمو", "hint": "استفد من الملاحظات وأكمل العمل المعدل." },
+          "streak": { "title": "سلسلة نشاط", "hint": "كن نشطًا في 7 أيام ضمن الفترة الحالية." },
+          "consistency_builder": { "title": "باني الاستمرارية", "hint": "كن نشطًا في 3 أيام ضمن الفترة الحالية." },
+          "steady_progress": { "title": "تقدم ثابت", "hint": "حقق 5 إنجازات بين المهام والاستشارات." },
+          "momentum_maker": { "title": "صانع الزخم", "hint": "ابنِ زخمًا عبر المهام والاستشارات والرسائل." },
+          "reliable_performer": { "title": "أداء موثوق", "hint": "أظهر الموثوقية عبر التسليم في الوقت والقبول وحل الاستشارات." }
+        }
+      },
+    "journey": {
+      "title": "الرحلة",
+      "subtitle": "تابع التقدم عبر المحطات الأساسية والخطوات التالية.",
+      "status": {
+        "done": "مكتمل",
+        "current": "الحالي",
+        "next": "التالي",
+        "locked": "مغلق"
+      },
+      "items": {
+        "complete_profile_setup": "إكمال إعداد الملف الشخصي",
+        "add_profile_picture": "إضافة صورة الملف",
+        "complete_required_student_information": "إكمال معلومات الطالب المطلوبة",
+        "receive_first_assigned_task": "استلام أول مهمة",
+        "start_first_assigned_task": "بدء أول مهمة",
+        "submit_first_task": "تسليم أول مهمة",
+        "get_first_review_feedback": "استلام أول ملاحظة مراجعة",
+        "complete_first_approved_task": "إكمال أول مهمة معتمدة",
+        "open_first_consultation": "فتح أول استشارة",
+        "receive_first_consultation_reply": "استلام أول رد على الاستشارة",
+        "close_first_consultation": "إغلاق أول استشارة",
+        "complete_consultation_cycle": "إكمال دورة استشارة",
+        "handle_resubmission_successfully": "إنجاز إعادة التسليم بنجاح",
+        "complete_three_tasks": "إكمال 3 مهام",
+        "maintain_zero_overdue_tasks": "الحفاظ على صفر مهام متأخرة",
+        "reach_consistency_milestone": "الوصول إلى محطة الاستمرارية"
+      }
+    },
+    "calendar": {
+      "title": "التقويم التفاعلي",
+      "description": "تابع مواعيد المهام المباشرة وأضف عناصر التقويم الخاصة بك.",
+      "today": "اليوم",
+      "legendTitle": "دليل التقويم",
+      "summaryTitle": "ملخص التقويم المباشر",
+      "selectedDay": "اليوم المحدد",
+      "chooseDay": "اختر يومًا",
+      "noEvents": "لا توجد عناصر تقويم في هذا اليوم بعد.",
+      "untitledEvent": "حدث بدون عنوان",
+      "noDescription": "لا يوجد وصف متاح.",
+      "form": {
+        "title": "إضافة عنصر للتقويم",
+        "itemTitle": "العنوان",
+        "titlePlaceholder": "جلسة مذاكرة، اجتماع، موعد تسليم...",
+        "date": "التاريخ",
+        "type": "النوع",
+        "description": "الوصف",
+        "descriptionPlaceholder": "أضف ملاحظات أو تفاصيل...",
+        "notify": "إنشاء إشعار لهذا العنصر",
+        "submit": "إضافة إلى التقويم",
+        "saving": "جارٍ الإضافة...",
+        "saved": "تمت إضافة عنصر التقويم",
+        "savedWithNotification": "تمت إضافة عنصر التقويم وإنشاء إشعار",
+        "missingRequired": "يرجى إضافة عنوان وتاريخ.",
+        "notificationFailed": "تمت إضافة عنصر التقويم، لكن تعذر إنشاء الإشعار."
+      },
+      "tags": {
+        "urgent": "عاجل",
+        "updated": "محدّث",
+        "momentum": "زخم التقدم",
+        "event": "حدث"
+      },
+      "kinds": {
+        "task": "المهام",
+        "todo": "قائمة مهام",
+        "consultation": "الاستشارات",
+        "review": "المراجعات",
+        "event": "الأحداث",
+        "reminder": "تذكير"
+      }
+    },
+    "miniGames": {
+      "live": "مباشر",
+      "spinWheel": "عجلة الحظ",
+      "spinDescription": "لعبة مكافآت خفيفة لزيادة التفاعل.",
+      "spinPrompt": "اضغط تدوير للحصول على مكافأة.",
+      "spinning": "جارٍ التدوير...",
+      "spinNow": "دوّر الآن",
+      "reward": "مكافأة",
+      "youWon": "ربحت: {{reward}}",
+      "wordScramble": "ترتيب الكلمة",
+      "wordDescription": "استراحة ذهنية سريعة قبل العودة إلى المهام.",
+      "typeAnswer": "اكتب إجابتك",
+      "check": "تحقق",
+      "next": "التالي",
+      "unscramble": "رتّب الكلمة.",
+      "correct": "صحيح! عمل رائع.",
+      "tryAgain": "ليس بعد. حاول مرة أخرى.",
+      "newWord": "تم تحميل كلمة جديدة.",
+      "score": "النقاط: {{score}}",
+      "ticTacToe": "إكس أو ضد البوت",
+      "ticDescription": "لعبة استراحة صغيرة لكنها تفاعلية.",
+      "yourTurn": "دورك.",
+      "youWin": "لقد فزت!",
+      "draw": "تعادل.",
+      "botWins": "فاز البوت في هذه الجولة.",
+      "reset": "إعادة تعيين",
+      "rewards": {
+        "bonus": "10 نقاط إضافية",
+        "badge": "تعزيز الشارة",
+        "quickWin": "فوز سريع",
+        "theme": "رمز سمة الملف الشخصي",
+        "motivation": "دفعة تحفيز",
+        "focus": "تعزيز التركيز"
+      }
+    },
+    "report": {
+      "exportBadge": "تصدير PDF",
+      "currentFilters": "مرشحات التصدير الحالية",
+      "noFilters": "لم يتم تحديد أي مرشحات. سيشمل ملف PDF جميع البيانات ضمن نطاق الإدارة الخاص بك.",
+      "chooseFilters": "اختر المرشحات الخاصة بالتقرير الذي سيتم تنزيله",
+      "filtersDescription": "يتم إرسال المرشحات المحددة إلى الخادم، وسيحتوي ملف PDF الذي يتم تنزيله على الأرقام المفلترة وتفاصيل المرشحات المختارة.",
+      "downloadPdf": "تنزيل PDF",
+      "downloading": "جارٍ التنزيل...",
+      "clearFilters": "مسح المرشحات",
+      "loading": "جارٍ تحميل خيارات المرشحات...",
+      "fields": {
+        "branch": "الفرع",
+        "program": "البرنامج",
+        "cohort": "الدفعة",
+        "supervisor": "المشرف",
+        "student": "الطالب",
+        "startDate": "تاريخ البداية",
+        "endDate": "تاريخ النهاية"
+      },
+      "placeholders": {
+        "allBranches": "كل الفروع",
+        "allPrograms": "كل البرامج",
+        "allCohorts": "كل الدفعات",
+        "allSupervisors": "كل المشرفين",
+        "allStudents": "كل الطلاب"
+      },
+      "unnamed": {
+        "branch": "فرع بدون اسم",
+        "program": "برنامج بدون اسم",
+        "cohort": "دفعة بدون اسم",
+        "supervisor": "مشرف بدون اسم",
+        "student": "طالب بدون اسم"
+      },
+      "summary": {
+        "branch": "الفرع: {{value}}",
+        "program": "البرنامج: {{value}}",
+        "cohort": "الدفعة: {{value}}",
+        "supervisor": "المشرف: {{value}}",
+        "student": "الطالب: {{value}}",
+        "startDate": "البداية: {{value}}",
+        "endDate": "النهاية: {{value}}"
+      },
+      "errors": {
+        "loadFilters": "فشل تحميل مرشحات التقرير.",
+        "invalidDateRange": "لا يمكن أن يكون تاريخ البداية بعد تاريخ النهاية.",
+        "download": "فشل تنزيل تقرير PDF."
+      }
+    },
+    "presentation": {
+      "management": {
+        "heroLabel": "تجربة الإدارة",
+        "heroDescription": "تمنح هذه اللوحة الإدارة نظرة واضحة على التقارير والمتابعة ونشاط المنصة.",
+        "progressLabel": "التقدم العام للمنصة",
+        "metrics": {
+          "studentsFollowUp": "طلاب يحتاجون إلى متابعة",
+          "reportsWaiting": "تقارير بانتظار التصدير",
+          "unreadNotifications": "إشعارات غير مقروءة"
+        },
+        "steps": {
+          "permissionsConfigured": "تم إعداد الصلاحيات والأدوار",
+          "flowReviewed": "تمت مراجعة سير الطلاب والمشرفين",
+          "quarterlyReview": "مراجعة التقرير الربع سنوي",
+          "nextPriorities": "أولويات المرحلة القادمة",
+          "advancedAnalytics": "تحليلات متقدمة"
+        },
+        "events": {
+          "reviewMeeting": {
+            "title": "اجتماع مراجعة المرحلة الأولى",
+            "description": "عرض التقدم الحالي وجمع ملاحظات مالك المنتج."
+          },
+          "priorityUpdate": {
+            "title": "جلسة تحديث الأولويات",
+            "description": "إعادة ترتيب التعديلات المطلوبة بعد العرض."
+          },
+          "pdfExport": {
+            "title": "تصدير PDF",
+            "description": "معاينة أولية لتصميم PDF قبل ربط الخلفية بالكامل."
+          }
+        },
+        "reportTitle": "معاينة PDF للإدارة",
+        "reportDescription": "هذه معاينة تركز على التصميم أولًا. يمكن لاحقًا ربط الأعداد الحقيقية والمرشحات والمخططات ومنطق التصدير."
+      },
+      "supervisor": {
+        "heroLabel": "تجربة المشرف",
+        "heroDescription": "تعرض هذه النسخة شكل التقدم والاستشارات والتخطيط بالتقويم وميزات التفاعل قبل ربط البيانات المباشرة.",
+        "progressLabel": "متوسط تقدم الطلاب",
+        "metrics": {
+          "tasksPending": "مهام بانتظار المراجعة",
+          "newConsultations": "استشارات جديدة",
+          "followUps": "متابعات هذا الأسبوع"
+        },
+        "steps": {
+          "studentProfiles": "تمت مراجعة ملفات الطلاب",
+          "firstAssessment": "اكتمل أول تقييم للمهمة",
+          "replyConsultation": "الرد على استشارة جديدة",
+          "approveWork": "اعتماد العمل المرسل",
+          "performanceBoard": "لوحة أداء تفصيلية"
+        },
+        "events": {
+          "weeklyFollowUp": {
+            "title": "متابعة أسبوعية للطلاب",
+            "description": "مراجعة التقدم ومناقشة المتطلبات التالية."
+          },
+          "reviewWindow": {
+            "title": "نافذة مراجعة المهام",
+            "description": "التحقق من الجودة قبل الاعتماد النهائي."
+          },
+          "consultationNotice": {
+            "title": "إشعار استشارة جديدة",
+            "description": "قام أحد الطلاب بإرسال طلب استشارة جديد."
+          }
+        },
+        "reportTitle": "معاينة ملخص المشرف",
+        "reportDescription": "يمكن لاحقًا ربطها بمجموعات الطلاب الفعلية والإحصاءات المخصصة والملخصات القابلة للتصدير."
+      },
+      "student": {
+        "heroLabel": "تجربة الطالب",
+        "heroDescription": "يمكن لاحقًا ربط شريط التقدم وسلسلة النشاط والشارات والألعاب والتقويم ببيانات حقيقية.",
+        "progressLabel": "التقدم الظاهر",
+        "metrics": {
+          "unreadNotifications": "إشعارات غير مقروءة",
+          "openTasks": "مهام مفتوحة",
+          "newReply": "رد جديد على استشارة"
+        },
+        "steps": {
+          "profileSetup": "إكمال إعداد الملف الشخصي",
+          "firstTask": "إنهاء المهمة الأولى",
+          "firstConsultation": "حضور أول استشارة",
+          "submitWork": "تسليم عمل المشروع",
+          "consistencyMilestone": "الوصول إلى معلم الاستمرارية"
+        },
+        "events": {
+          "proposalDeadline": {
+            "title": "موعد تسليم المقترح",
+            "description": "بطاقة موعد نهائي تجريبية للعرض."
+          },
+          "urgentTask": {
+            "title": "مهمة عاجلة",
+            "description": "قدّم مخطط المقترح التفصيلي قبل الساعة 6:00 مساءً."
+          },
+          "supervisorUpdates": {
+            "title": "تحديثات المشرف",
+            "description": "راجع أحدث ملاحظات المشرف."
+          }
+        },
+        "reportTitle": "معاينة تقدم الطالب",
+        "reportDescription": "يمكن إضافة ملخص PDF مخصص للطالب لاحقًا بنفس الهوية البصرية."
+      },
+      "expert": {
+        "heroLabel": "تجربة الخبير",
+        "heroDescription": "هذه معاينة آمنة لواجهة الخبير مع كتل تفاعل ومسارات عمل مستقبلية.",
+        "progressLabel": "مستوى التفاعل الحالي",
+        "metrics": {
+          "reviewsAssigned": "مراجعات مسندة",
+          "consultationsQueue": "استشارات في قائمة الانتظار",
+          "unreadNotices": "إشعارات غير مقروءة"
+        },
+        "steps": {
+          "reviewAccess": "تم منح صلاحية المراجعة",
+          "firstConsultation": "تم الرد على أول استشارة",
+          "detailedFeedback": "تقديم ملاحظات تفصيلية",
+          "supportPlanning": "دعم تخطيط المعالم",
+          "expandedWorkspace": "مساحة عمل موسعة"
+        },
+        "events": {
+          "feedbackSession": {
+            "title": "جلسة ملاحظات",
+            "description": "راجع ملاحظات التغذية الراجعة للطلاب النشطين."
+          }
+        },
+        "reportTitle": "معاينة ملخص الخبير",
+        "reportDescription": "محتوى تجريبي لعرض التقارير وسير العمل المخصص للخبراء."
+      },
+      "donor": {
+        "heroLabel": "تجربة المتبرع",
+        "heroDescription": "هذه معاينة آمنة لواجهة المتبرع مع سرد للأثر وتلميحات للتفاعل المستقبلي.",
+        "progressLabel": "زخم البرنامج",
+        "metrics": {
+          "highlights": "الملامح البارزة",
+          "unreadUpdates": "تحديثات غير مقروءة",
+          "upcomingEvents": "أحداث قادمة"
+        },
+        "steps": {
+          "overviewOpened": "تم فتح النظرة العامة",
+          "impactSnapshot": "تمت مراجعة ملخص الأثر",
+          "milestoneFollowUp": "متابعة المعالم",
+          "reportAccess": "الوصول إلى التقرير التفصيلي",
+          "deeperInsights": "رؤى أعمق"
+        },
+        "events": {
+          "programUpdate": {
+            "title": "تحديث البرنامج",
+            "description": "معاينة لملخص الأثر والمعالم."
+          }
+        },
+        "reportTitle": "معاينة تقرير المتبرع",
+        "reportDescription": "عرض تجريبي للتقارير المخصصة للمتبرعين مع سرد الأثر والمرئيات."
+      }
+    }
+  },
+  "roles": {
+    "student": "طالب",
+    "supervisor": "مشرف",
+    "management": "إدارة",
+    "donor": "متبرع",
+    "expert": "خبير"
+  }
+}

@@ -30,21 +30,46 @@ import Dashboard from "@/pages/dashboard/dashboard.tsx";
 import Notifications from "@/pages/notification/notification.tsx";
 import Profile from "@/pages/profile/profile.tsx";
 import Settings from "@/pages/settings/settings.tsx";
+
 import Students from "@/pages/students/list.tsx";
+import StudentStaffProfilePage from "@/pages/students/profile";
+import StudentCreatePage from "@/pages/students/create";
+
+import Supervisors from "@/pages/supervisors/list";
+import SupervisorCreatePage from "@/pages/supervisors/create";
+import SupervisorProfilePage from "@/pages/supervisors/profile";
 
 import Tasks from "@/pages/tasks/list.tsx";
 import TaskShow from "@/pages/tasks/show";
 import TaskCreate from "@/pages/tasks/create.tsx";
 import TaskEdit from "@/pages/tasks/edit";
 
-import Programs from "@/pages/program/list.tsx";
-import ProgramShow from "@/pages/program/show.tsx";
-import ProgramCreate from "@/pages/program/create.tsx";
-import ProgramEdit from "@/pages/program/edit.tsx";
+import Branches from "@/pages/branches/list";
+import BranchCreate from "@/pages/branches/create";
+import BranchEdit from "@/pages/branches/edit";
+import BranchShow from "@/pages/branches/show";
+import Enrollments from "@/pages/enrollments/list";
+import Cohorts from "@/pages/cohorts/list";
+import Programs from "@/pages/program/list";
+import ProgramCreate from "@/pages/program/create";
+import ProgramEdit from "@/pages/program/edit";
+import ProgramShow from "@/pages/program/show";
+
+
+import { appI18nProvider } from "@/providers/i18n";
+
+import Consultations from "@/pages/consultations/list";
+import ConsultationCreate from "@/pages/consultations/create";
+import ConsultationShow from "@/pages/consultations/show";
+
+import MiniGamesPage from "@/pages/games/list.tsx";
 
 import { canAccessPath, getResourcesForRole, roleHome, type Role } from "@/lib/rbac";
 
 import Logo from "../public/logo.png"
+import {LanguageProvider} from "@/components/refine-ui/language/language-provider.tsx";
+import { useLanguage } from "@/components/refine-ui/language/language-provider";
+import { useTranslation } from "react-i18next";
 
 function RoleGuard({
                        role,
@@ -69,7 +94,21 @@ function RoleGuard({
 }
 
 function RefineApp() {
+    return (
+        <RefineKbarProvider>
+            <ThemeProvider>
+                <LanguageProvider>
+                    <RefineShell />
+                </LanguageProvider>
+            </ThemeProvider>
+        </RefineKbarProvider>
+    );
+}
+
+function RefineShell() {
     const location = useLocation();
+    const { t } = useTranslation();
+    const { dir } = useLanguage();
     const [role, setRole] = useState<Role | null | undefined>(undefined);
 
     useEffect(() => {
@@ -96,12 +135,12 @@ function RefineApp() {
     }, [role]);
 
     return (
-        <RefineKbarProvider>
-            <ThemeProvider>
+        <div dir={dir} className="min-h-screen bg-background text-foreground">
                 <DevtoolsProvider>
                     <Refine
                         dataProvider={dataProvider}
                         authProvider={authProvider}
+                        i18nProvider={appI18nProvider}
                         notificationProvider={useNotificationProvider()}
                         routerProvider={routerProvider}
                         resources={resources}
@@ -110,7 +149,7 @@ function RefineApp() {
                             warnWhenUnsavedChanges: true,
                             projectId: "aubI2W-xpbW3Y-mfatj5",
                             title: {
-                                text: "SNOWBALL",
+                                text: t("brand.fullName"),
                                 icon: (
                                     <img
                                         src={Logo}
@@ -150,8 +189,17 @@ function RefineApp() {
                                 <Route path="/profile" element={<Profile />} />
                                 <Route path="/settings" element={<Settings />} />
 
+                                {/* Supervisors */}
+                                <Route path="/supervisors" element={<Supervisors />} />
+                                <Route path="/supervisors/create" element={<SupervisorCreatePage />} />
+                                <Route path="/supervisors/:id/profile" element={<SupervisorProfilePage />} />
+
+
                                 {/* students */}
                                 <Route path="/students" element={<Students />} />
+                                <Route path="/students/:id/profile" element={<StudentStaffProfilePage />} />
+                                <Route path="/students/create" element={<StudentCreatePage />} />
+
 
                                 {/* tasks */}
                                 <Route path="/tasks" element={<Tasks />} />
@@ -159,11 +207,33 @@ function RefineApp() {
                                 <Route path="/tasks/show/:id" element={<TaskShow />} />
                                 <Route path="/tasks/edit/:id" element={<TaskEdit />} />
 
+                                {/* branches */}
+                                <Route path="/branches" element={<Branches />} />
+                                <Route path="/branches/create" element={<BranchCreate />} />
+                                <Route path="/branches/edit/:id" element={<BranchEdit />} />
+                                <Route path="/branches/show/:id" element={<BranchShow />} />
+
                                 {/* programs */}
                                 <Route path="/programs" element={<Programs />} />
                                 <Route path="/programs/create" element={<ProgramCreate />} />
-                                <Route path="/programs/show/:id" element={<ProgramShow />} />
                                 <Route path="/programs/edit/:id" element={<ProgramEdit />} />
+                                <Route path="/programs/show/:id" element={<ProgramShow />} />
+
+                                {/* cohorts */}
+                                <Route path="/cohorts" element={<Cohorts />} />
+
+                                {/* enrollments */}
+                                <Route path="/enrollments" element={<Enrollments />} />
+
+
+                                {/* consultations */}
+
+                                <Route path="/consultations" element={<Consultations />} />
+                                <Route path="/consultations/create" element={<ConsultationCreate />} />
+                                <Route path="/consultations/show/:id" element={<ConsultationShow />} />
+
+                                <Route path="/mini-games" element={<MiniGamesPage />} />
+
                             </Route>
 
                             <Route
@@ -185,8 +255,7 @@ function RefineApp() {
 
                     <DevtoolsPanel />
                 </DevtoolsProvider>
-            </ThemeProvider>
-        </RefineKbarProvider>
+        </div>
     );
 }
 

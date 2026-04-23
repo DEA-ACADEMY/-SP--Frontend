@@ -2,14 +2,17 @@ import type { ReactNode } from "react";
 import {
     Home,
     Bell,
-    User,
+
     CalendarIcon,
-    Settings as SettingsIcon,
+
     GraduationCap as StudentsIcon,
-    BookOpen as ProgramIcon,
+
     Building2 as BranchIcon,
     Layers3 as CohortIcon,
     ClipboardList as EnrollmentIcon,
+    MessageSquare,
+    Users,
+    Gamepad2
 } from "lucide-react";
 
 export type Role = "student" | "supervisor" | "management" | "donor" | "expert";
@@ -50,10 +53,11 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         name: "dashboard",
         list: roleHome(role),
         meta: {
-            label: "Dashboard",
+            label: "nav.dashboard",
             icon: <Home size={18} />,
         },
     };
+
 
     const common: AppResource[] = [
         dashboardResource,
@@ -61,34 +65,39 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
             name: "notifications",
             list: "/notifications",
             meta: {
-                label: "Notifications",
+                label: "nav.notifications",
                 icon: <Bell size={18} />,
-            },
-        },
-        {
-            name: "profile",
-            list: "/profile",
-            meta: {
-                label: "Profile",
-                icon: <User size={18} />,
-            },
-        },
-        {
-            name: "settings",
-            list: "/settings",
-            meta: {
-                label: "Settings",
-                icon: <SettingsIcon size={18} />,
             },
         },
     ];
 
+    const miniGamesResource: AppResource = {
+        name: "mini-games",
+        list: "/mini-games",
+        meta: {
+            label: "nav.miniGames",
+            icon: <Gamepad2 size={18} />,
+        },
+    };
+
     const studentsResource: AppResource = {
         name: "students",
         list: "/students",
+        create: "/students/create",
         meta: {
-            label: "Students",
+            label: "nav.students",
             icon: <StudentsIcon size={18} />,
+        },
+    };
+
+    const supervisorsResource: AppResource = {
+        name: "supervisors",
+        list: "/supervisors",
+        create: "/supervisors/create",
+        show: "/supervisors/:id/profile",
+        meta: {
+            label: "nav.supervisors",
+            icon: <Users size={18} />,
         },
     };
 
@@ -99,7 +108,7 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         edit: "/tasks/edit/:id",
         show: "/tasks/show/:id",
         meta: {
-            label: "Tasks",
+            label: "nav.tasks",
             icon: <CalendarIcon size={18} />,
         },
     };
@@ -111,20 +120,8 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         edit: "/branches/edit/:id",
         show: "/branches/show/:id",
         meta: {
-            label: "Branches",
+            label: "nav.branches",
             icon: <BranchIcon size={18} />,
-        },
-    };
-
-    const programsResource: AppResource = {
-        name: "programs",
-        list: "/programs",
-        create: "/programs/create",
-        edit: "/programs/edit/:id",
-        show: "/programs/show/:id",
-        meta: {
-            label: "Programs",
-            icon: <ProgramIcon size={18} />,
         },
     };
 
@@ -135,7 +132,7 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         edit: "/cohorts/edit/:id",
         show: "/cohorts/show/:id",
         meta: {
-            label: "Cohorts",
+            label: "nav.cohorts",
             icon: <CohortIcon size={18} />,
         },
     };
@@ -145,8 +142,29 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         list: "/enrollments",
         create: "/enrollments/create",
         meta: {
-            label: "Enrollments",
+            label: "nav.enrollments",
             icon: <EnrollmentIcon size={18} />,
+        },
+    };
+
+    const studentConsultationsResource: AppResource = {
+        name: "advice-threads",
+        list: "/consultations",
+        create: "/consultations/create",
+        show: "/consultations/show/:id",
+        meta: {
+            label: "nav.consultations",
+            icon: <MessageSquare size={18} />,
+        },
+    };
+
+    const staffConsultationsResource: AppResource = {
+        name: "advice-threads",
+        list: "/consultations",
+        show: "/consultations/show/:id",
+        meta: {
+            label: "nav.consultations",
+            icon: <MessageSquare size={18} />,
         },
     };
 
@@ -155,9 +173,11 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
             return [
                 ...common,
                 studentsResource,
+                supervisorsResource,
                 tasksResource,
+                staffConsultationsResource,
                 branchesResource,
-                programsResource,
+
                 cohortsResource,
                 enrollmentsResource,
             ];
@@ -167,33 +187,27 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
                 ...common,
                 studentsResource,
                 tasksResource,
+                staffConsultationsResource,
                 {
                     name: "branches",
                     list: "/branches",
                     show: "/branches/show/:id",
                     meta: {
-                        label: "Branches",
+                        label: "nav.branches",
                         icon: <BranchIcon size={18} />,
                     },
                 },
-                {
-                    name: "programs",
-                    list: "/programs",
-                    show: "/programs/show/:id",
-                    meta: {
-                        label: "Programs",
-                        icon: <ProgramIcon size={18} />,
-                    },
-                },
+
                 {
                     name: "cohorts",
                     list: "/cohorts",
                     show: "/cohorts/show/:id",
                     meta: {
-                        label: "Cohorts",
+                        label: "nav.cohorts",
                         icon: <CohortIcon size={18} />,
                     },
                 },
+                enrollmentsResource,
             ];
 
         case "student":
@@ -204,10 +218,12 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
                     list: "/tasks",
                     show: "/tasks/show/:id",
                     meta: {
-                        label: "Tasks",
+                        label: "nav.tasks",
                         icon: <CalendarIcon size={18} />,
                     },
                 },
+                studentConsultationsResource,
+                miniGamesResource,
             ];
 
         case "donor":
@@ -237,7 +253,15 @@ export function canAccessPath(role: Role, pathname: string): boolean {
     if (role === "donor" && exact("/donor")) return true;
     if (role === "expert" && exact("/expert")) return true;
 
-    if (starts("/students")) {
+    if (exact("/students")) {
+        return role === "management" || role === "supervisor";
+    }
+
+    if (exact("/students/create")) {
+        return role === "management" || role === "supervisor";
+    }
+
+    if (/^\/students\/[^/]+\/profile$/.test(path)) {
         return role === "management" || role === "supervisor";
     }
 
@@ -273,9 +297,41 @@ export function canAccessPath(role: Role, pathname: string): boolean {
         return role === "management";
     }
 
-    if (exact("/enrollments") || starts("/enrollments/create")) {
+    if (exact("/enrollments")) {
+        return role === "management" || role === "supervisor";
+    }
+
+    if (starts("/enrollments/create")) {
         return role === "management";
+    }
+
+    if (exact("/consultations") || starts("/consultations/show")) {
+        return role === "management" || role === "supervisor" || role === "student";
+    }
+
+    if (exact("/consultations/create")) {
+        return role === "student";
+    }
+    if (exact("/supervisors")) {
+        return role === "management";
+    }
+
+    if (exact("/supervisors")) {
+        return role === "management";
+    }
+
+    if (exact("/supervisors/create")) {
+        return role === "management";
+    }
+
+    if (/^\/supervisors\/[^/]+\/profile$/.test(path)) {
+        return role === "management";
+    }
+    if (exact("/mini-games")) {
+        return role === "student";
     }
 
     return false;
 }
+
+

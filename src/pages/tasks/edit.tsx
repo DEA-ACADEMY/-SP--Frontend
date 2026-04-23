@@ -1,44 +1,113 @@
-"use client";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { EditView } from "@/components/refine-ui/views/edit-view";
 import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
-
-import { useForm } from "@refinedev/react-hook-form";
-import type { HttpError } from "@refinedev/core";
+import { CloudinaryDocumentUpload } from "@/components/document-upload-widget";
+import { kyInstance } from "@/providers/data";
 import { Loader2 } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type Task = {
     id: string;
     title: string;
     description?: string | null;
-    dueDate?: string | null; // "YYYY-MM-DD"
+    documentUrl?: string | null;
+    dueDate?: string | null;
 };
 
 export default function TaskEdit() {
+    const { t } = useTranslation();
     const { id } = useParams();
+    const navigate = useNavigate();
 
-    const {
-        refineCore: { onFinish, formLoading, queryResult },
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Task, HttpError>({
-        refineCoreProps: {
-            resource: "tasks",
-            id: id!,
-            redirect: "show",
-        },
-    });
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [documentUrl, setDocumentUrl] = useState("");
+    const [dueDate, setDueDate] = useState("");
 
-    const task = queryResult?.data?.data;
+    const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        async function run() {
+            if (!id) return;
+
+            try {
+                setLoading(true);
+                setError(null);
+
+                const task = await kyInstance.get(`tasks/${id}`).json<Task>();
+
+                if (!cancelled) {
+                    setTitle(task.title ?? "");
+                    setDescription(task.description ?? "");
+                    setDocumentUrl(task.documentUrl ?? "");
+                    setDueDate(task.dueDate ?? "");
+                }
+            } catch (e: any) {
+                if (!cancelled) {
+                    setError(e?.message ?? t("tasks.messages.failedToLoad"));
+                }
+            } finally {
+                if (!cancelled) {
+                    setLoading(false);
+                }
+            }
+        }
+
+        run();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [id]);
+
+    async function onSubmit(e: React.FormEvent) {
+        e.preventDefault();
+
+        if (!id) return;
+
+        setError(null);
+
+        if (!title.trim()) {
+            setError(t("tasks.messages.titleRequired"));
+            return;
+        }
+
+        if (!dueDate) {
+            setError(t("tasks.messages.dueDateRequired"));
+            return;
+        }
+
+        try {
+            setSaving(true);
+
+            await kyInstance.patch(`tasks/${id}`, {
+                json: {
+                    title: title.trim(),
+                    description: description.trim() || null,
+                    documentUrl: documentUrl.trim() || null,
+                    dueDate,
+                },
+            });
+
+            navigate(`/tasks/show/${id}`);
+        } catch (e: any) {
+            setError(e?.message ?? t("tasks.messages.failedToUpdate"));
+        } finally {
+            setSaving(false);
+        }
+    }
 
     return (
         <EditView>
@@ -51,65 +120,75 @@ export default function TaskEdit() {
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
-                    <h2 className="text-2xl font-bold">Edit Task</h2>
+                    <h2 className="text-2xl font-bold">{t("tasks.titles.edit")}</h2>
 
                     <Button asChild variant="outline">
-                        <Link to={id ? `/tasks/show/${id}` : "/tasks"}>Back</Link>
+                        <Link to={id ? `/tasks/show/${id}` : "/tasks"}>{t("common.back")}</Link>
                     </Button>
                 </div>
             </div>
 
             <Card>
                 <CardHeader>
-                    <CardTitle className="text-base">Details</CardTitle>
+                    <CardTitle className="text-base">{t("common.details")}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
-                    {formLoading ? (
+                    {loading ? (
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                             <Loader2 className="h-4 w-4 animate-spin" />
-                            Loading...
+                            {t("common.loading")}
                         </div>
                     ) : (
-                        <form className="space-y-6" onSubmit={handleSubmit(onFinish)}>
+                        <form className="space-y-6" onSubmit={onSubmit}>
                             <div className="space-y-2">
-                                <Label htmlFor="title">Title</Label>
+                                <Label htmlFor="title">{t("tasks.fields.title")}</Label>
                                 <Input
                                     id="title"
-                                    placeholder="Task title"
-                                    defaultValue={task?.title ?? ""}
-                                    {...register("title", { required: "Title is required" })}
+                                    placeholder={t("tasks.placeholders.title")}
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
                                 />
-                                {errors.title ? (
-                                    <p className="text-sm text-destructive">
-                                        {String(errors.title.message)}
-                                    </p>
-                                ) : null}
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="description">Description</Label>
+                                <Label htmlFor="description">{t("tasks.fields.description")}</Label>
                                 <Textarea
                                     id="description"
-                                    placeholder="Task description"
-                                    defaultValue={task?.description ?? ""}
-                                    {...register("description")}
+                                    placeholder={t("tasks.placeholders.description")}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    rows={6}
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="dueDate">Due date</Label>
+                                <Label>{t("tasks.fields.taskDocument")}</Label>
+                                <CloudinaryDocumentUpload
+                                    value={documentUrl}
+                                    onChange={setDocumentUrl}
+                                    folder="snowball/tasks/instructions"
+                                    disabled={saving}
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="dueDate">{t("tasks.fields.dueDate")}</Label>
                                 <Input
                                     id="dueDate"
                                     type="date"
-                                    defaultValue={task?.dueDate ?? ""}
-                                    {...register("dueDate")}
+                                    value={dueDate}
+                                    onChange={(e) => setDueDate(e.target.value)}
                                 />
                             </div>
 
+                            {error ? (
+                                <p className="text-sm text-destructive">{error}</p>
+                            ) : null}
+
                             <div className="flex items-center justify-end gap-2">
-                                <Button type="submit" disabled={formLoading}>
-                                    Save
+                                <Button type="submit" disabled={saving}>
+                                    {saving ? t("common.saving") : t("common.save")}
                                 </Button>
                             </div>
                         </form>

@@ -17,6 +17,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/components/refine-ui/language/language-provider";
 
 type DataTablePaginationProps = {
   currentPage: number;
@@ -35,6 +37,11 @@ export function DataTablePagination({
   setPageSize,
   total,
 }: DataTablePaginationProps) {
+  const { t } = useTranslation();
+  const { dir } = useLanguage();
+  const safePageCount = Math.max(1, pageCount || Math.ceil((total ?? 0) / pageSize) || 1);
+  const isFirstPage = currentPage <= 1;
+  const isLastPage = currentPage >= safePageCount;
   const pageSizeOptions = useMemo(() => {
     const baseOptions = [10, 20, 30, 40, 50];
     const optionsSet = new Set(baseOptions);
@@ -66,11 +73,11 @@ export function DataTablePagination({
           "whitespace-nowrap"
         )}
       >
-        {typeof total === "number" ? `${total} row(s)` : null}
+        {typeof total === "number" ? t("table.pagination.rows", { count: total }) : null}
       </div>
-      <div className={cn("flex", "items-center", "flex-wrap", "gap-2")}>
-        <div className={cn("flex", "items-center", "gap-2")}>
-          <span className={cn("text-sm", "font-medium")}>Rows per page</span>
+      <div className={cn("flex", "items-center", "flex-wrap", "gap-2", dir === "rtl" && "flex-row-reverse")}>
+        <div className={cn("flex", "items-center", "gap-2", dir === "rtl" && "flex-row-reverse")}>
+          <span className={cn("text-sm", "font-medium")}>{t("table.pagination.rowsPerPage")}</span>
           <Select
             value={`${pageSize}`}
             onValueChange={(v) => setPageSize(Number(v))}
@@ -87,7 +94,7 @@ export function DataTablePagination({
             </SelectContent>
           </Select>
         </div>
-        <div className={cn("flex", "items-center", "flex-wrap", "gap-2")}>
+        <div className={cn("flex", "items-center", "flex-wrap", "gap-2", dir === "rtl" && "flex-row-reverse")}>
           <div
             className={cn(
               "flex",
@@ -97,44 +104,44 @@ export function DataTablePagination({
               "font-medium"
             )}
           >
-            Page {currentPage} of {pageCount}
+            {t("table.pagination.pageOf", { page: currentPage, pageCount: safePageCount })}
           </div>
-          <div className={cn("flex", "items-center", "gap-2")}>
+          <div className={cn("flex", "items-center", "gap-2", dir === "rtl" && "flex-row-reverse")}>
             <Button
               variant="outline"
               className={cn("hidden", "h-8", "w-8", "p-0", "lg:flex")}
               onClick={() => setCurrentPage(1)}
-              disabled={currentPage === 1}
-              aria-label="Go to first page"
+              disabled={isFirstPage}
+              aria-label={t("table.pagination.firstPage")}
             >
-              <ChevronsLeft />
+              {dir === "rtl" ? <ChevronsRight /> : <ChevronsLeft />}
             </Button>
             <Button
               variant="outline"
               className={cn("h-8", "w-8", "p-0")}
               onClick={() => setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 1}
-              aria-label="Go to previous page"
+              disabled={isFirstPage}
+              aria-label={t("table.pagination.previousPage")}
             >
-              <ChevronLeft />
+              {dir === "rtl" ? <ChevronRight /> : <ChevronLeft />}
             </Button>
             <Button
               variant="outline"
               className={cn("h-8", "w-8", "p-0")}
               onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={currentPage === pageCount}
-              aria-label="Go to next page"
+              disabled={isLastPage}
+              aria-label={t("table.pagination.nextPage")}
             >
-              <ChevronRight />
+              {dir === "rtl" ? <ChevronLeft /> : <ChevronRight />}
             </Button>
             <Button
               variant="outline"
               className={cn("hidden", "h-8", "w-8", "p-0", "lg:flex")}
-              onClick={() => setCurrentPage(pageCount)}
-              disabled={currentPage === pageCount}
-              aria-label="Go to last page"
+              onClick={() => setCurrentPage(safePageCount)}
+              disabled={isLastPage}
+              aria-label={t("table.pagination.lastPage")}
             >
-              <ChevronsRight />
+              {dir === "rtl" ? <ChevronsLeft /> : <ChevronsRight />}
             </Button>
           </div>
         </div>

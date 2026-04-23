@@ -1,0 +1,1115 @@
+﻿{
+  "common": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "loggingOut": "Logging out...",
+    "myAccount": "My account",
+    "user": "User",
+    "english": "English",
+    "arabic": "Arabic",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "systemMode": "System mode",
+    "language": "Language",
+    "appearance": "Appearance",
+    "notifications": "Notifications",
+    "account": "Account",
+    "save": "Save",
+    "cancel": "Cancel",
+    "leftToRight": "Left to right",
+    "rightToLeft": "Right to left",
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "submitting": "Submitting...",
+    "creating": "Creating...",
+    "back": "Back",
+    "open": "Open",
+    "id": "ID",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "fullName": "Full Name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "city": "City",
+    "bio": "Bio",
+    "role": "Role",
+    "branch": "Branch",
+    "program": "Program",
+    "cohort": "Cohort",
+    "status": "Status",
+    "details": "Details",
+    "meta": "Meta",
+    "title": "Title",
+    "description": "Description",
+    "createdAt": "Created At",
+    "notAvailable": "—",
+    "untitled": "(untitled)"
+  },
+  "buttons": {
+    "create": "Create",
+    "edit": "Edit",
+    "show": "View",
+    "list": "Back to list",
+    "delete": "Delete",
+    "refresh": "Refresh",
+    "confirm": "Are you sure?",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "clear": "Clear",
+    "undo": "Undo",
+    "saveChanges": "Save Changes"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "welcomeBack": "Welcome back",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password",
+    "or": "or",
+    "signInUsing": "Sign in using",
+    "noAccount": "No account?",
+    "signUp": "Sign up",
+    "logoAlt": "Application logo",
+    "forgotPasswordTitle": "Forgot password",
+    "forgotPasswordDescription": "Enter your email to change your password.",
+    "send": "Send",
+    "signUpDescription": "Create your platform account.",
+    "passwordsDontMatch": "Passwords don't match",
+    "passwordsDontMatchDescription": "Please make sure both password fields contain the same value.",
+    "haveAccount": "Have an account?"
+  },
+  "upload": {
+    "profileAlt": "Profile",
+    "noImage": "No image",
+    "uploadImage": "Upload Image",
+    "uploadDocument": "Upload Document",
+    "uploading": "Uploading...",
+    "remove": "Remove",
+    "noDocument": "No document uploaded",
+    "documentReady": "Document uploaded",
+    "documentHint": "PDF, Word, image, or another task file.",
+    "errors": {
+      "imageOnly": "Please select an image file only.",
+      "tooLarge": "Image must be smaller than {{size}}MB.",
+      "missingCloudinary": "Cloudinary environment variables are missing.",
+      "uploadFailed": "Upload failed",
+      "failed": "Failed to upload image."
+    }
+  },
+  "table": {
+    "empty": {
+      "title": "No data to display",
+      "description": "This table is empty for the time being."
+    },
+    "pagination": {
+      "rowsPerPage": "Rows per page",
+      "rows": "{{count}} row(s)",
+      "pageOf": "Page {{page}} of {{pageCount}}",
+      "firstPage": "Go to first page",
+      "previousPage": "Go to previous page",
+      "nextPage": "Go to next page",
+      "lastPage": "Go to last page"
+    },
+    "filter": {
+      "text": { "placeholder": "Filter by..." },
+      "numeric": { "placeholder": "Filter by..." },
+      "combobox": {
+        "placeholder": "Select...",
+        "search": "Search...",
+        "noResults": "No results found."
+      },
+      "operator": {
+        "placeholder": "Search operator...",
+        "noResults": "No operators found.",
+        "eq": "Equals",
+        "ne": "Not equals",
+        "lt": "Less than",
+        "gt": "Greater than",
+        "lte": "Less than or equal",
+        "gte": "Greater than or equal",
+        "in": "In",
+        "nin": "Not in",
+        "ina": "In array",
+        "nina": "Not in array",
+        "contains": "Contains",
+        "ncontains": "Does not contain",
+        "containss": "Contains, case sensitive",
+        "ncontainss": "Does not contain, case sensitive",
+        "between": "Between",
+        "nbetween": "Not between",
+        "null": "Is null",
+        "nnull": "Is not null",
+        "startswith": "Starts with",
+        "nstartswith": "Does not start with",
+        "startswiths": "Starts with, case sensitive",
+        "nstartswiths": "Does not start with, case sensitive",
+        "endswith": "Ends with",
+        "nendswith": "Does not end with",
+        "endswiths": "Ends with, case sensitive",
+        "nendswiths": "Does not end with, case sensitive",
+        "eqs": "Equals, case sensitive",
+        "nes": "Not equals, case sensitive"
+      }
+    }
+  },
+  "actions": {
+    "create": "Create",
+    "edit": "Edit",
+    "show": "View",
+    "list": "List",
+    "delete": "Delete"
+  },
+  "header": {
+    "switchToArabic": "Switch to Arabic",
+    "switchToEnglish": "Switch to English",
+    "toggleTheme": "Toggle theme",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "switchToSystem": "Switch to system mode"
+  },
+  "settingsPage": {
+    "title": "Settings",
+    "description": "Control application appearance and language from one place.",
+    "appearanceTitle": "Appearance",
+    "appearanceDescription": "Manage theme and language for the whole application.",
+    "darkModeTitle": "Dark mode",
+    "darkModeDescription": "Switch between light and dark application theme.",
+    "languageTitle": "Arabic language",
+    "languageDescription": "Toggle the application language and page direction.",
+    "currentTheme": "Current theme",
+    "currentLanguage": "Current language",
+    "currentDirection": "Direction",
+    "notificationsTitle": "Notifications",
+    "notificationsDescription": "Placeholder for notification settings wiring later.",
+    "enableNotifications": "Enable notifications",
+    "emailNotifications": "Email notifications",
+    "accountTitle": "Account",
+    "accountDescription": "Basic account actions.",
+    "updateProfileSettings": "Update profile settings"
+  },
+  "notificationsPage": {
+    "inbox": "Inbox",
+    "unread": "Unread",
+    "markAllAsRead": "Mark all as read",
+    "marking": "Marking...",
+    "loading": "Loading notifications...",
+    "empty": "No notifications yet.",
+    "new": "New",
+    "noDetails": "No details provided.",
+    "markAsRead": "Mark as read",
+    "markAsUnread": "Mark as unread",
+    "saving": "Saving...",
+    "typeTask": "Task",
+    "typeReview": "Review",
+    "typeAdvice": "Advice",
+    "typeSystem": "System",
+    "failedToLoad": "Failed to load notifications",
+    "failedToMarkRead": "Failed to mark notification as read",
+    "failedToMarkUnread": "Failed to mark notification as unread",
+    "failedToMarkAllRead": "Failed to mark all notifications as read",
+    "templates": {
+      "studentApprovalRequested": "Student approval requested",
+      "requestedApprovalToAdd": "{{requester}} requested approval to add {{student}}",
+      "taskSubmittedForReview": "Task submitted for review",
+      "submittedForReview": "{{student}} submitted {{task}} for review"
+    }
+  },
+  "profilePage": {
+    "accountInfo": "Account Info",
+    "personalDetails": "Personal Details",
+    "staffNotes": "Staff Notes",
+    "managementNotes": "Management Notes",
+    "staffEdit": "Staff Edit",
+    "managementEdit": "Management Edit",
+    "studentProfile": "Student Profile",
+    "supervisorProfile": "Supervisor Profile",
+    "avatarUrl": "Avatar URL",
+    "loading": "Loading profile...",
+    "loadingStudent": "Loading student profile...",
+    "loadingSupervisor": "Loading supervisor profile...",
+    "updated": "Profile updated",
+    "editingDisabled": "Profile editing is currently disabled by staff.",
+    "noStaffNotes": "No staff notes yet.",
+    "studentCanEdit": "Student can edit self-profile",
+    "supervisorCanEdit": "Supervisor can edit self-profile",
+    "saveStaffChanges": "Save Staff Changes",
+    "saveManagementChanges": "Save Management Changes",
+    "studentUpdated": "Student profile updated",
+    "supervisorUpdated": "Supervisor profile updated",
+    "messages": {
+      "failedToLoad": "Failed to load profile",
+      "failedToSave": "Failed to save profile",
+      "failedToLoadStudent": "Failed to load student profile",
+      "failedToUpdateStudent": "Failed to update student profile",
+      "failedToLoadSupervisor": "Failed to load supervisor profile",
+      "failedToUpdateSupervisor": "Failed to update supervisor profile"
+    }
+  },
+  "brand": {
+    "name": "SNOWBALL",
+    "subtitle": "Student Platform",
+    "fullName": "SNOWBALL FOUNDATION"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "notifications": "Notifications",
+    "students": "Students",
+    "supervisors": "Supervisors",
+    "tasks": "Tasks",
+    "consultations": "Consultations",
+    "consulattions": "Consultations",
+    "branches": "Branches",
+    "programs": "Programs",
+    "cohorts": "Cohorts",
+    "enrollments": "Enrollments",
+    "miniGames": "Mini Games"
+  },
+  "students": {
+    "titles": {
+      "list": "Students",
+      "create": "Create Student",
+      "edit": "Edit Student",
+      "show": "Student Details"
+    },
+    "actions": {
+      "addStudent": "Add Student",
+      "submitForApproval": "Submit for Approval"
+    },
+      "fields": {
+        "uploadPicture": "Upload Picture",
+        "supervisor": "Supervisor"
+      },
+    "placeholders": {
+      "fullName": "Student full name",
+      "firstName": "Student first name",
+      "lastName": "Student last name",
+      "email": "student@example.com",
+      "password": "Enter initial password",
+      "confirmPassword": "Confirm password",
+      "selectBranch": "Select branch",
+      "selectProgram": "Select program",
+        "selectCohort": "Select cohort",
+        "selectSupervisor": "Select supervisor"
+      },
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "supervisor": "Supervisor",
+      "actions": "Actions",
+      "assigned": "Assigned",
+      "unassigned": "Unassigned",
+      "assignSupervisor": "Assign supervisor",
+      "unassignedOption": "Unassigned",
+      "openProfile": "Open Profile"
+    },
+    "requests": {
+      "pendingTitle": "Pending Student Requests",
+      "loading": "Loading requests...",
+      "empty": "No pending requests.",
+      "supervisor": "Supervisor",
+      "approve": "Approve",
+      "reject": "Reject",
+      "working": "Working..."
+    },
+    "messages": {
+      "failedToLoadPage": "Failed to load students page data",
+      "failedToRefreshRequests": "Failed to refresh requests",
+      "failedToApproveRequest": "Failed to approve request",
+      "failedToRejectRequest": "Failed to reject request",
+      "failedToUpdateSupervisor": "Failed to update supervisor mapping",
+      "unauthorized": "Unauthorized (login required)",
+      "forbidden": "Forbidden (management only)",
+      "saving": "Saving...",
+      "fieldRequired": "This field is required.",
+      "temporaryPassword": "Temporary password for the approved student:",
+      "failedToLoadForm": "Failed to load form options",
+      "allFieldsRequired": "All fields are required",
+      "classificationRequired": "Please complete the required fields.",
+      "passwordMin": "Password must be at least 8 characters",
+      "passwordMismatch": "Password and confirm password do not match",
+      "failedToSubmitRequest": "Failed to submit student request",
+      "loadingForm": "Loading form...",
+      "pendingRequestNotice": "This will create a pending request. The student will only be added after management approval.",
+      "directCreateNotice": "Management can create this student directly.",
+      "noCohortsForProgram": "No cohorts are available for this program yet."
+    }
+    ,
+    "intake": {
+      "select": "Select...",
+      "fields": {
+        "birthDate": "Birth date",
+        "nationality": "Nationality",
+        "residenceCountry": "Country of residence",
+        "gender": "Gender",
+        "studentStage": "Student status",
+        "iqTestScore": "IQ test score",
+        "maritalStatus": "Marital status",
+        "familyMembersCount": "Number of family members",
+        "parentsMaritalStatus": "Parents' marital status",
+        "familyObligations": "Do you have family obligations?",
+        "familyObligationsDetails": "If yes, what are they?",
+        "volunteeringExperience": "Have you participated in volunteer work?",
+        "volunteeringDetails": "If yes, what was it?",
+        "paidWorkExperience": "Have you worked in a paid job?",
+        "paidWorkDetails": "If yes, what was it?",
+        "universityPhase": "University phase",
+        "major": "Major",
+        "university": "University",
+        "academicNumber": "Academic number",
+        "latestGpa": "Latest GPA",
+        "annualTuitionFees": "Annual tuition fees",
+        "lowIncomeFamily": "Is the family low income?",
+        "ataTrainingCost": "Ata training cost",
+        "housingCost": "Housing cost",
+        "transportationCost": "Transportation cost",
+        "medicalCost": "Medical cost",
+        "otherCosts": "Other costs"
+      },
+      "options": {
+        "gender": ["Male", "Female"],
+        "studentStage": ["PhD student", "Master's student", "University graduate", "University student", "New student"],
+        "maritalStatus": ["Married", "Unmarried"],
+        "parentsMaritalStatus": ["Parents married", "Parents separated", "Father deceased", "Mother deceased"],
+        "yesNo": ["Yes", "No"],
+        "universityPhase": ["Preparatory", "Updated annually"]
+      }
+    }
+  },
+  "supervisors": {
+    "titles": {
+      "list": "Supervisors",
+      "create": "Create Supervisor",
+      "edit": "Edit Supervisor",
+      "show": "Supervisor Details"
+    },
+    "actions": {
+      "create": "Create Supervisor"
+    },
+    "fields": {
+      "temporaryPassword": "Temporary Password"
+    },
+    "placeholders": {
+      "fullName": "Supervisor full name",
+      "email": "supervisor@example.com",
+      "password": "At least 8 characters"
+    },
+    "messages": {
+      "allFieldsRequired": "All fields are required",
+      "passwordMin": "Password must be at least 8 characters",
+      "failedToCreate": "Failed to create supervisor"
+    }
+  },
+  "tasks": {
+    "titles": {
+      "list": "Tasks",
+      "create": "Create Task",
+      "edit": "Edit Task",
+      "show": "Task Details"
+    },
+    "fields": {
+      "title": "Title",
+      "description": "Description",
+      "dueDate": "Due date",
+      "assignedBy": "Assigned by",
+      "assignedTo": "Assigned To",
+      "assignees": "Assignees",
+      "assigned": "Assigned",
+      "submissionText": "Submission text",
+      "link": "Link",
+      "linkUrl": "Link URL",
+      "fileUrl": "File URL",
+      "taskDocument": "Task document",
+      "submissionDocument": "Submission document",
+      "openDocument": "Open document",
+      "downloadDocument": "Download",
+      "submittedAt": "Submitted at",
+      "reviewStatus": "Review status",
+      "reviewedAt": "Reviewed at",
+      "supervisorFeedback": "Supervisor feedback",
+      "existingFeedback": "Existing feedback",
+      "feedback": "Feedback"
+    },
+    "assign": {
+      "allStudents": "Assign to all students",
+      "student": "Assign to student",
+      "selectStudent": "Select student",
+      "chooseStudentOrAll": "Choose a student or enable \"Assign to all\"."
+    },
+    "sections": {
+      "overview": "Overview",
+      "submitWork": "Submit Work",
+      "latestSubmission": "Latest Submission"
+    },
+    "actions": {
+      "submitWork": "Submit Work",
+      "approve": "Approve",
+      "needsResubmission": "Needs Resubmission",
+      "showLess": "Show less",
+      "showMore": "Show more"
+    },
+    "placeholders": {
+      "title": "Task title",
+      "titleCreate": "Task title...",
+      "description": "Task description",
+      "optional": "Optional...",
+      "answer": "Write your answer, notes, or summary...",
+      "feedback": "Add feedback for the student...",
+      "url": "https://..."
+    },
+    "summary": {
+      "totalTasks": "Total tasks",
+      "totalTasksHint": "Tasks visible in your current scope",
+      "overdue": "Overdue",
+      "overdueHint": "Past due and still active",
+      "pendingReview": "Pending review",
+      "pendingReviewHint": "Submitted and waiting for review",
+      "needsResubmission": "Needs resubmission",
+      "needsResubmissionHint": "Returned back to students",
+      "completedCount": "{{count}} completed",
+      "submittedCount": "{{count}} submitted",
+      "needsResubmissionCount": "{{count}} needs resubmission",
+      "assignedCount": "{{count}} assigned"
+    },
+    "status": {
+      "new": "New",
+      "in_progress": "In progress",
+      "submitted": "Submitted",
+      "needs_resubmission": "Needs resubmission",
+      "completed": "Completed"
+    },
+    "decision": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "needs_resubmission": "Needs resubmission"
+    },
+    "messages": {
+      "failedToLoadSummary": "Failed to load task summary",
+      "failedToLoad": "Failed to load task",
+      "failedToLoadThis": "Failed to load this task.",
+      "notFound": "Task not found.",
+      "titleRequired": "Title is required",
+      "dueDateRequired": "Due date is required",
+      "failedToUpdate": "Failed to update task",
+      "failedToLoadSubmission": "Failed to load submission",
+      "submittedSuccessfully": "Work submitted successfully",
+      "failedToSubmit": "Failed to submit work",
+      "failedToReview": "Failed to review submission",
+      "loadingTask": "Loading task...",
+      "loadingSubmission": "Loading submission...",
+      "noAssignees": "No assignees",
+      "noSubmissionYet": "No submission yet.",
+      "cannotSubmit": "You cannot submit work in the current status."
+    }
+  },
+  "branches": {
+    "titles": {
+      "list": "Branches",
+      "create": "Create Branch",
+      "edit": "Edit Branch",
+      "show": "Branch Details"
+    },
+    "fields": {
+      "name": "Branch Name"
+    },
+    "actions": {
+      "new": "New Branch"
+    },
+    "placeholders": {
+      "name": "Add a branch",
+      "program": "Add a new program"
+    },
+    "messages": {
+      "nameRequired": "Branch name is required",
+      "failedToCreate": "Failed to create branch",
+      "failedToLoad": "Failed to load branch",
+      "failedToUpdate": "Failed to update branch",
+      "failedToLoadList": "Failed to load branches",
+      "empty": "No branches yet.",
+      "notFound": "Branch not found.",
+      "manageDescription": "Manage this branch and its programs from one place.",
+      "programsDescription": "These programs belong to this branch.",
+      "programNameRequired": "Program name is required",
+      "failedToCreateProgram": "Failed to create program",
+      "failedToUpdateProgram": "Failed to update program",
+      "noProgramsInBranch": "No programs added to this branch yet.",
+      "cohortCount": "{{count}} cohort",
+      "cohortCount_plural": "{{count}} cohorts",
+      "backToBranches": "Back to Branches",
+      "addProgram": "Add Program"
+    },
+    "students": {
+      "title": "Students in this branch",
+      "description": "Student details are grouped by the selected branch, program, and cohort.",
+      "empty": "No students are assigned to this branch yet."
+    }
+  },
+  "programs": {
+    "titles": {
+      "list": "Programs",
+      "create": "Create Program",
+      "edit": "Edit Program",
+      "show": "Program Details"
+    },
+    "fields": {
+      "name": "Program Name",
+      "branch": "Branch"
+    },
+    "placeholders": {
+      "name": "Leadership Program",
+      "selectBranch": "Select branch",
+      "untitledBranch": "(untitled branch)"
+    },
+    "messages": {
+      "nameAndBranchRequired": "Name and branch are required",
+      "failedToCreate": "Failed to create program",
+      "failedToLoad": "Failed to load program",
+      "failedToLoadBranches": "Failed to load branches",
+      "failedToUpdate": "Failed to update program",
+      "empty": "No programs yet.",
+      "failedToLoadList": "Failed to load programs"
+    }
+  },
+  "cohorts": {
+    "titles": {
+      "list": "Cohorts",
+      "create": "Create Cohort",
+      "edit": "Edit Cohort",
+      "show": "Cohort Details"
+    },
+    "actions": {
+      "seed": "Create Cohort 1-15"
+    },
+    "messages": {
+        "description": "Cohorts are global student groups; students inside a cohort can belong to different branches.",
+        "empty": "No cohorts for this program yet.",
+        "noCohorts": "No cohorts available yet.",
+        "noPrograms": "No programs available yet.",
+        "failedToLoad": "Failed to load cohorts",
+      "failedToSeed": "Failed to create cohorts",
+      "studentCount": "{{count}} student",
+      "studentCount_plural": "{{count}} students",
+      "noStudents": "No students are assigned to this cohort yet."
+    }
+  },
+  "enrollments": {
+    "titles": {
+      "list": "Enrollments",
+      "create": "Create Enrollment",
+      "edit": "Edit Enrollment",
+      "show": "Enrollment Details"
+    },
+      "sections": {
+        "addStudent": "Add Student",
+        "assignProgram": "Assign Program"
+      },
+      "actions": {
+        "addStudent": "Add student",
+        "addProgram": "Add program",
+        "manageBranches": "Manage branches",
+        "reviewCohorts": "Review cohorts",
+        "assignProgram": "Assign program to student",
+        "assignSelected": "Assign program",
+        "assignCohort": "Assign cohort to student",
+        "assignCohortSelected": "Assign cohort"
+      },
+      "fields": {
+        "student": "Student",
+        "program": "Program",
+        "availablePrograms": "Available programs",
+        "assignedPrograms": "Assigned programs",
+        "cohort": "Cohort",
+        "currentCohort": "Current cohort"
+      },
+      "placeholders": {
+        "selectStudent": "Select student",
+        "selectProgram": "Select program",
+        "selectCohort": "Select cohort"
+      },
+      "messages": {
+        "description": "Enrollment tools for adding students and organizing branch, program, and cohort placement.",
+        "addStudentDescription": "Management creates students directly; supervisors submit student requests for approval.",
+        "addProgramDescription": "Create a new program under an existing branch.",
+        "manageBranchesDescription": "Open branches to review branch names and add branch programs.",
+        "reviewCohortsDescription": "See each cohort and the students assigned to it.",
+        "assignProgramDescription": "Assign one student to one or more programs from the student's branch.",
+        "assignCohortDescription": "Place a student in a cohort. Cohorts are global and can include students from different branches.",
+        "failedToLoad": "Failed to load enrollments",
+        "assignmentRequired": "Choose a student and a program first.",
+        "failedToAssignProgram": "Failed to assign program",
+        "programAssigned": "Program assigned to student.",
+        "programAlreadyAssigned": "This student is already assigned to that program.",
+        "noAssignedPrograms": "No programs assigned yet.",
+        "selectStudentHint": "Choose a student to see their branch and assigned programs.",
+        "cohortAssignmentRequired": "Choose a student and a cohort first.",
+        "failedToAssignCohort": "Failed to assign cohort",
+        "cohortAssigned": "Cohort assigned to student.",
+        "cohortAlreadyAssigned": "This student is already in that cohort.",
+        "selectStudentForCohortHint": "Choose a student to see their current cohort."
+      }
+    },
+  "notifications": {
+    "titles": {
+      "list": "Notifications",
+      "show": "Notification Details"
+    }
+  },
+  "dashboardResource": {
+    "titles": {
+      "list": "Dashboard",
+      "show": "Dashboard"
+    }
+  },
+  "gamesPage": {
+    "title": "Mini Games",
+    "description": "A separate engagement tab for demo purposes so the dashboard stays focused.",
+    "badge": "Student Experience"
+  },
+  "advice-threads": {
+    "titles": {
+      "list": "Consultations",
+      "create": "Create Consultation",
+      "edit": "Edit Consultation",
+      "show": "Consultation Details"
+    },
+    "fields": {
+      "message": "Message",
+      "notes": "Notes",
+      "reply": "Reply",
+      "created": "Created",
+      "createdBy": "Created by",
+      "createdAt": "Created at"
+    },
+    "placeholders": {
+      "title": "Consultation title...",
+      "message": "Describe your question or request...",
+      "reply": "Write your reply...",
+      "closed": "This consultation is closed.",
+      "selectStatus": "Select status"
+    },
+    "notes": {
+      "use": "Use consultations when you need advice or guidance from staff.",
+      "visibility": "Only you, your supervisor group, or management can see your thread.",
+      "notification": "You will get a notification when staff replies.",
+      "staffFlow": "Staff can move consultations through open → in progress → answered → closed.",
+      "studentFlow": "Staff replies will appear here and also notify you in Notifications."
+    },
+    "status": {
+      "open": "Open",
+      "in_progress": "In progress",
+      "answered": "Answered",
+      "closed": "Closed"
+    },
+    "messages": {
+      "titleRequired": "Title is required",
+      "messageRequired": "Message is required",
+      "replyRequired": "Reply is required",
+      "failedToCreate": "Failed to create consultation",
+      "failedToLoad": "Failed to load consultation",
+      "failedToSendReply": "Failed to send reply",
+      "failedToUpdateStatus": "Failed to update status",
+      "noMessages": "No messages yet.",
+      "unknownUser": "Unknown user",
+      "staff": "Staff",
+      "sending": "Sending...",
+      "sendReply": "Send reply"
+    }
+  },
+  "dashboard": {
+    "hero": {
+      "welcomeBack": "Welcome back, {{name}}!"
+    },
+    "live": {
+      "heroLabel": {
+        "student": "Student Dashboard",
+        "supervisor": "Supervisor Dashboard",
+        "management": "Management Dashboard"
+      },
+      "heroDescription": {
+        "student": "You currently have {{tasks}} open tasks, {{notifications}} unread notifications, and {{consultations}} active consultations.",
+        "supervisor": "You currently have {{pending}} submissions waiting for review, {{overdue}} overdue task assignments, and {{consultations}} active student consultations.",
+        "management": "Across the current scope, there are {{pending}} pending reviews, {{overdue}} overdue task assignments, and {{consultations}} active consultations."
+      },
+      "metrics": {
+        "activeConsultations": "Active consultations",
+        "pendingReviews": "Pending reviews",
+        "activeStudents": "Active students",
+        "overdueTasks": "Overdue tasks",
+        "unreadNotifications": "Unread notifications",
+        "openTasks": "Open tasks",
+        "taskCompletion": "Task completion"
+      }
+    },
+    "badges": {
+      "sectionTitle": "Badges",
+      "sectionDescription": "Recognition earned through consistency and follow-up.",
+      "streak": {
+        "title": "7 Day Streak",
+        "hint": "Earned by staying consistent."
+      },
+      "fastStarter": {
+        "title": "Fast Starter",
+        "hint": "Unlocked after a strong start."
+      },
+      "focusPeak": {
+        "title": "Focus Peak",
+        "hint": "Given for strong task focus."
+      },
+        "consultationStar": {
+          "title": "Consultation Star",
+          "hint": "Unlocked after active guidance and follow-up."
+        },
+        "unlocked": "Unlocked",
+        "locked": "Locked",
+        "progress": "Progress",
+        "categories": {
+          "profile": "Profile",
+          "tasks": "Tasks",
+          "consultations": "Consultations",
+          "review": "Review & Improvement",
+          "consistency": "Consistency"
+        },
+        "items": {
+          "profile_complete": { "title": "Profile Complete", "hint": "Complete the key profile details." },
+          "ready_to_start": { "title": "Ready to Start", "hint": "Have a branch, cohort, and first assigned task." },
+          "fully_updated": { "title": "Fully Updated", "hint": "Keep the full student profile information updated." },
+          "fast_starter": { "title": "Fast Starter", "hint": "Start your first task." },
+          "first_submission": { "title": "First Submission", "hint": "Submit work for the first time." },
+          "task_achiever": { "title": "Task Achiever", "hint": "Complete 5 tasks." },
+          "on_time_performer": { "title": "On-Time Performer", "hint": "Submit multiple tasks before the deadline." },
+          "review_ready": { "title": "Review Ready", "hint": "Have 3 submissions accepted without revision." },
+          "bounce_back": { "title": "Bounce Back", "hint": "Complete a task after resubmission." },
+          "focused_finisher": { "title": "Focused Finisher", "hint": "Complete all current open tasks." },
+          "first_consultation": { "title": "First Consultation", "hint": "Open your first consultation." },
+          "consultation_star": { "title": "Consultation Star", "hint": "Resolve or receive answers on 3 consultations." },
+          "active_communicator": { "title": "Active Communicator", "hint": "Send 10 consultation messages." },
+          "follow_up_keeper": { "title": "Follow-Up Keeper", "hint": "Maintain a consultation with multiple message exchanges." },
+          "resolution_seeker": { "title": "Resolution Seeker", "hint": "Close a consultation successfully." },
+          "feedback_listener": { "title": "Feedback Listener", "hint": "Receive feedback that needs resubmission." },
+          "revision_complete": { "title": "Revision Complete", "hint": "Complete work after receiving feedback." },
+          "quality_submitter": { "title": "Quality Submitter", "hint": "Have 3 submissions accepted without revision." },
+          "approved_work": { "title": "Approved Work", "hint": "Get at least one task completed." },
+          "growth_mindset": { "title": "Growth Mindset", "hint": "Use feedback and complete revised work." },
+          "streak": { "title": "Streak", "hint": "Be active on 7 days in the current window." },
+          "consistency_builder": { "title": "Consistency Builder", "hint": "Be active on 3 days in the current window." },
+          "steady_progress": { "title": "Steady Progress", "hint": "Reach 5 combined completed tasks or resolved consultations." },
+          "momentum_maker": { "title": "Momentum Maker", "hint": "Build momentum across tasks, consultations, and messages." },
+          "reliable_performer": { "title": "Reliable Performer", "hint": "Show reliability through on-time work, accepted submissions, and resolved consultations." }
+        }
+      },
+    "journey": {
+      "title": "Journey",
+      "subtitle": "Track progress through key milestones and next actions.",
+      "status": {
+        "done": "Done",
+        "current": "Current",
+        "next": "Next",
+        "locked": "Locked"
+      },
+      "items": {
+        "complete_profile_setup": "Complete profile setup",
+        "add_profile_picture": "Add profile picture",
+        "complete_required_student_information": "Complete required student information",
+        "receive_first_assigned_task": "Receive first assigned task",
+        "start_first_assigned_task": "Start first assigned task",
+        "submit_first_task": "Submit first task",
+        "get_first_review_feedback": "Get first review feedback",
+        "complete_first_approved_task": "Complete first approved task",
+        "open_first_consultation": "Open first consultation",
+        "receive_first_consultation_reply": "Receive first consultation reply",
+        "close_first_consultation": "Close first consultation",
+        "complete_consultation_cycle": "Complete a consultation cycle",
+        "handle_resubmission_successfully": "Handle a resubmission successfully",
+        "complete_three_tasks": "Complete 3 tasks",
+        "maintain_zero_overdue_tasks": "Maintain zero overdue tasks",
+        "reach_consistency_milestone": "Reach consistency milestone"
+      }
+    },
+    "calendar": {
+      "title": "Interactive Calendar",
+      "description": "Track live task due dates and add your own calendar items.",
+      "today": "Today",
+      "legendTitle": "Calendar legend",
+      "summaryTitle": "Live calendar summary",
+      "selectedDay": "Selected day",
+      "chooseDay": "Choose a day",
+      "noEvents": "No calendar items on this day yet.",
+      "untitledEvent": "Untitled event",
+      "noDescription": "No description provided.",
+      "form": {
+        "title": "Add calendar item",
+        "itemTitle": "Title",
+        "titlePlaceholder": "Study session, meeting, deadline...",
+        "date": "Date",
+        "type": "Type",
+        "description": "Description",
+        "descriptionPlaceholder": "Add notes or details...",
+        "notify": "Create a notification for this item",
+        "submit": "Add to calendar",
+        "saving": "Adding...",
+        "saved": "Calendar item added",
+        "savedWithNotification": "Calendar item added and notification created",
+        "missingRequired": "Please add a title and date.",
+        "notificationFailed": "Calendar item was added, but the notification could not be created."
+      },
+      "tags": {
+        "urgent": "Urgent",
+        "updated": "Updated",
+        "momentum": "Forward Momentum",
+        "event": "Event"
+      },
+      "kinds": {
+        "task": "Tasks",
+        "todo": "To-do",
+        "consultation": "Consultations",
+        "review": "Reviews",
+        "event": "Events",
+        "reminder": "Reminder"
+      }
+    },
+    "miniGames": {
+      "live": "Live",
+      "spinWheel": "Spin Wheel",
+      "spinDescription": "A lightweight reward game for engagement.",
+      "spinPrompt": "Click spin to get a reward.",
+      "spinning": "Spinning...",
+      "spinNow": "Spin now",
+      "reward": "Reward",
+      "youWon": "You won: {{reward}}",
+      "wordScramble": "Word Scramble",
+      "wordDescription": "A quick brain reset before going back to tasks.",
+      "typeAnswer": "Type your answer",
+      "check": "Check",
+      "next": "Next",
+      "unscramble": "Unscramble the word.",
+      "correct": "Correct! Great job.",
+      "tryAgain": "Not yet. Try again.",
+      "newWord": "New word loaded.",
+      "score": "Score: {{score}}",
+      "ticTacToe": "Tic-Tac-Toe vs Bot",
+      "ticDescription": "A tiny break game that still feels interactive.",
+      "yourTurn": "Your turn.",
+      "youWin": "You win!",
+      "draw": "Draw game.",
+      "botWins": "Bot wins this round.",
+      "reset": "Reset",
+      "rewards": {
+        "bonus": "10 bonus points",
+        "badge": "Badge boost",
+        "quickWin": "Quick win",
+        "theme": "Profile theme token",
+        "motivation": "Motivation boost",
+        "focus": "Focus bonus"
+      }
+    },
+    "report": {
+      "exportBadge": "PDF Export",
+      "currentFilters": "Current export filters",
+      "noFilters": "No filters selected. The PDF will include all data in your management scope.",
+      "chooseFilters": "Choose the filters for the downloaded report",
+      "filtersDescription": "The selected filters are sent to the backend and the downloaded PDF will contain the filtered numbers and the selected filter details.",
+      "downloadPdf": "Download PDF",
+      "downloading": "Downloading...",
+      "clearFilters": "Clear filters",
+      "loading": "Loading filter options...",
+      "fields": {
+        "branch": "Branch",
+        "program": "Program",
+        "cohort": "Cohort",
+        "supervisor": "Supervisor",
+        "student": "Student",
+        "startDate": "Start date",
+        "endDate": "End date"
+      },
+      "placeholders": {
+        "allBranches": "All branches",
+        "allPrograms": "All programs",
+        "allCohorts": "All cohorts",
+        "allSupervisors": "All supervisors",
+        "allStudents": "All students"
+      },
+      "unnamed": {
+        "branch": "Unnamed branch",
+        "program": "Unnamed program",
+        "cohort": "Unnamed cohort",
+        "supervisor": "Unnamed supervisor",
+        "student": "Unnamed student"
+      },
+      "summary": {
+        "branch": "Branch: {{value}}",
+        "program": "Program: {{value}}",
+        "cohort": "Cohort: {{value}}",
+        "supervisor": "Supervisor: {{value}}",
+        "student": "Student: {{value}}",
+        "startDate": "Start: {{value}}",
+        "endDate": "End: {{value}}"
+      },
+      "errors": {
+        "loadFilters": "Failed to load report filters.",
+        "invalidDateRange": "Start date cannot be after end date.",
+        "download": "Failed to download the PDF report."
+      }
+    },
+    "presentation": {
+      "management": {
+        "heroLabel": "Management Experience",
+        "heroDescription": "This dashboard gives management a clear overview of reporting, follow-up, and platform activity.",
+        "progressLabel": "Overall Platform Progress",
+        "metrics": {
+          "studentsFollowUp": "Students needing follow-up",
+          "reportsWaiting": "Reports waiting for export",
+          "unreadNotifications": "Unread notifications"
+        },
+        "steps": {
+          "permissionsConfigured": "Permissions and roles configured",
+          "flowReviewed": "Student and supervisor flow reviewed",
+          "quarterlyReview": "Quarterly report review",
+          "nextPriorities": "Next stage priorities",
+          "advancedAnalytics": "Advanced analytics"
+        },
+        "events": {
+          "reviewMeeting": {
+            "title": "Stage 1 review meeting",
+            "description": "Present current progress and gather product owner feedback."
+          },
+          "priorityUpdate": {
+            "title": "Priority update session",
+            "description": "Re-order requested changes after the presentation."
+          },
+          "pdfExport": {
+            "title": "PDF export",
+            "description": "Placeholder PDF design preview before full backend wiring."
+          }
+        },
+        "reportTitle": "Management PDF Preview",
+        "reportDescription": "This is a design-first preview. Real counts, filters, charts, and export logic can be connected later."
+      },
+      "supervisor": {
+        "heroLabel": "Supervisor Experience",
+        "heroDescription": "This version shows how progress, consultations, calendar planning, and engagement features can look before live data is connected.",
+        "progressLabel": "Average Student Progress",
+        "metrics": {
+          "tasksPending": "Tasks pending review",
+          "newConsultations": "New consultations",
+          "followUps": "This week's follow-ups"
+        },
+        "steps": {
+          "studentProfiles": "Student profiles reviewed",
+          "firstAssessment": "First task assessment completed",
+          "replyConsultation": "Reply to new consultation",
+          "approveWork": "Approve submitted work",
+          "performanceBoard": "Detailed performance board"
+        },
+        "events": {
+          "weeklyFollowUp": {
+            "title": "Weekly student follow-up",
+            "description": "Review progress and discuss next deliverables."
+          },
+          "reviewWindow": {
+            "title": "Task review window",
+            "description": "Check quality before final approval."
+          },
+          "consultationNotice": {
+            "title": "New consultation notice",
+            "description": "A student submitted a new consultation request."
+          }
+        },
+        "reportTitle": "Supervisor Summary Preview",
+        "reportDescription": "Later this can be tied to actual student groups, scoped stats, and exportable summaries."
+      },
+      "student": {
+        "heroLabel": "Student Experience",
+        "heroDescription": "The progress bar, streak, badges, games, and calendar can all be connected to real data later.",
+        "progressLabel": "Visible Progress",
+        "metrics": {
+          "unreadNotifications": "Unread notifications",
+          "openTasks": "Open tasks",
+          "newReply": "New consultation reply"
+        },
+        "steps": {
+          "profileSetup": "Complete profile setup",
+          "firstTask": "Finish the first task",
+          "firstConsultation": "Attend first consultation",
+          "submitWork": "Submit project work",
+          "consistencyMilestone": "Reach consistency milestone"
+        },
+        "events": {
+          "proposalDeadline": {
+            "title": "Proposal deadline",
+            "description": "Demo deadline card for the presentation."
+          },
+          "urgentTask": {
+            "title": "Urgent task",
+            "description": "Submit the detailed proposal outline by 6:00 PM."
+          },
+          "supervisorUpdates": {
+            "title": "Supervisor updates",
+            "description": "Review the latest supervisor notes."
+          }
+        },
+        "reportTitle": "Student Progress Preview",
+        "reportDescription": "A student-facing PDF summary can also be added later using the same visual identity."
+      },
+      "expert": {
+        "heroLabel": "Expert Experience",
+        "heroDescription": "This is a safe preview of the expert view with engagement blocks and future workflow placeholders.",
+        "progressLabel": "Current Engagement",
+        "metrics": {
+          "reviewsAssigned": "Reviews assigned",
+          "consultationsQueue": "Consultations in queue",
+          "unreadNotices": "Unread notices"
+        },
+        "steps": {
+          "reviewAccess": "Review access granted",
+          "firstConsultation": "First consultation answered",
+          "detailedFeedback": "Provide detailed feedback",
+          "supportPlanning": "Support milestone planning",
+          "expandedWorkspace": "Expanded workspace"
+        },
+        "events": {
+          "feedbackSession": {
+            "title": "Feedback session",
+            "description": "Review feedback notes for active students."
+          }
+        },
+        "reportTitle": "Expert Summary Preview",
+        "reportDescription": "Placeholder content for expert-safe reporting and workflow previews."
+      },
+      "donor": {
+        "heroLabel": "Donor Experience",
+        "heroDescription": "This is a safe donor-side preview with welcome, progress storytelling, and future engagement placeholders.",
+        "progressLabel": "Program Momentum",
+        "metrics": {
+          "highlights": "Highlights",
+          "unreadUpdates": "Unread updates",
+          "upcomingEvents": "Upcoming events"
+        },
+        "steps": {
+          "overviewOpened": "Overview opened",
+          "impactSnapshot": "Impact snapshot reviewed",
+          "milestoneFollowUp": "Milestone follow-up",
+          "reportAccess": "Detailed report access",
+          "deeperInsights": "Deeper insights"
+        },
+        "events": {
+          "programUpdate": {
+            "title": "Program update",
+            "description": "Impact and milestone summary preview."
+          }
+        },
+        "reportTitle": "Donor Report Preview",
+        "reportDescription": "Placeholder report view for donor-safe storytelling and impact visuals."
+      }
+    }
+  },
+  "roles": {
+    "student": "Student",
+    "supervisor": "Supervisor",
+    "management": "Management",
+    "donor": "Donor",
+    "expert": "Expert"
+  }
+}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { kyInstance } from "@/providers/data";
 import { authProvider } from "@/providers/auth";
 import type { Role } from "@/lib/rbac";
+import { useTranslation } from "react-i18next";
 
 type Program = {
     id: string;
@@ -16,6 +17,7 @@ type Branch = {
 };
 
 export default function ProgramsList() {
+    const { t } = useTranslation();
     const [items, setItems] = useState<Program[]>([]);
     const [branches, setBranches] = useState<Branch[]>([]);
     const [role, setRole] = useState<Role | null>(null);
@@ -56,7 +58,7 @@ export default function ProgramsList() {
                 const msg =
                     e?.response
                         ? `${e.response.status} ${e.response.statusText}`
-                        : e?.message ?? "Failed to load programs";
+                        : e?.message ?? t("programs.messages.failedToLoadList");
 
                 if (!cancelled) setError(msg);
             } finally {
@@ -75,31 +77,31 @@ export default function ProgramsList() {
 
     const branchNameById = useMemo(() => {
         return Object.fromEntries(
-            branches.map((branch) => [branch.id, branch.name ?? "(untitled branch)"]),
+            branches.map((branch) => [branch.id, branch.name ?? t("programs.placeholders.untitledBranch")]),
         );
-    }, [branches]);
+    }, [branches, t]);
 
     return (
         <div className="p-6 space-y-4">
             <div className="flex items-center justify-between gap-3">
-                <h1 className="text-xl font-semibold">Programs</h1>
+                <h1 className="text-xl font-semibold">{t("programs.titles.list")}</h1>
 
                 {canManage ? (
                     <Link
                         to="/programs/create"
                         className="px-3 py-2 rounded-md border hover:bg-muted"
                     >
-                        New Program
+                        {t("programs.titles.create")}
                     </Link>
                 ) : null}
             </div>
 
-            {loading ? <p className="text-muted-foreground">Loading...</p> : null}
+            {loading ? <p className="text-muted-foreground">{t("common.loading")}</p> : null}
 
             {error ? <p className="text-destructive">{error}</p> : null}
 
             {!loading && !error && items.length === 0 ? (
-                <p className="text-muted-foreground">No programs yet.</p>
+                <p className="text-muted-foreground">{t("programs.messages.empty")}</p>
             ) : null}
 
             <div className="space-y-2">
@@ -109,9 +111,9 @@ export default function ProgramsList() {
                         className="border rounded-lg p-4 flex items-center justify-between"
                     >
                         <div>
-                            <div className="font-medium">{p.name ?? "(untitled)"}</div>
+                            <div className="font-medium">{p.name ?? t("common.untitled")}</div>
                             <div className="text-sm text-muted-foreground">
-                                Branch: {p.branchId ? (branchNameById[p.branchId] ?? p.branchId) : "-"}
+                                {t("common.branch")}: {p.branchId ? (branchNameById[p.branchId] ?? p.branchId) : t("common.notAvailable")}
                             </div>
                         </div>
 
@@ -120,7 +122,7 @@ export default function ProgramsList() {
                                 to={`/programs/show/${p.id}`}
                                 className="px-3 py-1.5 rounded-md border hover:bg-muted text-sm"
                             >
-                                Open
+                                {t("common.open")}
                             </Link>
 
                             {canManage ? (
@@ -128,7 +130,7 @@ export default function ProgramsList() {
                                     to={`/programs/edit/${p.id}`}
                                     className="px-3 py-1.5 rounded-md border hover:bg-muted text-sm"
                                 >
-                                    Edit
+                                    {t("buttons.edit")}
                                 </Link>
                             ) : null}
                         </div>

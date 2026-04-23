@@ -17,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type DataTableProps<TData extends BaseRecord> = {
   table: UseTableReturnType<TData, HttpError>;
@@ -79,9 +80,12 @@ export function DataTable<TData extends BaseRecord>({
   }, [tableQuery.data?.data, pageSize]);
 
   return (
-    <div className={cn("flex", "flex-col", "flex-1", "gap-4")}>
-      <div ref={tableContainerRef} className={cn("rounded-md", "border")}>
-        <Table ref={tableRef} style={{ tableLayout: "fixed", width: "100%" }}>
+    <div className={cn("flex", "w-full", "min-w-0", "flex-1", "flex-col", "gap-4")}>
+      <div
+        ref={tableContainerRef}
+        className={cn("w-full", "min-w-0", "overflow-x-auto", "rounded-md", "border")}
+      >
+        <Table ref={tableRef} style={{ minWidth: "100%", tableLayout: "auto", width: "100%" }}>
           <TableHeader>
             {getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -177,7 +181,7 @@ export function DataTable<TData extends BaseRecord>({
                             }),
                           }}
                         >
-                          <div className="truncate">
+                          <div className="min-w-0 truncate">
                             {flexRender(
                               cell.column.columnDef.cell,
                               cell.getContext()
@@ -219,6 +223,8 @@ function DataTableNoData({
   isOverflowing: { horizontal: boolean; vertical: boolean };
   columnsLength: number;
 }) {
+  const { t } = useTranslation();
+
   return (
     <TableRow className="hover:bg-transparent">
       <TableCell
@@ -247,10 +253,10 @@ function DataTableNoData({
           }}
         >
           <div className={cn("text-lg", "font-semibold", "text-foreground")}>
-            No data to display
+            {t("table.empty.title")}
           </div>
           <div className={cn("text-sm", "text-muted-foreground")}>
-            This table is empty for the time being.
+            {t("table.empty.description")}
           </div>
         </div>
       </TableCell>

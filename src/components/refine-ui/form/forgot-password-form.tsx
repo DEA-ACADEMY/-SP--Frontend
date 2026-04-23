@@ -15,8 +15,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useForgotPassword, useLink, useRefineOptions } from "@refinedev/core";
+import { useTranslation } from "react-i18next";
 
 export const ForgotPasswordForm = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const Link = useLink();
@@ -59,25 +61,24 @@ export const ForgotPasswordForm = () => {
         <CardHeader className={cn("px-0")}>
           <CardTitle
             className={cn(
-              "text-blue-600",
-              "dark:text-blue-400",
+              "text-primary",
               "text-3xl",
               "font-semibold"
             )}
           >
-            Forgot password
+            {t("auth.forgotPasswordTitle")}
           </CardTitle>
           <CardDescription
             className={cn("text-muted-foreground", "font-medium")}
           >
-            Enter your email to change your password.
+            {t("auth.forgotPasswordDescription")}
           </CardDescription>
         </CardHeader>
 
         <CardContent className={cn("px-0")}>
           <form onSubmit={handleForgotPassword}>
             <div className={cn("flex", "flex-col", "gap-2")}>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("common.email")}</Label>
               <div className={cn("flex", "gap-2")}>
                 <Input
                   id="email"
@@ -91,13 +92,10 @@ export const ForgotPasswordForm = () => {
                 <Button
                   type="submit"
                   className={cn(
-                    "bg-blue-600",
-                    "hover:bg-blue-700",
-                    "text-white",
                     "px-6"
                   )}
                 >
-                  Send
+                  {t("auth.send")}
                 </Button>
               </div>
             </div>
@@ -117,7 +115,7 @@ export const ForgotPasswordForm = () => {
               )}
             >
               <ArrowLeft className={cn("w-4", "h-4")} />
-              <span>Back</span>
+              <span>{t("common.back")}</span>
             </Link>
           </div>
         </CardContent>

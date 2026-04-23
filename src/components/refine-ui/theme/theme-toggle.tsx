@@ -4,12 +4,14 @@ import { useTheme } from "@/components/refine-ui/theme/theme-provider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Monitor, Moon, Sun } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type ThemeToggleProps = {
   className?: string;
 };
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
+  const { t } = useTranslation();
   const { theme, setTheme } = useTheme();
 
   const cycleTheme = () => {
@@ -85,7 +87,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           }
         )}
       />
-      <span className="sr-only">Toggle theme (Light → Dark → System)</span>
+      <span className="sr-only">{t("header.toggleTheme")}</span>
     </Button>
   );
 }

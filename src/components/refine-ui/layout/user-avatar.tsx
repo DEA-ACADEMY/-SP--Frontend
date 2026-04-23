@@ -4,38 +4,45 @@ import { cn } from "@/lib/utils";
 import { useGetIdentity } from "@refinedev/core";
 
 type User = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  email: string;
+  id: string | number;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
+  name?: string;
+  email?: string;
   avatar?: string;
+  avatarUrl?: string;
 };
 
 export function UserAvatar() {
   const { data: user, isLoading: userIsLoading } = useGetIdentity<User>();
 
   if (userIsLoading || !user) {
-    return <Skeleton className={cn("h-10", "w-10", "rounded-full")} />;
+    return <Skeleton className={cn("h-10 w-10 rounded-full")} />;
   }
 
-  const { fullName, avatar } = user;
+  const fullName = user.fullName || user.name || "User";
+  const avatar = user.avatarUrl || user.avatar;
 
   return (
-    <Avatar className={cn("h-10", "w-10")}>
-      {avatar && <AvatarImage src={avatar} alt={fullName} />}
-      <AvatarFallback>{getInitials(fullName)}</AvatarFallback>
-    </Avatar>
+      <Avatar className="h-10 w-10 border shadow-sm">
+        {avatar ? <AvatarImage src={avatar} alt={fullName} /> : null}
+        <AvatarFallback>{getInitials(fullName)}</AvatarFallback>
+      </Avatar>
   );
 }
 
 const getInitials = (name = "") => {
-  const names = name.split(" ");
+  const names = name.trim().split(" ").filter(Boolean);
+
+  if (names.length === 0) return "U";
+
   let initials = names[0].substring(0, 1).toUpperCase();
 
   if (names.length > 1) {
     initials += names[names.length - 1].substring(0, 1).toUpperCase();
   }
+
   return initials;
 };
 

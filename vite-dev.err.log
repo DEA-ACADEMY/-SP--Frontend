@@ -1,0 +1,34 @@
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+Something went wrong when trying to get installed `Refine` packages.
+node:internal/child_process:420
+    throw new ErrnoException(err, 'spawn');
+          ^
+
+Error: Command failed with EPERM: D:\PROJECTS\STUDENT PLATFORM\studentplatform-frontend\node_modules\.bin\vite dev --host 127.0.0.1
+spawn EPERM
+    at ChildProcess.spawn (node:internal/child_process:420:11)
+    at Object.spawn (node:child_process:754:9)
+    at execa (D:\PROJECTS\STUDENT PLATFORM\studentplatform-frontend\node_modules\execa\index.js:83:26)
+    at runScript (D:\PROJECTS\STUDENT PLATFORM\studentplatform-frontend\node_modules\@refinedev\cli\dist\cli.cjs:1245:47)
+    at Command.action5 (D:\PROJECTS\STUDENT PLATFORM\studentplatform-frontend\node_modules\@refinedev\cli\dist\cli.cjs:1573:3) {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'spawn',
+  originalMessage: 'spawn EPERM',
+  shortMessage: 'Command failed with EPERM: D:\\PROJECTS\\STUDENT PLATFORM\\studentplatform-frontend\\node_modules\\.bin\\vite dev --host 127.0.0.1\n' +
+    'spawn EPERM',
+  command: 'D:\\PROJECTS\\STUDENT PLATFORM\\studentplatform-frontend\\node_modules\\.bin\\vite dev --host 127.0.0.1',
+  escapedCommand: '"D:\\PROJECTS\\STUDENT PLATFORM\\studentplatform-frontend\\node_modules\\.bin\\vite" dev --host 127.0.0.1',
+  exitCode: undefined,
+  signal: undefined,
+  signalDescription: undefined,
+  stdout: '',
+  stderr: '',
+  all: '',
+  failed: true,
+  timedOut: false,
+  isCanceled: false,
+  killed: false
+}
+
+Node.js v22.17.0
