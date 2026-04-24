@@ -1,7 +1,8 @@
 import type { AuthProvider } from "@refinedev/core";
 import { roleHome, type Role } from "@/lib/rbac";
+import { API_URL } from "./constants";
 
-const AUTH_BASE = "http://localhost:8000/api/auth";
+const AUTH_BASE = `${API_URL}/auth`;
 
 export const authProvider: AuthProvider = {
     login: async ({ email, password, rememberMe }) => {
@@ -49,7 +50,7 @@ export const authProvider: AuthProvider = {
     },
 
     getIdentity: async () => {
-        const res = await fetch("http://localhost:8000/api/me", {
+        const res = await fetch(`${API_URL}/me`, {
             credentials: "include",
         });
         if (!res.ok) return null;
