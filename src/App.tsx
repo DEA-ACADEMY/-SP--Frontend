@@ -6,7 +6,6 @@ import { Navigate } from "react-router-dom";
 import { authProvider } from "./providers/auth";
 
 import routerProvider, {
-    DocumentTitleHandler,
     UnsavedChangesNotifier,
 } from "@refinedev/react-router";
 
@@ -136,6 +135,40 @@ function RefineShell() {
         return getResourcesForRole(role ?? null);
     }, [role]);
 
+    useEffect(() => {
+        const path = location.pathname.replace(/\/+$/, "") || "/";
+        const pageTitle =
+            path === "/" || path === "/student" || path === "/supervisor" || path === "/donor" || path === "/expert"
+                ? t("nav.dashboard")
+                : path.startsWith("/managements")
+                    ? t("nav.managements")
+                    : path.startsWith("/students")
+                        ? t("nav.students")
+                        : path.startsWith("/supervisors")
+                            ? t("nav.supervisors")
+                            : path.startsWith("/tasks")
+                                ? t("nav.tasks")
+                                : path.startsWith("/consultations")
+                                    ? t("nav.consultations")
+                                    : path.startsWith("/branches")
+                                        ? t("nav.branches")
+                                        : path.startsWith("/programs")
+                                            ? t("nav.programs")
+                                            : path.startsWith("/cohorts")
+                                                ? t("nav.cohorts")
+                                                : path.startsWith("/enrollments")
+                                                    ? t("nav.enrollments")
+                                                    : path.startsWith("/notifications")
+                                                        ? t("nav.notifications")
+                                                        : path.startsWith("/settings")
+                                                            ? t("common.settings")
+                                                            : path.startsWith("/profile")
+                                                                ? t("common.profile")
+                                                                : t("brand.name");
+
+        document.title = `${pageTitle} | ${t("brand.fullName")}`;
+    }, [location.pathname, t]);
+
     return (
         <div dir={dir} className="min-h-screen bg-background text-foreground">
                 <DevtoolsProvider>
@@ -255,7 +288,6 @@ function RefineShell() {
                         <Toaster />
                         <RefineKbar />
                         <UnsavedChangesNotifier />
-                        <DocumentTitleHandler />
                     </Refine>
 
                     <DevtoolsPanel />
