@@ -79,7 +79,7 @@ function buildSelectedSummary(params: {
 
 export function ReportPreviewCard({ title, description }: { title: string; description: string }) {
     const { t } = useTranslation();
-    const { dir } = useLanguage();
+    const { dir, language } = useLanguage();
     const [isDownloading, setIsDownloading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [loadingOptions, setLoadingOptions] = useState(true);
@@ -175,6 +175,7 @@ export function ReportPreviewCard({ title, description }: { title: string; descr
         if (filters.studentId) url.searchParams.set("studentId", filters.studentId);
         if (filters.startDate) url.searchParams.set("startDate", filters.startDate);
         if (filters.endDate) url.searchParams.set("endDate", filters.endDate);
+        url.searchParams.set("lang", language);
         return url.toString();
     }
 

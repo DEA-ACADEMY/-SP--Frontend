@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { kyInstance } from "@/providers/data";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { useTranslation } from "react-i18next";
 import { CloudinaryImageUpload } from "@/components/upload-widget";
+import { kyInstance } from "@/providers/data";
+import { useTranslation } from "react-i18next";
 
-export default function SupervisorCreatePage() {
+export default function ManagementCreatePage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
@@ -18,7 +18,6 @@ export default function SupervisorCreatePage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [avatarUrl, setAvatarUrl] = useState("");
-
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -38,13 +37,13 @@ export default function SupervisorCreatePage() {
 
         if (Object.keys(nextFieldErrors).length > 0) {
             setFieldErrors(nextFieldErrors);
-            setError(t("supervisors.messages.allFieldsRequired"));
+            setError(t("managements.messages.allFieldsRequired"));
             return;
         }
 
         if (password.length < 8) {
-            setFieldErrors({ password: t("supervisors.messages.passwordMin") });
-            setError(t("supervisors.messages.passwordMin"));
+            setFieldErrors({ password: t("managements.messages.passwordMin") });
+            setError(t("managements.messages.passwordMin"));
             return;
         }
 
@@ -57,7 +56,7 @@ export default function SupervisorCreatePage() {
         try {
             setSaving(true);
 
-            await kyInstance.post("supervisors", {
+            await kyInstance.post("managements", {
                 json: {
                     name: name.trim(),
                     email: email.trim().toLowerCase(),
@@ -66,9 +65,9 @@ export default function SupervisorCreatePage() {
                 },
             });
 
-            navigate("/supervisors");
+            navigate("/managements");
         } catch (e: any) {
-            setError(e?.message ?? t("supervisors.messages.failedToCreate"));
+            setError(e?.message ?? t("managements.messages.failedToCreate"));
         } finally {
             setSaving(false);
         }
@@ -78,7 +77,7 @@ export default function SupervisorCreatePage() {
         <div className="w-full max-w-4xl space-y-6">
             <Card>
                 <CardHeader>
-                    <CardTitle>{t("supervisors.titles.create")}</CardTitle>
+                    <CardTitle>{t("managements.titles.create")}</CardTitle>
                 </CardHeader>
 
                 <CardContent>
@@ -88,7 +87,7 @@ export default function SupervisorCreatePage() {
                             <Input
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                placeholder={t("supervisors.placeholders.fullName")}
+                                placeholder={t("managements.placeholders.fullName")}
                                 aria-invalid={!!fieldErrors.name}
                             />
                             {fieldErrors.name ? <p className="text-xs text-destructive">{fieldErrors.name}</p> : null}
@@ -100,7 +99,7 @@ export default function SupervisorCreatePage() {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder={t("supervisors.placeholders.email")}
+                                placeholder={t("managements.placeholders.email")}
                                 aria-invalid={!!fieldErrors.email}
                             />
                             {fieldErrors.email ? <p className="text-xs text-destructive">{fieldErrors.email}</p> : null}
@@ -117,12 +116,12 @@ export default function SupervisorCreatePage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label>{t("supervisors.fields.temporaryPassword")}</Label>
+                            <Label>{t("managements.fields.temporaryPassword")}</Label>
                             <Input
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder={t("supervisors.placeholders.password")}
+                                placeholder={t("managements.placeholders.password")}
                                 aria-invalid={!!fieldErrors.password}
                             />
                             {fieldErrors.password ? <p className="text-xs text-destructive">{fieldErrors.password}</p> : null}
@@ -144,13 +143,13 @@ export default function SupervisorCreatePage() {
 
                         <div className="flex gap-2">
                             <Button type="submit" disabled={saving}>
-                                {saving ? t("common.creating") : t("supervisors.actions.create")}
+                                {saving ? t("common.creating") : t("managements.actions.create")}
                             </Button>
 
                             <Button
                                 type="button"
                                 variant="outline"
-                                onClick={() => navigate("/supervisors")}
+                                onClick={() => navigate("/managements")}
                                 disabled={saving}
                             >
                                 {t("buttons.cancel")}

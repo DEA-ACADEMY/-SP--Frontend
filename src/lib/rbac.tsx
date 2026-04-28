@@ -12,7 +12,8 @@ import {
     ClipboardList as EnrollmentIcon,
     MessageSquare,
     Users,
-    Gamepad2
+    Gamepad2,
+    ShieldCheck
 } from "lucide-react";
 
 export type Role = "student" | "supervisor" | "management" | "donor" | "expert";
@@ -101,6 +102,16 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         },
     };
 
+    const managementsResource: AppResource = {
+        name: "managements",
+        list: "/managements",
+        create: "/managements/create",
+        meta: {
+            label: "nav.managements",
+            icon: <ShieldCheck size={18} />,
+        },
+    };
+
     const tasksResource: AppResource = {
         name: "tasks",
         list: "/tasks",
@@ -172,6 +183,7 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         case "management":
             return [
                 ...common,
+                managementsResource,
                 studentsResource,
                 supervisorsResource,
                 tasksResource,
@@ -316,15 +328,14 @@ export function canAccessPath(role: Role, pathname: string): boolean {
         return role === "management";
     }
 
-    if (exact("/supervisors")) {
-        return role === "management";
-    }
-
     if (exact("/supervisors/create")) {
         return role === "management";
     }
 
     if (/^\/supervisors\/[^/]+\/profile$/.test(path)) {
+        return role === "management";
+    }
+    if (exact("/managements") || exact("/managements/create")) {
         return role === "management";
     }
     if (exact("/mini-games")) {

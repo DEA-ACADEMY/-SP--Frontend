@@ -88,6 +88,8 @@
   },
   "scripts": {
     "dev": "refine dev",
+    "dev:localhost": "vite --mode localhost --host 127.0.0.1 --port 5173",
+    "dev:local": "npm run dev:localhost",
     "build": "tsc && vite build",
     "start": "refine start",
     "refine": "refine"

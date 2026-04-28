@@ -38,6 +38,8 @@ import StudentCreatePage from "@/pages/students/create";
 import Supervisors from "@/pages/supervisors/list";
 import SupervisorCreatePage from "@/pages/supervisors/create";
 import SupervisorProfilePage from "@/pages/supervisors/profile";
+import Managements from "@/pages/managements/list";
+import ManagementCreatePage from "@/pages/managements/create";
 
 import Tasks from "@/pages/tasks/list.tsx";
 import TaskShow from "@/pages/tasks/show";
@@ -194,6 +196,9 @@ function RefineShell() {
                                 <Route path="/supervisors/create" element={<SupervisorCreatePage />} />
                                 <Route path="/supervisors/:id/profile" element={<SupervisorProfilePage />} />
 
+                                {/* Management */}
+                                <Route path="/managements" element={<Managements />} />
+                                <Route path="/managements/create" element={<ManagementCreatePage />} />
 
                                 {/* students */}
                                 <Route path="/students" element={<Students />} />

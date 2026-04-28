@@ -255,6 +255,7 @@
   },
   "nav": {
     "dashboard": "لوحة التحكم",
+    "managements": "الإدارة",
     "notifications": "الإشعارات",
     "students": "الطلاب",
     "supervisors": "المشرفون",
@@ -400,6 +401,30 @@
       "allFieldsRequired": "جميع الحقول مطلوبة",
       "passwordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
       "failedToCreate": "فشل إنشاء المشرف"
+    }
+  },
+  "managements": {
+    "titles": {
+      "list": "الإدارة",
+      "create": "إضافة مستخدم إدارة",
+      "edit": "تعديل مستخدم الإدارة",
+      "show": "تفاصيل مستخدم الإدارة"
+    },
+    "actions": {
+      "create": "إضافة مستخدم إدارة"
+    },
+    "fields": {
+      "temporaryPassword": "كلمة المرور المؤقتة"
+    },
+    "placeholders": {
+      "fullName": "الاسم الكامل لمستخدم الإدارة",
+      "email": "management@example.com",
+      "password": "8 أحرف على الأقل"
+    },
+    "messages": {
+      "allFieldsRequired": "جميع الحقول مطلوبة",
+      "passwordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+      "failedToCreate": "فشل إنشاء مستخدم الإدارة"
     }
   },
   "tasks": {
@@ -719,7 +744,7 @@
     }
   },
   "dashboard": {
-    "subtitle": "نظرة عامة على لوحة التحكم بناءً على الدور الوظيفي.",
+    "subtitle": "نظرة عامة حسب الدور على نشاط المنصة والمتابعة والتقدم.",
     "errors": {
       "currentUser": "تعذر تحميل بيانات المستخدم الحالي.",
       "loadDashboard": "فشل تحميل لوحة التحكم.",

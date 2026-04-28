@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Languages } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "./language-provider";
 
@@ -26,12 +25,12 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
             size="icon"
             onClick={toggleLanguage}
             className={cn(
-                "h-10 w-10 rounded-full border-sidebar-border bg-transparent",
+                "h-10 min-w-10 rounded-full border-sidebar-border bg-transparent px-2 text-xs font-bold uppercase tracking-normal",
                 className,
             )}
             title={label}
         >
-            <Languages className="h-[1.2rem] w-[1.2rem]" />
+            <span aria-hidden>{language === "en" ? "EN" : "AR"}</span>
             <span className="sr-only">{label}</span>
         </Button>
     );

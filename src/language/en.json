@@ -255,6 +255,7 @@
   },
   "nav": {
     "dashboard": "Dashboard",
+    "managements": "Management",
     "notifications": "Notifications",
     "students": "Students",
     "supervisors": "Supervisors",
@@ -400,6 +401,30 @@
       "allFieldsRequired": "All fields are required",
       "passwordMin": "Password must be at least 8 characters",
       "failedToCreate": "Failed to create supervisor"
+    }
+  },
+  "managements": {
+    "titles": {
+      "list": "Management",
+      "create": "Create Management User",
+      "edit": "Edit Management User",
+      "show": "Management User Details"
+    },
+    "actions": {
+      "create": "Create Management User"
+    },
+    "fields": {
+      "temporaryPassword": "Temporary Password"
+    },
+    "placeholders": {
+      "fullName": "Management full name",
+      "email": "management@example.com",
+      "password": "At least 8 characters"
+    },
+    "messages": {
+      "allFieldsRequired": "All fields are required",
+      "passwordMin": "Password must be at least 8 characters",
+      "failedToCreate": "Failed to create management user"
     }
   },
   "tasks": {
@@ -719,6 +744,7 @@
     }
   },
   "dashboard": {
+    "subtitle": "Role-based overview of platform activity, follow-up, and progress.",
     "hero": {
       "welcomeBack": "Welcome back, {{name}}!"
     },
