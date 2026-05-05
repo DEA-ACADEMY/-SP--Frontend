@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/components/refine-ui/language/language-provider";
 
 type DataTableProps<TData extends BaseRecord> = {
   table: UseTableReturnType<TData, HttpError>;
@@ -224,6 +225,7 @@ function DataTableNoData({
   columnsLength: number;
 }) {
   const { t } = useTranslation();
+  const { dir } = useLanguage();
 
   return (
     <TableRow className="hover:bg-transparent">
@@ -245,8 +247,9 @@ function DataTableNoData({
           )}
           style={{
             position: isOverflowing.horizontal ? "sticky" : "absolute",
-            left: isOverflowing.horizontal ? "50%" : "50%",
-            transform: "translateX(-50%)",
+            left: dir === "rtl" ? undefined : "50%",
+            right: dir === "rtl" ? "50%" : undefined,
+            transform: dir === "rtl" ? "translateX(50%)" : "translateX(-50%)",
             zIndex: isOverflowing.horizontal ? 2 : 1,
             width: isOverflowing.horizontal ? "fit-content" : "100%",
             minWidth: "300px",

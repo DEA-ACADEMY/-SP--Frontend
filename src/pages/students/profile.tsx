@@ -24,6 +24,16 @@ type ClassificationItem = {
     name: string | null;
 } | null;
 
+type Branch = {
+    id: string;
+    name?: string | null;
+};
+
+type Cohort = {
+    id: string;
+    name?: string | null;
+};
+
 type StudentProfileResponse = {
     user: {
         id: string;
@@ -84,6 +94,8 @@ type FormState = {
     avatarUrl: string;
     notes: string;
     allowedEdit: boolean;
+    branchId: string;
+    cohortId: string;
     extra: StudentExtraFormState;
 };
 
@@ -99,8 +111,12 @@ export default function StudentStaffProfilePage() {
         avatarUrl: "",
         notes: "",
         allowedEdit: true,
+        branchId: "",
+        cohortId: "",
         extra: emptyStudentExtraForm,
     });
+    const [branches, setBranches] = useState<Branch[]>([]);
+    const [cohorts, setCohorts] = useState<Cohort[]>([]);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -126,6 +142,8 @@ export default function StudentStaffProfilePage() {
                 avatarUrl: json.profile?.avatarUrl ?? json.user?.image ?? "",
                 notes: json.profile?.notes ?? "",
                 allowedEdit: json.profile?.allowedEdit ?? true,
+                branchId: json.profile?.classification?.branch?.id ?? "",
+                cohortId: json.profile?.classification?.cohort?.id ?? "",
                 extra: {
                     ...emptyStudentExtraForm,
                     ...Object.fromEntries(
@@ -146,7 +164,23 @@ export default function StudentStaffProfilePage() {
 
     useEffect(() => {
         void loadProfile();
+        void loadClassificationOptions();
     }, [id]);
+
+    async function loadClassificationOptions() {
+        try {
+            const [branchesJson, cohortsJson] = await Promise.all([
+                kyInstance.get("branches", { searchParams: { _start: "0", _end: "1000" } }).json(),
+                kyInstance.get("cohorts", { searchParams: { _start: "0", _end: "1000" } }).json(),
+            ]);
+
+            setBranches(Array.isArray(branchesJson) ? branchesJson : (branchesJson as any)?.data ?? []);
+            setCohorts(Array.isArray(cohortsJson) ? cohortsJson : (cohortsJson as any)?.data ?? []);
+        } catch {
+            setBranches([]);
+            setCohorts([]);
+        }
+    }
 
     function renderExtraField(field: StudentExtraField) {
         const options = field.optionsKey
@@ -210,6 +244,8 @@ export default function StudentStaffProfilePage() {
             await kyInstance.patch(`students/${id}/profile/staff`, {
                 json: {
                     ...form,
+                    branchId: form.branchId || null,
+                    cohortId: form.cohortId || null,
                     ...form.extra,
                     extra: undefined,
                 },
@@ -360,6 +396,52 @@ export default function StudentStaffProfilePage() {
                                     disabled={saving}
                                     layout="row"
                                 />
+                            </div>
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            <div className="space-y-2">
+                                <Label>{t("common.branch")}</Label>
+                                <select
+                                    className="h-9 w-full rounded-md border bg-background px-3"
+                                    value={form.branchId}
+                                    onChange={(e) =>
+                                        setForm((prev) => ({
+                                            ...prev,
+                                            branchId: e.target.value,
+                                        }))
+                                    }
+                                    disabled={saving}
+                                >
+                                    <option value="">{t("students.placeholders.selectBranch")}</option>
+                                    {branches.map((branch) => (
+                                        <option key={branch.id} value={branch.id}>
+                                            {branch.name ?? t("dashboard.report.unnamed.branch")}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label>{t("common.cohort")}</Label>
+                                <select
+                                    className="h-9 w-full rounded-md border bg-background px-3"
+                                    value={form.cohortId}
+                                    onChange={(e) =>
+                                        setForm((prev) => ({
+                                            ...prev,
+                                            cohortId: e.target.value,
+                                        }))
+                                    }
+                                    disabled={saving}
+                                >
+                                    <option value="">{t("students.placeholders.selectCohort")}</option>
+                                    {cohorts.map((cohort) => (
+                                        <option key={cohort.id} value={cohort.id}>
+                                            {cohort.name ?? t("dashboard.report.unnamed.cohort")}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
 

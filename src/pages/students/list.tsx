@@ -32,7 +32,7 @@ type Student = {
     supervisorId: string | null;
 };
 
-type Supervisor = {
+type StaffAssignee = {
     id: string;
     name: string | null;
     email: string;
@@ -56,7 +56,7 @@ export default function Students() {
     const { t } = useTranslation();
     const { dir } = useLanguage();
     const [role, setRole] = useState<Role | null>(null);
-    const [supervisors, setSupervisors] = useState<Supervisor[]>([]);
+    const [staffAssignees, setStaffAssignees] = useState<StaffAssignee[]>([]);
     const [saving, setSaving] = useState<Record<string, boolean>>({});
     const [override, setOverride] = useState<Record<string, string | null>>({});
     const [error, setError] = useState<string | null>(null);
@@ -77,21 +77,25 @@ export default function Students() {
                 if (!cancelled) setRole(nextRole ?? null);
 
                 if (nextRole === "management") {
-                    const [supervisorsJson, requestsJson] = await Promise.all([
+                    const [supervisorsJson, managementsJson, requestsJson] = await Promise.all([
                         kyInstance.get("supervisors").json<any>(),
+                        kyInstance.get("managements").json<any>(),
                         kyInstance.get("students/create-requests").json<any>(),
                     ]);
 
                     const supervisorsData = Array.isArray(supervisorsJson)
                         ? supervisorsJson
                         : supervisorsJson?.data ?? [];
+                    const managementsData = Array.isArray(managementsJson)
+                        ? managementsJson
+                        : managementsJson?.data ?? [];
 
                     const requestsData = Array.isArray(requestsJson)
                         ? requestsJson
                         : requestsJson?.data ?? [];
 
                     if (!cancelled) {
-                        setSupervisors(supervisorsData);
+                        setStaffAssignees([...supervisorsData, ...managementsData]);
                         setRequests(requestsData);
                     }
 
@@ -99,12 +103,12 @@ export default function Students() {
                 }
 
                 if (!cancelled) {
-                    setSupervisors([]);
+                    setStaffAssignees([]);
                     setRequests([]);
                 }
             } catch (e: any) {
                 if (!cancelled) {
-                    setSupervisors([]);
+                    setStaffAssignees([]);
                     setRequests([]);
                     setError(t("students.messages.failedToLoadPage"));
                 }
@@ -230,14 +234,14 @@ export default function Students() {
                                 }}
                             >
                                 <SelectTrigger className="w-full min-w-[180px] max-w-[240px]">
-                                    <SelectValue placeholder={t("students.table.assignSupervisor")} />
+                                    <SelectValue placeholder={t("students.table.assignStaff")} />
                                 </SelectTrigger>
 
                                 <SelectContent>
                                     <SelectItem value="none">
                                         {t("students.table.unassignedOption")}
                                     </SelectItem>
-                                    {supervisors.map((s) => (
+                                    {staffAssignees.map((s) => (
                                         <SelectItem key={s.id} value={s.id}>
                                             {s.name ?? s.email}
                                         </SelectItem>
@@ -271,7 +275,7 @@ export default function Students() {
                 },
             },
         ];
-    }, [role, supervisors, saving, override, t]);
+    }, [role, staffAssignees, saving, override, t]);
 
     const table = useTable<Student, HttpError>({
         columns,

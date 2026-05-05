@@ -51,6 +51,7 @@ import BranchEdit from "@/pages/branches/edit";
 import BranchShow from "@/pages/branches/show";
 import Enrollments from "@/pages/enrollments/list";
 import Cohorts from "@/pages/cohorts/list";
+import CohortCreatePage from "@/pages/cohorts/create";
 import Programs from "@/pages/program/list";
 import ProgramCreate from "@/pages/program/create";
 import ProgramEdit from "@/pages/program/edit";
@@ -259,6 +260,7 @@ function RefineShell() {
 
                                 {/* cohorts */}
                                 <Route path="/cohorts" element={<Cohorts />} />
+                                <Route path="/cohorts/create" element={<CohortCreatePage />} />
 
                                 {/* enrollments */}
                                 <Route path="/enrollments" element={<Enrollments />} />

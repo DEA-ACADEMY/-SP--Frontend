@@ -293,7 +293,8 @@
       "selectBranch": "Select branch",
       "selectProgram": "Select program",
         "selectCohort": "Select cohort",
-        "selectSupervisor": "Select supervisor"
+        "selectSupervisor": "Select supervisor",
+        "selectStaffAssignee": "Select supervisor or management"
       },
     "table": {
       "name": "Name",
@@ -303,6 +304,7 @@
       "assigned": "Assigned",
       "unassigned": "Unassigned",
       "assignSupervisor": "Assign supervisor",
+      "assignStaff": "Assign staff",
       "unassignedOption": "Unassigned",
       "openProfile": "Open Profile"
     },
@@ -608,12 +610,23 @@
     "actions": {
       "seed": "Create Cohort 1-15"
     },
+    "fields": {
+      "name": "Cohort name",
+      "startDate": "Start date",
+      "endDate": "End date"
+    },
+    "placeholders": {
+      "name": "Cohort name",
+      "noProgram": "No linked program"
+    },
     "messages": {
         "description": "Cohorts are global student groups; students inside a cohort can belong to different branches.",
         "empty": "No cohorts for this program yet.",
         "noCohorts": "No cohorts available yet.",
         "noPrograms": "No programs available yet.",
         "failedToLoad": "Failed to load cohorts",
+      "failedToCreate": "Failed to create cohort",
+      "nameRequired": "Cohort name is required",
       "failedToSeed": "Failed to create cohorts",
       "studentCount": "{{count}} student",
       "studentCount_plural": "{{count}} students",

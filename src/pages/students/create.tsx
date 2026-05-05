@@ -14,7 +14,6 @@ import {
     beforeConditionalStudentExtraFields,
     conditionalStudentExtraGroups,
     emptyStudentExtraForm,
-    orderedStudentExtraFields,
     type StudentExtraField,
     type StudentExtraFormState,
 } from "./student-profile-fields";
@@ -29,7 +28,7 @@ type Cohort = {
     name?: string | null;
 };
 
-type Supervisor = {
+type StaffAssignee = {
     id: string;
     name?: string | null;
     email?: string | null;
@@ -66,7 +65,7 @@ export default function StudentCreatePage() {
 
     const [branches, setBranches] = useState<Branch[]>([]);
     const [cohorts, setCohorts] = useState<Cohort[]>([]);
-    const [supervisors, setSupervisors] = useState<Supervisor[]>([]);
+    const [staffAssignees, setStaffAssignees] = useState<StaffAssignee[]>([]);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -101,10 +100,15 @@ export default function StudentCreatePage() {
                 ];
 
                 if (nextRole === "management") {
-                    requests.push(kyInstance.get("supervisors", { searchParams: { _start: "0", _end: "1000" } }).json<any>());
+                    requests.push(
+                        Promise.all([
+                            kyInstance.get("supervisors", { searchParams: { _start: "0", _end: "1000" } }).json<any>(),
+                            kyInstance.get("managements", { searchParams: { _start: "0", _end: "1000" } }).json<any>(),
+                        ]),
+                    );
                 }
 
-                const [branchesJson, cohortsJson, supervisorsJson] = await Promise.all(requests);
+                const [branchesJson, cohortsJson, staffJson] = await Promise.all(requests);
 
                 const nextBranches = Array.isArray(branchesJson)
                     ? branchesJson
@@ -112,15 +116,17 @@ export default function StudentCreatePage() {
                 const nextCohorts = Array.isArray(cohortsJson)
                     ? cohortsJson
                     : cohortsJson?.data ?? [];
-                const nextSupervisors = Array.isArray(supervisorsJson)
-                    ? supervisorsJson
-                    : supervisorsJson?.data ?? [];
+                const [supervisorsJson, managementsJson] = Array.isArray(staffJson) ? staffJson : [[], []];
+                const nextStaffAssignees = [
+                    ...(Array.isArray(supervisorsJson) ? supervisorsJson : supervisorsJson?.data ?? []),
+                    ...(Array.isArray(managementsJson) ? managementsJson : managementsJson?.data ?? []),
+                ];
 
                 if (!cancelled) {
                     setRole(nextRole ?? null);
                     setBranches(nextBranches);
                     setCohorts(nextCohorts);
-                    setSupervisors(nextSupervisors);
+                    setStaffAssignees(nextStaffAssignees);
                 }
             } catch (e: any) {
                 if (!cancelled) {
@@ -194,14 +200,6 @@ export default function StudentCreatePage() {
         if (!email.trim()) nextFieldErrors.email = requiredMessage;
         if (!password.trim()) nextFieldErrors.password = requiredMessage;
         if (!confirmPassword.trim()) nextFieldErrors.confirmPassword = requiredMessage;
-        if (!branchId) nextFieldErrors.branchId = requiredMessage;
-
-        for (const field of orderedStudentExtraFields) {
-            if (field.required && !extraForm[field.name].trim()) {
-                nextFieldErrors[field.name] = requiredMessage;
-            }
-        }
-
         if (Object.keys(nextFieldErrors).length > 0) {
             setFieldErrors(nextFieldErrors);
             setError(t("students.messages.classificationRequired"));
@@ -396,10 +394,10 @@ export default function StudentCreatePage() {
                                             value={supervisorId}
                                             onChange={(e) => setSupervisorId(e.target.value)}
                                         >
-                                            <option value="">{t("students.placeholders.selectSupervisor")}</option>
-                                            {supervisors.map((supervisor) => (
-                                                <option key={supervisor.id} value={supervisor.id}>
-                                                    {supervisor.name ?? supervisor.email ?? t("dashboard.report.unnamed.supervisor")}
+                                            <option value="">{t("students.placeholders.selectStaffAssignee")}</option>
+                                            {staffAssignees.map((staff) => (
+                                                <option key={staff.id} value={staff.id}>
+                                                    {staff.name ?? staff.email ?? t("dashboard.report.unnamed.supervisor")}
                                                 </option>
                                             ))}
                                         </select>

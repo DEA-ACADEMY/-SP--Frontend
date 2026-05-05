@@ -293,7 +293,8 @@
       "selectBranch": "اختر الفرع",
       "selectProgram": "اختر البرنامج",
         "selectCohort": "اختر الدفعة",
-        "selectSupervisor": "اختر المشرف"
+        "selectSupervisor": "اختر المشرف",
+        "selectStaffAssignee": "اختر مشرفًا أو مستخدم إدارة"
       },
     "table": {
       "name": "الاسم",
@@ -303,6 +304,7 @@
       "assigned": "تم التعيين",
       "unassigned": "غير معيّن",
       "assignSupervisor": "تعيين مشرف",
+      "assignStaff": "تعيين مسؤول",
       "unassignedOption": "غير معيّن",
       "openProfile": "فتح الملف"
     },
@@ -608,12 +610,23 @@
     "actions": {
       "seed": "إنشاء الدفعات 1-15"
     },
+    "fields": {
+      "name": "اسم الدفعة",
+      "startDate": "تاريخ البداية",
+      "endDate": "تاريخ النهاية"
+    },
+    "placeholders": {
+      "name": "اسم الدفعة",
+      "noProgram": "بدون برنامج مرتبط"
+    },
     "messages": {
         "description": "الدفعات مجموعات عامة للطلاب، ويمكن أن تضم الدفعة الواحدة طلابًا من فروع مختلفة.",
         "empty": "لا توجد دفعات لهذا البرنامج بعد.",
         "noCohorts": "لا توجد دفعات متاحة بعد.",
         "noPrograms": "لا توجد برامج متاحة بعد.",
         "failedToLoad": "فشل تحميل الدفعات",
+      "failedToCreate": "فشل إنشاء الدفعة",
+      "nameRequired": "اسم الدفعة مطلوب",
       "failedToSeed": "فشل إنشاء الدفعات",
       "studentCount": "{{count}} طالب",
       "studentCount_plural": "{{count}} طلاب",
