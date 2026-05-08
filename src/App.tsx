@@ -39,6 +39,9 @@ import SupervisorCreatePage from "@/pages/supervisors/create";
 import SupervisorProfilePage from "@/pages/supervisors/profile";
 import Managements from "@/pages/managements/list";
 import ManagementCreatePage from "@/pages/managements/create";
+import Donors from "@/pages/donors/list";
+import DonorCreatePage from "@/pages/donors/create";
+import DonorProfilePage from "@/pages/donors/profile";
 
 import Tasks from "@/pages/tasks/list.tsx";
 import TaskShow from "@/pages/tasks/show";
@@ -65,6 +68,11 @@ import ConsultationCreate from "@/pages/consultations/create";
 import ConsultationShow from "@/pages/consultations/show";
 
 import MiniGamesPage from "@/pages/games/list.tsx";
+import DonorDashboard from "@/pages/donor/dashboard";
+import DonorStudents from "@/pages/donor/students";
+import DonorPrograms from "@/pages/donor/programs";
+import DonorReports from "@/pages/donor/reports";
+import DonorMessages from "@/pages/donor/messages";
 
 import { canAccessPath, getResourcesForRole, roleHome, type Role } from "@/lib/rbac";
 
@@ -141,9 +149,19 @@ function RefineShell() {
         const pageTitle =
             path === "/" || path === "/student" || path === "/supervisor" || path === "/donor" || path === "/expert"
                 ? t("nav.dashboard")
-                : path.startsWith("/managements")
-                    ? t("nav.managements")
-                    : path.startsWith("/students")
+                            : path.startsWith("/managements")
+                                ? t("nav.managements")
+                                : path.startsWith("/donors")
+                                    ? t("nav.donors")
+                                    : path.startsWith("/donor/students")
+                                        ? t("nav.supportedStudents")
+                                        : path.startsWith("/donor/programs")
+                                            ? t("nav.supportedPrograms")
+                                            : path.startsWith("/donor/reports")
+                                                ? t("nav.donorReports")
+                                                : path.startsWith("/donor/messages")
+                                                    ? t("nav.messages")
+                                : path.startsWith("/students")
                         ? t("nav.students")
                         : path.startsWith("/supervisors")
                             ? t("nav.supervisors")
@@ -217,7 +235,7 @@ function RefineShell() {
                                 <Route path="/" element={<Dashboard />} />
                                 <Route path="/student" element={<Dashboard />} />
                                 <Route path="/supervisor" element={<Dashboard />} />
-                                <Route path="/donor" element={<Dashboard />} />
+                                <Route path="/donor" element={<DonorDashboard />} />
                                 <Route path="/expert" element={<Dashboard />} />
 
                                 {/* common */}
@@ -233,6 +251,11 @@ function RefineShell() {
                                 {/* Management */}
                                 <Route path="/managements" element={<Managements />} />
                                 <Route path="/managements/create" element={<ManagementCreatePage />} />
+
+                                {/* Donors */}
+                                <Route path="/donors" element={<Donors />} />
+                                <Route path="/donors/create" element={<DonorCreatePage />} />
+                                <Route path="/donors/:id/profile" element={<DonorProfilePage />} />
 
                                 {/* students */}
                                 <Route path="/students" element={<Students />} />
@@ -273,6 +296,12 @@ function RefineShell() {
                                 <Route path="/consultations/show/:id" element={<ConsultationShow />} />
 
                                 <Route path="/mini-games" element={<MiniGamesPage />} />
+
+                                {/* Donor */}
+                                <Route path="/donor/students" element={<DonorStudents />} />
+                                <Route path="/donor/programs" element={<DonorPrograms />} />
+                                <Route path="/donor/reports" element={<DonorReports />} />
+                                <Route path="/donor/messages" element={<DonorMessages />} />
 
                             </Route>
 

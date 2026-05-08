@@ -259,6 +259,11 @@
     "notifications": "Notifications",
     "students": "Students",
     "supervisors": "Supervisors",
+    "donors": "Donors",
+    "supportedStudents": "My Supported Students",
+    "supportedPrograms": "Supported Programs",
+    "donorReports": "Donor Reports",
+    "messages": "Messages",
     "tasks": "Tasks",
     "consultations": "Consultations",
     "consulattions": "Consultations",
@@ -281,7 +286,8 @@
     },
       "fields": {
         "uploadPicture": "Upload Picture",
-        "supervisor": "Supervisor"
+        "supervisor": "Supervisor",
+        "donor": "Donor"
       },
     "placeholders": {
       "fullName": "Student full name",
@@ -294,17 +300,20 @@
       "selectProgram": "Select program",
         "selectCohort": "Select cohort",
         "selectSupervisor": "Select supervisor",
-        "selectStaffAssignee": "Select supervisor or management"
+        "selectStaffAssignee": "Select supervisor or management",
+        "selectDonor": "Select donor (optional)"
       },
     "table": {
       "name": "Name",
       "email": "Email",
       "supervisor": "Supervisor",
+      "donor": "Donor",
       "actions": "Actions",
       "assigned": "Assigned",
       "unassigned": "Unassigned",
       "assignSupervisor": "Assign supervisor",
       "assignStaff": "Assign staff",
+      "assignDonor": "Assign donor",
       "unassignedOption": "Unassigned",
       "openProfile": "Open Profile"
     },
@@ -323,6 +332,7 @@
       "failedToApproveRequest": "Failed to approve request",
       "failedToRejectRequest": "Failed to reject request",
       "failedToUpdateSupervisor": "Failed to update supervisor mapping",
+      "failedToUpdateDonor": "Failed to update donor mapping",
       "unauthorized": "Unauthorized (login required)",
       "forbidden": "Forbidden (management only)",
       "saving": "Saving...",
@@ -427,6 +437,76 @@
       "allFieldsRequired": "All fields are required",
       "passwordMin": "Password must be at least 8 characters",
       "failedToCreate": "Failed to create management user"
+    }
+  },
+  "donors": {
+    "titles": {
+      "list": "Donors",
+      "create": "Create Donor",
+      "show": "Donor Details"
+    },
+    "actions": {
+      "create": "Create Donor"
+    },
+    "fields": {
+      "temporaryPassword": "Temporary Password",
+      "supportedStudents": "Supported Students",
+      "supportedPrograms": "Supported Programs"
+    },
+    "placeholders": {
+      "fullName": "Donor full name",
+      "email": "donor@example.com",
+      "password": "At least 8 characters"
+    },
+    "messages": {
+      "allFieldsRequired": "All fields are required",
+      "passwordMin": "Password must be at least 8 characters",
+      "failedToCreate": "Failed to create donor"
+      ,
+      "failedToLoadProfile": "Failed to load donor profile"
+    }
+  },
+  "donor": {
+    "dashboard": {
+      "title": "Donor Dashboard",
+      "description": "A focused view of the students, programs, updates, and reports connected to your support.",
+      "latestUpdates": "Latest updates",
+      "latestReports": "Latest reports",
+      "recentNotifications": "Recent notifications"
+    },
+    "metrics": {
+      "supportedStudents": "Supported students",
+      "activeStudents": "Active students",
+      "completedTasks": "Completed tasks",
+      "supportedPrograms": "Supported programs"
+    },
+    "fields": {
+      "studentCode": "Student code",
+      "progressSummary": "Progress summary",
+      "supervisor": "Supervisor",
+      "cohorts": "Cohorts",
+      "supportedStudents": "Supported students"
+    },
+    "actions": {
+      "download": "Download",
+      "sendToManagement": "Send to Management"
+    },
+    "placeholders": {
+      "message": "Write a message to Management..."
+    },
+    "empty": {
+      "noUpdates": "No updates yet.",
+      "noNotifications": "No notifications yet.",
+      "noReports": "No reports available yet.",
+      "noMessages": "No messages yet."
+    },
+    "messages": {
+      "failedToLoadDashboard": "Failed to load donor dashboard",
+      "failedToLoadStudents": "Failed to load supported students",
+      "failedToLoadPrograms": "Failed to load supported programs",
+      "failedToLoadReports": "Failed to load donor reports",
+      "failedToLoadMessages": "Failed to load messages",
+      "failedToSendMessage": "Failed to send message"
     }
   },
   "tasks": {
@@ -652,7 +732,9 @@
         "assignProgram": "Assign program to student",
         "assignSelected": "Assign program",
         "assignCohort": "Assign cohort to student",
-        "assignCohortSelected": "Assign cohort"
+        "assignCohortSelected": "Assign cohort",
+        "assignDonor": "Assign donor to student",
+        "assignDonorSelected": "Assign donor"
       },
       "fields": {
         "student": "Student",
@@ -675,6 +757,7 @@
         "reviewCohortsDescription": "See each cohort and the students assigned to it.",
         "assignProgramDescription": "Assign one student to one or more programs from the student's branch.",
         "assignCohortDescription": "Place a student in a cohort. Cohorts are global and can include students from different branches.",
+        "assignDonorDescription": "Connect one student to a donor account. This is optional and can be changed later.",
         "failedToLoad": "Failed to load enrollments",
         "assignmentRequired": "Choose a student and a program first.",
         "failedToAssignProgram": "Failed to assign program",
@@ -686,7 +769,10 @@
         "failedToAssignCohort": "Failed to assign cohort",
         "cohortAssigned": "Cohort assigned to student.",
         "cohortAlreadyAssigned": "This student is already in that cohort.",
-        "selectStudentForCohortHint": "Choose a student to see their current cohort."
+        "selectStudentForCohortHint": "Choose a student to see their current cohort.",
+        "donorAssignmentRequired": "Choose a student first.",
+        "failedToAssignDonor": "Failed to assign donor",
+        "donorAssigned": "Donor assignment updated."
       }
     },
   "notifications": {

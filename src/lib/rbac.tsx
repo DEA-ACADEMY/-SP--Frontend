@@ -13,7 +13,9 @@ import {
     MessageSquare,
     Users,
     Gamepad2,
-    ShieldCheck
+    ShieldCheck,
+    HeartHandshake,
+    FileText,
 } from "lucide-react";
 
 export type Role = "student" | "supervisor" | "management" | "donor" | "expert";
@@ -112,6 +114,16 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         },
     };
 
+    const donorsResource: AppResource = {
+        name: "donors",
+        list: "/donors",
+        create: "/donors/create",
+        meta: {
+            label: "nav.donors",
+            icon: <HeartHandshake size={18} />,
+        },
+    };
+
     const tasksResource: AppResource = {
         name: "tasks",
         list: "/tasks",
@@ -169,6 +181,42 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
         },
     };
 
+    const donorStudentsResource: AppResource = {
+        name: "donor-students",
+        list: "/donor/students",
+        meta: {
+            label: "nav.supportedStudents",
+            icon: <StudentsIcon size={18} />,
+        },
+    };
+
+    const donorProgramsResource: AppResource = {
+        name: "donor-programs",
+        list: "/donor/programs",
+        meta: {
+            label: "nav.supportedPrograms",
+            icon: <BranchIcon size={18} />,
+        },
+    };
+
+    const donorReportsResource: AppResource = {
+        name: "donor-reports",
+        list: "/donor/reports",
+        meta: {
+            label: "nav.donorReports",
+            icon: <FileText size={18} />,
+        },
+    };
+
+    const donorMessagesResource: AppResource = {
+        name: "donor-messages",
+        list: "/donor/messages",
+        meta: {
+            label: "nav.messages",
+            icon: <MessageSquare size={18} />,
+        },
+    };
+
     const staffConsultationsResource: AppResource = {
         name: "advice-threads",
         list: "/consultations",
@@ -184,6 +232,7 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
             return [
                 ...common,
                 managementsResource,
+                donorsResource,
                 studentsResource,
                 supervisorsResource,
                 tasksResource,
@@ -239,7 +288,13 @@ export function getResourcesForRole(role?: Role | null): AppResource[] {
             ];
 
         case "donor":
-            return common;
+            return [
+                ...common,
+                donorStudentsResource,
+                donorProgramsResource,
+                donorReportsResource,
+                donorMessagesResource,
+            ];
 
         case "expert":
             return common;
@@ -337,6 +392,20 @@ export function canAccessPath(role: Role, pathname: string): boolean {
     }
     if (exact("/managements") || exact("/managements/create")) {
         return role === "management";
+    }
+    if (exact("/donors") || exact("/donors/create")) {
+        return role === "management";
+    }
+    if (/^\/donors\/[^/]+\/profile$/.test(path)) {
+        return role === "management";
+    }
+    if (
+        exact("/donor/students") ||
+        exact("/donor/programs") ||
+        exact("/donor/reports") ||
+        exact("/donor/messages")
+    ) {
+        return role === "donor";
     }
     if (exact("/mini-games")) {
         return role === "student";

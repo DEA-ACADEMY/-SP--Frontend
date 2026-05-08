@@ -30,6 +30,7 @@ type Student = {
     name: string | null;
     email: string;
     supervisorId: string | null;
+    donorId: string | null;
 };
 
 type StaffAssignee = {
@@ -57,6 +58,7 @@ export default function Students() {
     const { dir } = useLanguage();
     const [role, setRole] = useState<Role | null>(null);
     const [staffAssignees, setStaffAssignees] = useState<StaffAssignee[]>([]);
+    const [donors, setDonors] = useState<StaffAssignee[]>([]);
     const [saving, setSaving] = useState<Record<string, boolean>>({});
     const [override, setOverride] = useState<Record<string, string | null>>({});
     const [error, setError] = useState<string | null>(null);
@@ -77,10 +79,11 @@ export default function Students() {
                 if (!cancelled) setRole(nextRole ?? null);
 
                 if (nextRole === "management") {
-                    const [supervisorsJson, managementsJson, requestsJson] = await Promise.all([
+                    const [supervisorsJson, managementsJson, requestsJson, donorsJson] = await Promise.all([
                         kyInstance.get("supervisors").json<any>(),
                         kyInstance.get("managements").json<any>(),
                         kyInstance.get("students/create-requests").json<any>(),
+                        kyInstance.get("donors", { searchParams: { _start: "0", _end: "1000" } }).json<any>(),
                     ]);
 
                     const supervisorsData = Array.isArray(supervisorsJson)
@@ -93,9 +96,13 @@ export default function Students() {
                     const requestsData = Array.isArray(requestsJson)
                         ? requestsJson
                         : requestsJson?.data ?? [];
+                    const donorsData = Array.isArray(donorsJson)
+                        ? donorsJson
+                        : donorsJson?.data ?? [];
 
                     if (!cancelled) {
                         setStaffAssignees([...supervisorsData, ...managementsData]);
+                        setDonors(donorsData);
                         setRequests(requestsData);
                     }
 
@@ -104,11 +111,13 @@ export default function Students() {
 
                 if (!cancelled) {
                     setStaffAssignees([]);
+                    setDonors([]);
                     setRequests([]);
                 }
             } catch (e: any) {
                 if (!cancelled) {
                     setStaffAssignees([]);
+                    setDonors([]);
                     setRequests([]);
                     setError(t("students.messages.failedToLoadPage"));
                 }
@@ -138,6 +147,12 @@ export default function Students() {
     async function setStudentSupervisor(studentId: string, supervisorId: string | null) {
         await kyInstance.put(`students/${studentId}/supervisor`, {
             json: { supervisorId },
+        });
+    }
+
+    async function setStudentDonor(studentId: string, donorId: string | null) {
+        await kyInstance.put(`students/${studentId}/donor`, {
+            json: { donorId },
         });
     }
 
@@ -259,6 +274,78 @@ export default function Students() {
                 },
             },
             {
+                id: "donor",
+                header: t("students.table.donor"),
+                cell: ({ row }) => {
+                    const student = row.original;
+
+                    if (role !== "management") {
+                        return (
+                            <span className="text-sm text-muted-foreground">
+                                {student.donorId
+                                    ? t("students.table.assigned")
+                                    : t("students.table.unassigned")}
+                            </span>
+                        );
+                    }
+
+                    const overrideKey = `${student.id}:donor`;
+                    const current = override[overrideKey] ?? student.donorId;
+                    const value = current ?? "none";
+                    const isSaving = !!saving[overrideKey];
+
+                    return (
+                        <div className="flex items-center gap-2">
+                            <Select
+                                value={value}
+                                disabled={isSaving}
+                                onValueChange={async (v) => {
+                                    const next = v === "none" ? null : v;
+
+                                    setError(null);
+                                    setOverride((prev) => ({ ...prev, [overrideKey]: next }));
+                                    setSaving((prev) => ({ ...prev, [overrideKey]: true }));
+
+                                    try {
+                                        await setStudentDonor(student.id, next);
+                                    } catch {
+                                        setOverride((prev) => {
+                                            const copy = { ...prev };
+                                            delete copy[overrideKey];
+                                            return copy;
+                                        });
+                                        setError(t("students.messages.failedToUpdateDonor"));
+                                    } finally {
+                                        setSaving((prev) => ({ ...prev, [overrideKey]: false }));
+                                    }
+                                }}
+                            >
+                                <SelectTrigger className="w-full min-w-[180px] max-w-[240px]">
+                                    <SelectValue placeholder={t("students.table.assignDonor")} />
+                                </SelectTrigger>
+
+                                <SelectContent>
+                                    <SelectItem value="none">
+                                        {t("students.table.unassignedOption")}
+                                    </SelectItem>
+                                    {donors.map((donor) => (
+                                        <SelectItem key={donor.id} value={donor.id}>
+                                            {donor.name ?? donor.email}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+
+                            {isSaving ? (
+                                <span className="text-xs text-muted-foreground">
+                                    {t("students.messages.saving")}
+                                </span>
+                            ) : null}
+                        </div>
+                    );
+                },
+            },
+            {
                 id: "actions",
                 header: t("students.table.actions"),
                 cell: ({ row }) => {
@@ -275,7 +362,7 @@ export default function Students() {
                 },
             },
         ];
-    }, [role, staffAssignees, saving, override, t]);
+    }, [role, staffAssignees, donors, saving, override, t]);
 
     const table = useTable<Student, HttpError>({
         columns,

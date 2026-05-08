@@ -66,6 +66,7 @@ export default function StudentCreatePage() {
     const [branches, setBranches] = useState<Branch[]>([]);
     const [cohorts, setCohorts] = useState<Cohort[]>([]);
     const [staffAssignees, setStaffAssignees] = useState<StaffAssignee[]>([]);
+    const [donors, setDonors] = useState<StaffAssignee[]>([]);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -79,6 +80,7 @@ export default function StudentCreatePage() {
     const [branchId, setBranchId] = useState("");
     const [cohortId, setCohortId] = useState("");
     const [supervisorId, setSupervisorId] = useState("");
+    const [donorId, setDonorId] = useState("");
 
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
@@ -104,6 +106,7 @@ export default function StudentCreatePage() {
                         Promise.all([
                             kyInstance.get("supervisors", { searchParams: { _start: "0", _end: "1000" } }).json<any>(),
                             kyInstance.get("managements", { searchParams: { _start: "0", _end: "1000" } }).json<any>(),
+                            kyInstance.get("donors", { searchParams: { _start: "0", _end: "1000" } }).json<any>(),
                         ]),
                     );
                 }
@@ -116,17 +119,19 @@ export default function StudentCreatePage() {
                 const nextCohorts = Array.isArray(cohortsJson)
                     ? cohortsJson
                     : cohortsJson?.data ?? [];
-                const [supervisorsJson, managementsJson] = Array.isArray(staffJson) ? staffJson : [[], []];
+                const [supervisorsJson, managementsJson, donorsJson] = Array.isArray(staffJson) ? staffJson : [[], [], []];
                 const nextStaffAssignees = [
                     ...(Array.isArray(supervisorsJson) ? supervisorsJson : supervisorsJson?.data ?? []),
                     ...(Array.isArray(managementsJson) ? managementsJson : managementsJson?.data ?? []),
                 ];
+                const nextDonors = Array.isArray(donorsJson) ? donorsJson : donorsJson?.data ?? [];
 
                 if (!cancelled) {
                     setRole(nextRole ?? null);
                     setBranches(nextBranches);
                     setCohorts(nextCohorts);
                     setStaffAssignees(nextStaffAssignees);
+                    setDonors(nextDonors);
                 }
             } catch (e: any) {
                 if (!cancelled) {
@@ -233,6 +238,7 @@ export default function StudentCreatePage() {
                     branchId,
                     cohortId: cohortId || null,
                     supervisorId: role === "management" ? supervisorId || null : null,
+                    donorId: role === "management" ? donorId || null : null,
                 },
             });
 
@@ -398,6 +404,24 @@ export default function StudentCreatePage() {
                                             {staffAssignees.map((staff) => (
                                                 <option key={staff.id} value={staff.id}>
                                                     {staff.name ?? staff.email ?? t("dashboard.report.unnamed.supervisor")}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                ) : null}
+
+                                {role === "management" ? (
+                                    <div className="space-y-2">
+                                        <Label>{t("students.fields.donor")}</Label>
+                                        <select
+                                            className="h-9 w-full border rounded-md px-3 bg-background"
+                                            value={donorId}
+                                            onChange={(e) => setDonorId(e.target.value)}
+                                        >
+                                            <option value="">{t("students.placeholders.selectDonor")}</option>
+                                            {donors.map((donor) => (
+                                                <option key={donor.id} value={donor.id}>
+                                                    {donor.name ?? donor.email ?? t("roles.donor")}
                                                 </option>
                                             ))}
                                         </select>

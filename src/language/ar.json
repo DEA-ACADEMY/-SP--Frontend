@@ -259,6 +259,11 @@
     "notifications": "الإشعارات",
     "students": "الطلاب",
     "supervisors": "المشرفون",
+    "donors": "المتبرعون",
+    "supportedStudents": "طلابي المدعومون",
+    "supportedPrograms": "البرامج المدعومة",
+    "donorReports": "تقارير المتبرع",
+    "messages": "الرسائل",
     "tasks": "المهام",
     "consultations": "الاستشارات",
     "consulattions": "الاستشارات",
@@ -281,7 +286,8 @@
     },
       "fields": {
         "uploadPicture": "رفع صورة",
-        "supervisor": "المشرف"
+        "supervisor": "المشرف",
+        "donor": "المتبرع"
       },
     "placeholders": {
       "fullName": "الاسم الكامل للطالب",
@@ -294,17 +300,20 @@
       "selectProgram": "اختر البرنامج",
         "selectCohort": "اختر الدفعة",
         "selectSupervisor": "اختر المشرف",
-        "selectStaffAssignee": "اختر مشرفًا أو مستخدم إدارة"
+        "selectStaffAssignee": "اختر مشرفًا أو مستخدم إدارة",
+        "selectDonor": "اختر المتبرع (اختياري)"
       },
     "table": {
       "name": "الاسم",
       "email": "البريد الإلكتروني",
       "supervisor": "المشرف",
+      "donor": "المتبرع",
       "actions": "الإجراءات",
       "assigned": "تم التعيين",
       "unassigned": "غير معيّن",
       "assignSupervisor": "تعيين مشرف",
       "assignStaff": "تعيين مسؤول",
+      "assignDonor": "تعيين متبرع",
       "unassignedOption": "غير معيّن",
       "openProfile": "فتح الملف"
     },
@@ -323,6 +332,7 @@
       "failedToApproveRequest": "فشل اعتماد الطلب",
       "failedToRejectRequest": "فشل رفض الطلب",
       "failedToUpdateSupervisor": "فشل تحديث ربط المشرف",
+      "failedToUpdateDonor": "فشل تحديث ربط المتبرع",
       "unauthorized": "غير مصرح. يلزم تسجيل الدخول",
       "forbidden": "غير مسموح. متاح للإدارة فقط",
       "saving": "جارٍ الحفظ...",
@@ -427,6 +437,76 @@
       "allFieldsRequired": "جميع الحقول مطلوبة",
       "passwordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
       "failedToCreate": "فشل إنشاء مستخدم الإدارة"
+    }
+  },
+  "donors": {
+    "titles": {
+      "list": "المتبرعون",
+      "create": "إضافة متبرع",
+      "show": "تفاصيل المتبرع"
+    },
+    "actions": {
+      "create": "إضافة متبرع"
+    },
+    "fields": {
+      "temporaryPassword": "كلمة المرور المؤقتة",
+      "supportedStudents": "الطلاب المدعومون",
+      "supportedPrograms": "البرامج المدعومة"
+    },
+    "placeholders": {
+      "fullName": "الاسم الكامل للمتبرع",
+      "email": "donor@example.com",
+      "password": "8 أحرف على الأقل"
+    },
+    "messages": {
+      "allFieldsRequired": "جميع الحقول مطلوبة",
+      "passwordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+      "failedToCreate": "فشل إنشاء المتبرع"
+      ,
+      "failedToLoadProfile": "فشل تحميل ملف المتبرع"
+    }
+  },
+  "donor": {
+    "dashboard": {
+      "title": "لوحة المتبرع",
+      "description": "عرض مخصص للطلاب والبرامج والتحديثات والتقارير المرتبطة بدعمك.",
+      "latestUpdates": "آخر التحديثات",
+      "latestReports": "آخر التقارير",
+      "recentNotifications": "أحدث الإشعارات"
+    },
+    "metrics": {
+      "supportedStudents": "الطلاب المدعومون",
+      "activeStudents": "الطلاب النشطون",
+      "completedTasks": "المهام المكتملة",
+      "supportedPrograms": "البرامج المدعومة"
+    },
+    "fields": {
+      "studentCode": "رمز الطالب",
+      "progressSummary": "ملخص التقدم",
+      "supervisor": "المشرف",
+      "cohorts": "الدفعات",
+      "supportedStudents": "الطلاب المدعومون"
+    },
+    "actions": {
+      "download": "تنزيل",
+      "sendToManagement": "إرسال إلى الإدارة"
+    },
+    "placeholders": {
+      "message": "اكتب رسالة إلى الإدارة..."
+    },
+    "empty": {
+      "noUpdates": "لا توجد تحديثات بعد.",
+      "noNotifications": "لا توجد إشعارات بعد.",
+      "noReports": "لا توجد تقارير متاحة بعد.",
+      "noMessages": "لا توجد رسائل بعد."
+    },
+    "messages": {
+      "failedToLoadDashboard": "فشل تحميل لوحة المتبرع",
+      "failedToLoadStudents": "فشل تحميل الطلاب المدعومين",
+      "failedToLoadPrograms": "فشل تحميل البرامج المدعومة",
+      "failedToLoadReports": "فشل تحميل تقارير المتبرع",
+      "failedToLoadMessages": "فشل تحميل الرسائل",
+      "failedToSendMessage": "فشل إرسال الرسالة"
     }
   },
   "tasks": {
@@ -652,7 +732,9 @@
         "assignProgram": "تعيين برنامج لطالب",
         "assignSelected": "تعيين البرنامج",
         "assignCohort": "تعيين دفعة لطالب",
-        "assignCohortSelected": "تعيين الدفعة"
+        "assignCohortSelected": "تعيين الدفعة",
+        "assignDonor": "تعيين متبرع لطالب",
+        "assignDonorSelected": "تعيين المتبرع"
       },
       "fields": {
         "student": "الطالب",
@@ -675,6 +757,7 @@
         "reviewCohortsDescription": "اعرض كل دفعة والطلاب المرتبطين بها.",
         "assignProgramDescription": "عيّن الطالب إلى برنامج واحد أو أكثر من برامج فرعه.",
         "assignCohortDescription": "ضع الطالب في دفعة. الدفعات عامة ويمكن أن تضم طلابًا من فروع مختلفة.",
+        "assignDonorDescription": "اربط طالبًا واحدًا بحساب متبرع. هذا الاختيار غير إلزامي ويمكن تغييره لاحقًا.",
         "failedToLoad": "فشل تحميل التسجيلات",
         "assignmentRequired": "اختر الطالب والبرنامج أولًا.",
         "failedToAssignProgram": "فشل تعيين البرنامج",
@@ -686,7 +769,10 @@
         "failedToAssignCohort": "فشل تعيين الدفعة",
         "cohortAssigned": "تم تعيين الدفعة للطالب.",
         "cohortAlreadyAssigned": "هذا الطالب موجود بالفعل في هذه الدفعة.",
-        "selectStudentForCohortHint": "اختر طالبًا لعرض دفعته الحالية."
+        "selectStudentForCohortHint": "اختر طالبًا لعرض دفعته الحالية.",
+        "donorAssignmentRequired": "اختر طالبًا أولًا.",
+        "failedToAssignDonor": "فشل تعيين المتبرع",
+        "donorAssigned": "تم تحديث ربط المتبرع."
       }
     },
   "notifications": {

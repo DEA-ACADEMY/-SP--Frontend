@@ -52,6 +52,12 @@ type Student = {
     cohortId?: string | null;
 };
 
+type Donor = {
+    id: string;
+    name?: string | null;
+    email?: string | null;
+};
+
 type Enrollment = {
     id: string;
     studentId: string;
@@ -98,29 +104,39 @@ export default function EnrollmentsList() {
     const [programs, setPrograms] = useState<Program[]>([]);
     const [cohorts, setCohorts] = useState<Cohort[]>([]);
     const [students, setStudents] = useState<Student[]>([]);
+    const [donors, setDonors] = useState<Donor[]>([]);
     const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
     const [selectedStudentId, setSelectedStudentId] = useState("");
     const [selectedProgramId, setSelectedProgramId] = useState("");
     const [selectedCohortId, setSelectedCohortId] = useState("");
+    const [selectedDonorId, setSelectedDonorId] = useState("");
     const [loading, setLoading] = useState(true);
     const [savingAssignment, setSavingAssignment] = useState(false);
     const [savingCohortAssignment, setSavingCohortAssignment] = useState(false);
+    const [savingDonorAssignment, setSavingDonorAssignment] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    async function loadData() {
-        const [branchesJson, programsJson, cohortsJson, studentsJson, enrollmentsJson] = await Promise.all([
+    async function loadData(includeDonors = role === "management") {
+        const requests: Promise<unknown>[] = [
             kyInstance.get("branches", { searchParams: { _start: "0", _end: "1000" } }).json(),
             kyInstance.get("programs", { searchParams: { _start: "0", _end: "1000" } }).json(),
             kyInstance.get("cohorts", { searchParams: { _start: "0", _end: "1000" } }).json(),
             kyInstance.get("students", { searchParams: { _start: "0", _end: "1000" } }).json(),
             kyInstance.get("enrollments", { searchParams: { _start: "0", _end: "1000" } }).json(),
-        ]);
+        ];
+
+        if (includeDonors) {
+            requests.push(kyInstance.get("donors", { searchParams: { _start: "0", _end: "1000" } }).json());
+        }
+
+        const [branchesJson, programsJson, cohortsJson, studentsJson, enrollmentsJson, donorsJson] = await Promise.all(requests);
 
         setBranches(asArray<Branch>(branchesJson));
         setPrograms(asArray<Program>(programsJson));
         setCohorts(asArray<Cohort>(cohortsJson));
         setStudents(asArray<Student>(studentsJson));
         setEnrollments(asArray<Enrollment>(enrollmentsJson));
+        setDonors(includeDonors ? asArray<Donor>(donorsJson) : []);
     }
 
     useEffect(() => {
@@ -132,7 +148,7 @@ export default function EnrollmentsList() {
                 setError(null);
 
                 const nextRole = (await authProvider.getPermissions?.()) as Role | null;
-                await loadData();
+                await loadData(nextRole === "management");
 
                 if (!cancelled) {
                     setRole(nextRole ?? null);
@@ -209,6 +225,7 @@ export default function EnrollmentsList() {
     useEffect(() => {
         setSelectedProgramId("");
         setSelectedCohortId("");
+        setSelectedDonorId("");
     }, [selectedStudentId]);
 
     async function submitProgramAssignment(event: FormEvent<HTMLFormElement>) {
@@ -274,6 +291,32 @@ export default function EnrollmentsList() {
             toast.error(e?.message ?? t("enrollments.messages.failedToAssignCohort"));
         } finally {
             setSavingCohortAssignment(false);
+        }
+    }
+
+    async function submitDonorAssignment(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        if (!selectedStudentId) {
+            toast.error(t("enrollments.messages.donorAssignmentRequired"));
+            return;
+        }
+
+        try {
+            setSavingDonorAssignment(true);
+            await kyInstance.put(`students/${selectedStudentId}/donor`, {
+                json: {
+                    donorId: selectedDonorId || null,
+                },
+            });
+
+            toast.success(t("enrollments.messages.donorAssigned"));
+            setSelectedDonorId("");
+            await loadData();
+        } catch (e: any) {
+            toast.error(e?.message ?? t("enrollments.messages.failedToAssignDonor"));
+        } finally {
+            setSavingDonorAssignment(false);
         }
     }
 
@@ -496,6 +539,63 @@ export default function EnrollmentsList() {
                             </div>
                         </CardContent>
                     </Card>
+
+                    {role === "management" ? (
+                        <Card className="overflow-hidden">
+                            <CardHeader className={cn("flex flex-row items-start gap-3 space-y-0", dir === "rtl" && "flex-row-reverse")}>
+                                <div className="rounded-md border bg-muted/40 p-2 text-primary">
+                                    <UsersRound className="h-5 w-5" />
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                    <CardTitle className="text-base">{t("enrollments.actions.assignDonor")}</CardTitle>
+                                    <p className="mt-1 text-sm text-muted-foreground">{t("enrollments.messages.assignDonorDescription")}</p>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <form className="grid gap-4 lg:grid-cols-[1fr_1fr_auto]" onSubmit={submitDonorAssignment}>
+                                    <div className="space-y-2">
+                                        <Label>{t("enrollments.fields.student")}</Label>
+                                        <Select value={selectedStudentId || undefined} onValueChange={setSelectedStudentId}>
+                                            <SelectTrigger className="h-9 w-full">
+                                                <SelectValue placeholder={t("enrollments.placeholders.selectStudent")} />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {students.map((student) => (
+                                                    <SelectItem key={student.id} value={student.id}>
+                                                        {student.name ?? student.email ?? t("dashboard.report.unnamed.student")}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <Label>{t("students.fields.donor")}</Label>
+                                        <Select value={selectedDonorId || "none"} onValueChange={(value) => setSelectedDonorId(value === "none" ? "" : value)}>
+                                            <SelectTrigger className="h-9 w-full">
+                                                <SelectValue placeholder={t("students.placeholders.selectDonor")} />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="none">{t("students.table.unassignedOption")}</SelectItem>
+                                                {donors.map((donor) => (
+                                                    <SelectItem key={donor.id} value={donor.id}>
+                                                        {donor.name ?? donor.email ?? t("roles.donor")}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+
+                                    <div className="flex items-end">
+                                        <Button type="submit" className="h-9 w-full gap-2" disabled={savingDonorAssignment}>
+                                            <UsersRound className="h-4 w-4" />
+                                            {savingDonorAssignment ? t("common.saving") : t("enrollments.actions.assignDonorSelected")}
+                                        </Button>
+                                    </div>
+                                </form>
+                            </CardContent>
+                        </Card>
+                    ) : null}
                 </>
             ) : null}
         </div>
